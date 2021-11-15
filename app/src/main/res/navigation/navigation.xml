@@ -6,22 +6,22 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.tumbler.HomeFragment"
+        android:name="com.example.tumbler.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.tumbler.SearchFragment"
+        android:name="com.example.tumbler.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="com.example.tumbler.UserProfileFragment"
+        android:name="com.example.tumbler.userprofile.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" />
     <fragment
         android:id="@+id/activityAndMessagesFragment"
-        android:name="com.example.tumbler.ActivityAndMessagesFragment"
+        android:name="com.example.tumbler.activityandmessages.ActivityAndMessagesFragment"
         android:label="fragment_activity_and_messages"
         tools:layout="@layout/fragment_activity_and_messages" />
 </navigation>

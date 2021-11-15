@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/cufe/3rd computer/CMPXXXX_Software Engineering/project/Tumbler/app/src/main/res/layout/fragment_activity_and_messages.xml" value="0.1" />
+        <entry key="..\:/cufe/3rd computer/CMPXXXX_Software Engineering/project/Tumbler/app/src/main/res/layout/fragment_home.xml" value="0.17300724637681159" />
+        <entry key="..\:/cufe/3rd computer/CMPXXXX_Software Engineering/project/Tumbler/app/src/main/res/layout/fragment_search.xml" value="0.17300724637681159" />
+        <entry key="..\:/cufe/3rd computer/CMPXXXX_Software Engineering/project/Tumbler/app/src/main/res/layout/fragment_user_profile.xml" value="0.17300724637681159" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

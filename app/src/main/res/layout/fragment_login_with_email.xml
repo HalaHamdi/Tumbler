@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".signupandin.LoginWithEmailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/pic12"
+        android:alpha="0.85">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/transparency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparency"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/login_tv_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white"
+            app:boxBackgroundColor="@color/light_white"
+            app:boxStrokeColor="@color/white"
+            app:counterTextColor="@color/white"
+            app:helperTextTextColor="@color/light_white"
+            app:hintTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderTextColor="@color/white"
+            app:prefixTextColor="@color/light_white"
+            app:suffixTextColor="@color/white"
+            tools:layout_editor_absoluteX="25dp">
+
+            <EditText
+                android:id="@+id/login_txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00001935"
+                android:hapticFeedbackEnabled="false"
+                android:hint="email"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:shadowColor="@color/light_white"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/light_white"
+                android:textColorHint="#D2D2D2"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/login_continue_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Continue"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:backgroundTint="#C9FF5722" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

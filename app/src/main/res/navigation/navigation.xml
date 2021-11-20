@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_loginSignupFragment"
             app:destination="@id/loginSignupFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginSignupFragment"
@@ -39,15 +42,68 @@
         android:label="fragment_login_signup"
         tools:layout="@layout/fragment_login_signup" >
         <action
-            android:id="@+id/action_loginSignupFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_loginSignupFragment_to_loginWithEmailOrGoogleFragment"
+            app:destination="@id/loginWithEmailOrGoogleFragment" />
         <action
-            android:id="@+id/action_loginSignupFragment_to_loginWithEmailFragment"
-            app:destination="@id/loginWithEmailFragment" />
+            android:id="@+id/action_loginSignupFragment_to_signupWithEmailOrGoogleFragment"
+            app:destination="@id/signupWithEmailOrGoogleFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginWithEmailFragment"
         android:name="com.example.tumbler.LoginWithEmailFragment"
         android:label="fragment_login_with_email"
-        tools:layout="@layout/fragment_login_with_email" />
+        tools:layout="@layout/fragment_login_with_email" >
+        <action
+            android:id="@+id/action_loginWithEmailFragment_to_loginWithEmail2Fragment"
+            app:destination="@id/loginWithEmail2Fragment" />
+        <action
+            android:id="@+id/action_loginWithEmailFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginWithEmailOrGoogleFragment"
+        android:name="com.example.tumbler.LoginWithEmailOrGoogleFragment"
+        android:label="LoginWithEmailOrGoogleFragment" >
+        <action
+            android:id="@+id/action_loginWithEmailOrGoogleFragment_to_loginWithEmailFragment"
+            app:destination="@id/loginWithEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupWithEmailOrGoogleFragment"
+        android:name="com.example.tumbler.SignupWithEmailOrGoogleFragment"
+        android:label="SignupWithEmailOrGoogleFragment" >
+        <action
+            android:id="@+id/action_signupWithEmailOrGoogleFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginWithEmail2Fragment"
+        android:name="com.example.tumbler.LoginWithEmail2Fragment"
+        android:label="LoginWithEmail2Fragment" >
+        <action
+            android:id="@+id/action_loginWithEmail2Fragment_to_loginWithEmail4Fragment"
+            app:destination="@id/loginWithEmail4Fragment" />
+        <action
+            android:id="@+id/action_loginWithEmail2Fragment_to_magicLinkFragment"
+            app:destination="@id/magicLinkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/magicLinkFragment"
+        android:name="com.example.tumbler.MagicLinkFragment"
+        android:label="MagicLinkFragment" />
+    <fragment
+        android:id="@+id/loginWithEmail4Fragment"
+        android:name="com.example.tumbler.LoginWithEmail4Fragment"
+        android:label="LoginWithEmail4Fragment" >
+        <action
+            android:id="@+id/action_loginWithEmail4Fragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginWithEmail4Fragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.tumbler.ForgetPasswordFragment"
+        android:label="ForgetPasswordFragment" />
 </navigation>

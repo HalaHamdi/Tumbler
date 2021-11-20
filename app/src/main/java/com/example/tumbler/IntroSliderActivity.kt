@@ -21,15 +21,15 @@ class IntroSliderActivity : AppCompatActivity() {
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
         setContentView(binding.root)
-        val adapter = IntroSliderAdapter(this)
-        binding.vpIntroSlider.adapter = adapter
+        val ADAPTER = IntroSliderAdapter(this)
+        binding.vpIntroSlider.adapter = ADAPTER
         fragmentList.addAll(
             listOf(
                 Intro1Fragment(), Intro2Fragment(), Intro3Fragment(), Intro4Fragment(), Intro5Fragment()
             )
         )
-        adapter.setFragmentList(fragmentList)
-        binding.indicatorLayout.setIndicatorCount(adapter.itemCount)
+        ADAPTER.setFragmentList(fragmentList)
+        binding.indicatorLayout.setIndicatorCount(ADAPTER.itemCount)
         binding.indicatorLayout.selectCurrentPosition(0)
         registerListeners()
     }

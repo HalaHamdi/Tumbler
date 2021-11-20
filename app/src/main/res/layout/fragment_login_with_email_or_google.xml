@@ -23,26 +23,26 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
-        android:id="@+id/login_signup_signup_btn"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/login_signup_login_with_google_btn"
+        style="@style/round_button_style"
+        android:layout_marginBottom="0dp"
         android:layout_weight="1"
-        android:text="Sign up"
-        android:visibility="visible"
+        android:text="Log in with Google"
         app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/login_signup_login_btn"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/round_button_style" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/login_signup_login_btn"
+        android:id="@+id/login_signup_Login_with_email_btn"
         style="@style/round_button_style"
         android:layout_marginBottom="20dp"
         android:layout_weight="1"
-        android:text="Log in"
+        android:text="Log in with Email"
+        android:alpha="0"
         app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login_signup_login_with_google_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -50,7 +50,7 @@
         android:id="@+id/login_signup_Tumble_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="56.5dp"
         android:fontFamily="@font/biorhyme_extrabold"
         android:selectAllOnFocus="false"
         android:shadowColor="@color/black"
@@ -62,10 +62,10 @@
         android:textIsSelectable="false"
         android:textSize="60sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/login_signup_signup_btn"
+        app:layout_constraintBottom_toTopOf="@+id/login_signup_Login_with_email_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002" />
+        app:layout_constraintVertical_bias="0.01999998" />
 </androidx.constraintlayout.widget.ConstraintLayout>

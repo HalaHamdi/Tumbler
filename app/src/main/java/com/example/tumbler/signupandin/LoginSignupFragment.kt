@@ -19,22 +19,39 @@ class LoginSignupFragment : Fragment() {
 
         binding = FragmentLoginSignupBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        var SignupAction=LoginSignupFragmentDirections.actionLoginSignupFragmentToSignupWithEmailOrGoogleFragment()
-        binding.loginSignupSignupBtn.setOnClickListener { view:View->
+        ButtonsAnimation1()
+
+        ButtonsAnimation2()
+
+        return binding.root
+    }
+
+    /**
+     * sign up button onClickListener We make an animation
+     * we make a delay to see the animation
+     * then we navigate to our destination
+     */
+    fun ButtonsAnimation1() {
+        var SignupAction = LoginSignupFragmentDirections.actionLoginSignupFragmentToSignupWithEmailOrGoogleFragment()
+        binding.loginSignupSignupBtn.setOnClickListener { view: View ->
             binding.loginSignupLoginBtn.animate().translationY(-600f).alpha(0f).duration = 1000
             binding.loginSignupSignupBtn.animate().translationY(-600f).alpha(0f).duration = 1000
             Handler().postDelayed({ view.findNavController().navigate(SignupAction) }, 400)
         }
-//        }
+    }
 
-            var LoginAction = LoginSignupFragmentDirections.actionLoginSignupFragmentToLoginWithEmailOrGoogleFragment()
-            binding.loginSignupLoginBtn.setOnClickListener { view:View->
-                binding.loginSignupLoginBtn.animate().translationY(-600f).alpha(0f).duration = 1000
-                binding.loginSignupSignupBtn.animate().translationY(-600f).alpha(0f).duration = 1000
-                Handler().postDelayed({ view.findNavController().navigate(LoginAction) }, 400)
-            }
-
-        return binding.root
+    /**
+     * log in button onClickListener We make an animation
+     * we make a delay to see the animation
+     * then we navigate to our destination
+     */
+    fun ButtonsAnimation2() {
+        var LoginAction = LoginSignupFragmentDirections.actionLoginSignupFragmentToLoginWithEmailOrGoogleFragment()
+        binding.loginSignupLoginBtn.setOnClickListener { view: View ->
+            binding.loginSignupLoginBtn.animate().translationY(-600f).alpha(0f).duration = 1000
+            binding.loginSignupSignupBtn.animate().translationY(-600f).alpha(0f).duration = 1000
+            Handler().postDelayed({ view.findNavController().navigate(LoginAction) }, 400)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

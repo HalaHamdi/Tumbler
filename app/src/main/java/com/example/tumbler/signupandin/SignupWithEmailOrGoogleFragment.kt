@@ -1,4 +1,4 @@
-package com.example.tumbler
+package com.example.tumbler.signupandin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.tumbler.databinding.FragmentSignupWithEmailOrGoogleBinding
 
-
 class SignupWithEmailOrGoogleFragment : Fragment() {
     lateinit var binding: FragmentSignupWithEmailOrGoogleBinding
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSignupWithEmailOrGoogleBinding.inflate(inflater, container, false)

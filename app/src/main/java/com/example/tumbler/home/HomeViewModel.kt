@@ -6,8 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.tumbler.model.entity.postbyid.PostByID
 import com.example.tumbler.model.entity.User
+import com.example.tumbler.model.entity.postbyid.PostByID
 import com.example.tumbler.model.entity.postnotesbyid.PostNotesByID
 import com.example.tumbler.model.entity.temp
 import com.example.tumbler.model.network.RemoteRepository
@@ -38,11 +38,11 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
     fun gett() = viewModelScope.launch {
         var result = remoteRepository.gettt()
 
-        if(result.isSuccessful){
-            if(result.body() != null)
+        if (result.isSuccessful) {
+            if (result.body() != null)
                 _tem.postValue(result.body())
-        }else{
-            Log.i("err",result.message())
+        } else {
+            Log.i("err", result.message())
         }
     }
 
@@ -59,24 +59,21 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
 
     fun getPostByID(id: Int) = viewModelScope.launch {
         var result = remoteRepository.getPostByID()
-        if(result.isSuccessful){
-            if(result.body() != null)
+        if (result.isSuccessful) {
+            if (result.body() != null)
                 _postByIDMutableLiveData.postValue(result.body())
-        }else{
-            Log.i("err",result.message())
+        } else {
+            Log.i("err", result.message())
         }
     }
 
-    fun getPostNotesByID(id:Int) = viewModelScope.launch {
+    fun getPostNotesByID(id: Int) = viewModelScope.launch {
         var result = remoteRepository.getPostNotesByID()
-        if(result.isSuccessful){
-            if(result.body() != null)
+        if (result.isSuccessful) {
+            if (result.body() != null)
                 _postNotesByIDMutableLiveData.postValue(result.body())
-        }else{
-            Log.i("err",result.message())
+        } else {
+            Log.i("err", result.message())
         }
     }
-
-
-
 }

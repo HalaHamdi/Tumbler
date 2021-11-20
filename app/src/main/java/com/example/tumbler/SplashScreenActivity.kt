@@ -1,10 +1,10 @@
-package com.example.tumbler.signupandin
+package com.example.tumbler
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.example.tumbler.R
+import com.example.tumbler.signupandin.IntroSliderActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     lateinit var handler: Handler

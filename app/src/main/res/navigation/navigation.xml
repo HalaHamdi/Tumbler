@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginWithEmailOrGoogleFragment"
-        android:name="com.example.tumbler.LoginWithEmailOrGoogleFragment"
+        android:name="com.example.tumbler.signupandin.LoginWithEmailOrGoogleFragment"
         android:label="LoginWithEmailOrGoogleFragment" >
         <action
             android:id="@+id/action_loginWithEmailOrGoogleFragment_to_loginWithEmailFragment"
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupWithEmailOrGoogleFragment"
-        android:name="com.example.tumbler.SignupWithEmailOrGoogleFragment"
+        android:name="com.example.tumbler.signupandin.SignupWithEmailOrGoogleFragment"
         android:label="SignupWithEmailOrGoogleFragment" >
         <action
             android:id="@+id/action_signupWithEmailOrGoogleFragment_to_signUpFragment"
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginWithEmail2Fragment"
-        android:name="com.example.tumbler.LoginWithEmail2Fragment"
+        android:name="com.example.tumbler.signupandin.LoginWithEmail2Fragment"
         android:label="LoginWithEmail2Fragment" >
         <action
             android:id="@+id/action_loginWithEmail2Fragment_to_loginWithEmail4Fragment"
@@ -72,11 +72,11 @@
     </fragment>
     <fragment
         android:id="@+id/magicLinkFragment"
-        android:name="com.example.tumbler.MagicLinkFragment"
+        android:name="com.example.tumbler.signupandin.MagicLinkFragment"
         android:label="MagicLinkFragment" />
     <fragment
         android:id="@+id/loginWithEmail4Fragment"
-        android:name="com.example.tumbler.LoginWithEmail4Fragment"
+        android:name="com.example.tumbler.signupandin.LoginWithEmail4Fragment"
         android:label="LoginWithEmail4Fragment" >
         <action
             android:id="@+id/action_loginWithEmail4Fragment_to_forgetPasswordFragment"
@@ -87,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"
-        android:name="com.example.tumbler.ForgetPasswordFragment"
+        android:name="com.example.tumbler.signupandin.ForgetPasswordFragment"
         android:label="ForgetPasswordFragment" />
 
 

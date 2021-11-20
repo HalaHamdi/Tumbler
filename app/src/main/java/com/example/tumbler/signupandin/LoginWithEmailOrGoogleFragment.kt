@@ -1,4 +1,4 @@
-package com.example.tumbler
+package com.example.tumbler.signupandin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,18 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.tumbler.databinding.FragmentLoginWithEmailOrGoogleBinding
 
-
 class LoginWithEmailOrGoogleFragment : Fragment() {
-    lateinit var binding:FragmentLoginWithEmailOrGoogleBinding
+    lateinit var binding: FragmentLoginWithEmailOrGoogleBinding
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding= FragmentLoginWithEmailOrGoogleBinding.inflate(inflater,container,false)
+        binding = FragmentLoginWithEmailOrGoogleBinding.inflate(inflater, container, false)
 
-        var LoginWithEmailAction=LoginWithEmailOrGoogleFragmentDirections.actionLoginWithEmailOrGoogleFragmentToLoginWithEmailFragment()
-        binding.loginSignupLoginWithEmailBtn.setOnClickListener { view:View->
+        var LoginWithEmailAction = LoginWithEmailOrGoogleFragmentDirections.actionLoginWithEmailOrGoogleFragmentToLoginWithEmailFragment()
+        binding.loginSignupLoginWithEmailBtn.setOnClickListener { view: View ->
             view.findNavController().navigate(LoginWithEmailAction)
         }
         return binding.root

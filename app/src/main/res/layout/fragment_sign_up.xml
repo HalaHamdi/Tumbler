@@ -62,7 +62,7 @@
                 android:id="@+id/signup_txt_age"
                 style="@style/edit_text"
                 android:hint="age"
-                android:inputType="textPassword"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signup_tv_name" />
         </com.google.android.material.textfield.TextInputLayout>

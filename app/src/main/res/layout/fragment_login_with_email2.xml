@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".signupandin.LoginWithEmailFragment">
+    tools:context=".LoginWithEmailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:background="@drawable/pic12"
         android:alpha="0.85">
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/transparency"
+            android:id="@+id/transparency2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/transparency"
@@ -25,33 +25,33 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <Button
-            android:id="@+id/login_continue_btn"
+            android:id="@+id/login2_magic_link_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Continue"
+            android:text="Send Magic Link"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             app:backgroundTint="#C9FF5722"
-            app:layout_constraintBottom_toBottomOf="@+id/transparency"
-            app:layout_constraintTop_toBottomOf="@+id/login_error_txt"
+
+            app:layout_constraintTop_toBottomOf="@+id/login2_tv_Email"
             app:layout_constraintVertical_bias="0.01999998" />
-        <TextView
-            android:id="@+id/login_error_txt"
+
+        <Button
+            android:id="@+id/login2_password_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="Enter Password"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="TextView"
-            android:textSize="16sp"
-            android:textColor="#A39C9E"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/login_tv_Email"
-            tools:layout_editor_absoluteY="390dp" />
+            app:backgroundTint="#ED535252"
+            app:layout_constraintBottom_toBottomOf="@+id/transparency2"
+            app:layout_constraintTop_toBottomOf="@+id/login2_magic_link_btn"
+            app:layout_constraintVertical_bias="0.01999998" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_tv_Email"
+            android:id="@+id/login2_tv_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -74,7 +74,7 @@
             tools:layout_editor_absoluteX="25dp">
 
             <EditText
-                android:id="@+id/login_txt_email"
+                android:id="@+id/login2_txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -88,10 +88,7 @@
                 android:textColorHighlight="@color/light_white"
                 android:textColorHint="#D2D2D2"
                 tools:ignore="SpeakableTextPresentCheck" />
-
         </com.google.android.material.textfield.TextInputLayout>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

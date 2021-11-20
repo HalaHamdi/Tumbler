@@ -1,6 +1,8 @@
 package com.example.tumbler.home
 
 import android.os.Bundle
+import android.text.Html
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,7 +34,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getPostByID(5)
+        viewModel.getPostNotesByID(5)
         viewModel.getUsersList()
+        viewModel.gett()
 
         viewModel.usersListMutableLiveData.observe(
             viewLifecycleOwner,
@@ -42,5 +47,20 @@ class HomeFragment : Fragment() {
                 }
             }
         )
+
+
+        viewModel.postByIDMutableLiveData.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                binding.userNamePost.text = it.postByIDResponse.blogUsername
+                //binding.postContent.text = it.postByIDResponse.postBody
+                binding.postContent.setText(Html.fromHtml(it.postByIDResponse.postBody))
+            }
+        })
+
+        viewModel.postNotesByIDMutableLiveData.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                binding.postNumNotes.text = it.postNotesByIDResponse.replies.size.toString()
+            }
+        })
     }
 }

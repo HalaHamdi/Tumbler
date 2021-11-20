@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sign_up_fragment_contaianer"
     android:layout_width="match_parent"
@@ -14,19 +14,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signup_tv_password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:textColorHint="@color/white"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/light_white"
-        app:counterTextColor="@color/white"
-        app:errorEnabled="true"
-        app:helperTextTextColor="@color/white"
+            style="@style/edit_view_layout_container"
+            android:layout_marginTop="20dp"
+            app:errorEnabled="true"
+            app:helperTextTextColor="@color/white"
             app:hintTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_tv_Email"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/white"
@@ -36,32 +30,50 @@
 
             <EditText
                 android:id="@+id/signup_txt_password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                style="@style/edit_text"
                 android:background="@color/navy"
                 android:hint="password"
                 android:inputType="textPassword"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/light_white"
-                android:textColorHint="#D2D2D2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signup_tv_password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signup_tv_age"
+            style="@style/edit_view_layout_container"
+            android:layout_width="408dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="20dp"
+            app:errorEnabled="true"
+            app:helperTextTextColor="@color/white"
+            app:hintTextColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/signup_txt_Header3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_tv_name"
+            app:layout_constraintVertical_bias="0.0"
+            app:placeholderTextColor="@color/white"
+            app:prefixTextColor="@color/white"
+            app:suffixTextColor="@color/white">
+
+            <EditText
+                android:id="@+id/signup_txt_age"
+                style="@style/edit_text"
+                android:hint="age"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signup_tv_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
 
             android:id="@+id/signup_tv_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/edit_view_layout_container"
             android:layout_marginTop="20dp"
             android:alpha="50"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textColorHighlight="@color/white"
-            android:textColorHint="@color/white"
-            android:textColorLink="@color/white"
-            app:boxStrokeColor="@color/light_white"
             app:errorEnabled="true"
             app:hintTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,30 +83,17 @@
 
             <EditText
                 android:id="@+id/signup_txt_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/navy"
                 android:hint="name"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/light_white"
-                android:textColorHint="#D2D2D2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                style="@style/edit_text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-
             android:id="@+id/signup_tv_Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="320dp"
+            style="@style/edit_view_layout_container"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:textColor="@android:color/white"
-            android:textColorHighlight="@color/white"
-            android:textColorHint="@color/white"
-            android:textColorLink="@color/white"
             app:boxStrokeColor="@color/light_white"
             app:errorContentDescription="please enter a valid mail"
             app:errorEnabled="true"
@@ -102,18 +101,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/txt_Header2">
 
             <EditText
                 android:id="@+id/signup_txt_email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/navy"
+                style="@style/edit_text"
                 android:hint="email"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/light_white"
-                android:textColorHint="#D2D2D2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signup_tv_Email" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -127,11 +120,9 @@
             android:textAlignment="center"
             android:textColor="#D2D2D2"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/signup_tv_Email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_txt_Header1"
-            app:layout_constraintVertical_bias="0.357" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_txt_Header1" />
 
         <TextView
             android:id="@+id/signup_txt_Header1"
@@ -159,7 +150,7 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/signup_txt_Login"
+            app:layout_constraintBottom_toTopOf="@+id/sign_up_with_email_login_txt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +158,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/signup_txt_Login"
+            android:id="@+id/sign_up_with_email_login_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
@@ -179,6 +170,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/sign_up_done_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:enabled="true"
+            android:text="Done"
+            android:textAlignment="textEnd"
+            android:textColor="@color/light_white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/signup_tv_Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/signup_txt_Header1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+        <ImageView
+            android:id="@+id/imageView"
+
+            android:layout_width="32dp"
+            android:layout_height="35dp"
+            android:src="@drawable/tumblrsp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/signup_tv_Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.060000002" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

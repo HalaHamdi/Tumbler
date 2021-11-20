@@ -2,7 +2,9 @@ package com.example.tumbler.model.entity.postbyid
 
 import com.google.gson.annotations.SerializedName
 
-   
+/***
+ * data class to store data of the response of the back-end to get a specific post
+ */
 data class PostByIDResponse (
 
    @SerializedName("post_status") var postStatus : String,

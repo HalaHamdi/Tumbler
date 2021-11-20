@@ -10,5 +10,5 @@ interface RemoteRepositoryInterface {
     suspend fun getAPIUsers(): Response<List<User>>
     suspend fun getPostByID(): Response<PostByID>
     suspend fun getPostNotesByID(): Response<PostNotesByID>
-    suspend fun gettt():Response<temp>
+//    suspend fun gettt():Response<temp>
 }

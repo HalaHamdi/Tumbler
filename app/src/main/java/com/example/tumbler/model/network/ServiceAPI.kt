@@ -18,7 +18,7 @@ interface ServiceAPI {
     @GET("/Hmmammmm/dp/note")
     suspend fun getPostNotesByID(): Response<PostNotesByID>
 
-    @GET("Hmmammmm/dp/abbas")
-    suspend fun gettt():Response<temp>
+//    @GET("Hmmammmm/dp/abbas")
+//    suspend fun gettt():Response<temp>
 
 }

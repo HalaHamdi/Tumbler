@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         viewModel.getPostByID(5)
         viewModel.getPostNotesByID(5)
         viewModel.getUsersList()
-        viewModel.gett()
+//        viewModel.gett()
 
         viewModel.usersListMutableLiveData.observe(
             viewLifecycleOwner,

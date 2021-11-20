@@ -32,20 +32,24 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
     private var _postNotesByIDMutableLiveData = MutableLiveData<PostNotesByID>()
     val postNotesByIDMutableLiveData: LiveData<PostNotesByID> get() = _postNotesByIDMutableLiveData
 
-    private var _tem = MutableLiveData<temp>()
-    val tem: LiveData<temp> get() = _tem
 
-    fun gett() = viewModelScope.launch {
-        var result = remoteRepository.gettt()
+//    private var _tem = MutableLiveData<temp>()
+//    val tem: LiveData<temp> get() = _tem
 
-        if (result.isSuccessful) {
-            if (result.body() != null)
-                _tem.postValue(result.body())
-        } else {
-            Log.i("err", result.message())
-        }
-    }
+//    fun gett() = viewModelScope.launch {
+//        var result = remoteRepository.gettt()
+//
+//        if(result.isSuccessful){
+//            if(result.body() != null)
+//                _tem.postValue(result.body())
+//        }else{
+//            Log.i("err",result.message())
+//        }
+//    }
 
+    /***
+     * view model function that returns a list of all users. Logging the error if exists
+     */
     fun getUsersList() = viewModelScope.launch {
         var result = remoteRepository.getAPIUsers()
 
@@ -57,6 +61,9 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    /***
+     * view model function that retrieves a specific post by its id.  Logging the error if exists
+     */
     fun getPostByID(id: Int) = viewModelScope.launch {
         var result = remoteRepository.getPostByID()
         if (result.isSuccessful) {
@@ -67,7 +74,10 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun getPostNotesByID(id: Int) = viewModelScope.launch {
+    /***
+     * view model function that retrieves some notes regarding a specific post. i.e. post likes, notes, and reblogs.Logging the error if exists
+     */
+    fun getPostNotesByID(id:Int) = viewModelScope.launch {
         var result = remoteRepository.getPostNotesByID()
         if (result.isSuccessful) {
             if (result.body() != null)

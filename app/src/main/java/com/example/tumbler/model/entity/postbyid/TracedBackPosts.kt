@@ -2,7 +2,11 @@ package com.example.tumbler.model.entity.postbyid
 
 import com.google.gson.annotations.SerializedName
 
-data class TracedBackPosts(
+
+/***
+ * data class to store data of the response of the back-end to get a specific post
+ */
+data class TracedBackPosts (
 
     @SerializedName("post_id") var postId: Int,
     @SerializedName("blog_id") var blogId: Int,

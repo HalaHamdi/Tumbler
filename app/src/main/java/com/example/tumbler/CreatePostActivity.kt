@@ -4,8 +4,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tumbler.databinding.ActivityCreatePostBinding
+import com.example.tumbler.databinding.ActivityCreatePostBinding.inflate
+import com.example.tumbler.databinding.EnterUrlDialogBinding.inflate
 import jp.wasabeef.richeditor.RichEditor
 
 class CreatePostActivity : AppCompatActivity() {
@@ -45,14 +52,18 @@ class CreatePostActivity : AppCompatActivity() {
             styleEditor!!.insertImage(imageUri.toString(), "Image Not Found", 200, 200)
         }
     }
-
+    /**
+     * while adding a new post/ blog , you could add a new photo from gallery  using this function
+     * */
     fun addImage() {
         binding.addPhoto.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
         }
     }
-
+/**
+ * while adding a new post/ blog , you could change the text style/formating using this function
+ * */
     fun addStyle() {
         binding.addStyle.setOnClickListener {
 //    Todo: removeFormat before applying the new one
@@ -71,7 +82,10 @@ class CreatePostActivity : AppCompatActivity() {
 
     fun addUrl() {
         binding.addUrl.setOnClickListener {
-            styleEditor!!.insertLink("www.google.com", "Googleee")
+//Todo: To be taken from an alert Dialog
+            styleEditor!!.insertLink("www.google.com", "google")
+
         }
     }
+
 }

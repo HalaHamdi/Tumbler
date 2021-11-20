@@ -1,5 +1,6 @@
 package com.example.tumbler
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
@@ -15,5 +16,10 @@ class UserPagesActivity : AppCompatActivity() {
         setContentView(binding.root)
         val navController = findNavController(R.id.userPagesFragment)
         binding.footerNavigation.setupWithNavController(navController)
+
+        binding.createPostButton.setOnClickListener{
+            val intent= Intent(this,CreatePostActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

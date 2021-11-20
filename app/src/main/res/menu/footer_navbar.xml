@@ -2,22 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@id/homeFragment"
+        android:title="Home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:id="@id/homeFragment"/>
+
 
     <item
-        android:title="search"
+        android:title="Search"
         android:icon="@drawable/ic_search"
         android:id="@id/searchFragment"/>
 
     <item
-        android:title="activity"
+
+        android:title="Activity"
         android:icon="@drawable/ic_faces"
         android:id="@id/activityAndMessagesFragment"/>
 
     <item
-        android:title="profile"
+        android:title="Profile"
         android:icon="@drawable/ic_profile"
         android:id="@id/userProfileFragment"/>
+
 </menu>

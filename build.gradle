@@ -7,8 +7,13 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
+
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.4.30"
+
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0'
+        def nav_version = "2.3.5"
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
 
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -18,6 +23,8 @@ buildscript {
 
 plugins {
     id "org.jlleitschuh.gradle.ktlint" version "10.0.0"
+
+
 }
 
 allprojects {
@@ -27,15 +34,15 @@ allprojects {
         // Required to download KtLint
        mavenCentral()
 
+        maven{
 
-
-
+            url "https://jitpack.io"
+        }
 
     }
     apply plugin : "org.jlleitschuh.gradle.ktlint"
 
 }
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir

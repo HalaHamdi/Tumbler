@@ -8,7 +8,7 @@
     android:background="@drawable/pic6"
 
 
-    tools:context=".LoginSignupFragment">
+    tools:context=".signupandin.LoginSignupFragment">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat

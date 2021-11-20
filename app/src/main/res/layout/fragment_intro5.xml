@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alpha=".90"
     android:background="@drawable/pic15"
-    tools:context=".LoginSignupFragment">
+    tools:context=".signupandin.LoginSignupFragment">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat

@@ -3,6 +3,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="hint_create_post">Add something, if you \'d like </string>
     <string name="Login"><u>Log in</u></string>
+
+    <string name="post_content_temp">Hello \n\nMy name is Mohamed
+    \n\n I am good</string>
+    <string name="post_tags_temp">#mohamed #nabawe #mohamed #nabawe #mohamed #nabawe #mohamed #nabawe #mohamed #nabawe</string>
 
 </resources>

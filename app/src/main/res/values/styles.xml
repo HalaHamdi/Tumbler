@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <style name="edit_view_layout_container">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -33,4 +34,21 @@
         <item name="android:background">@drawable/round_button</item>
         <item name="android:textColor">@color/black</item>
     </style>
+=======
+    <style name="footerCreatePost">
+        <item name="android:layout_width">25dip</item>
+        <item name="android:layout_height">25dip</item>
+        <item name="backgroundTint">@color/black</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+<!--        <item name="android:layout_marginBottom">10dp</item>-->
+    </style>
+
+    <style name="divider_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+>>>>>>> 3a396495c14097fc2fce90126b90c6029ca5feb7
 </resources>

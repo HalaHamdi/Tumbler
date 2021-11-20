@@ -7,32 +7,8 @@
 
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.tumbler.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.tumbler.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
-
-    <fragment
-        android:id="@+id/userProfileFragment"
-        android:name="com.example.tumbler.userprofile.UserProfileFragment"
-        android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
-
-    <fragment
-        android:id="@+id/activityAndMessagesFragment"
-        android:name="com.example.tumbler.activityandmessages.ActivityAndMessagesFragment"
-        android:label="fragment_activity_and_messages"
-        tools:layout="@layout/fragment_activity_and_messages" />
-
-    <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.tumbler.SignUpFragment"
+        android:name="com.example.tumbler.signupandin.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -41,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginSignupFragment"
-        android:name="com.example.tumbler.LoginSignupFragment"
+        android:name="com.example.tumbler.signupandin.LoginSignupFragment"
         android:label="fragment_login_signup"
         tools:layout="@layout/fragment_login_signup" >
         <action
@@ -53,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginWithEmailFragment"
-        android:name="com.example.tumbler.LoginWithEmailFragment"
+        android:name="com.example.tumbler.signupandin.LoginWithEmailFragment"
         android:label="fragment_login_with_email"
         tools:layout="@layout/fragment_login_with_email" />
 

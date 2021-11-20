@@ -1,9 +1,10 @@
-package com.example.tumbler
+package com.example.tumbler.signupandin
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tumbler.R
 
 class SplashScreenActivity : AppCompatActivity() {
     lateinit var handler: Handler

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#001935"
-    tools:context=".SplashScreenActivity">
+    tools:context=".signupandin.SplashScreenActivity">
 
     <ImageView
         android:layout_width="100dp"

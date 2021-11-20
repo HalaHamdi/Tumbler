@@ -1,4 +1,4 @@
-package com.example.tumbler
+package com.example.tumbler.signupandin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,7 +37,8 @@ class LoginSignupFragment : Fragment() {
             binding.loginSignupSignUpWithGoogleBtn.setEnabled(true)
         }
 
-        var LoginAction = LoginSignupFragmentDirections.actionLoginSignupFragmentToLoginWithEmailFragment()
+        var LoginAction =
+            LoginSignupFragmentDirections.actionLoginSignupFragmentToLoginWithEmailFragment()
         binding.loginSignupLoginWithEmailBtn.setOnClickListener { view: View ->
             view.findNavController().navigate(LoginAction)
         }

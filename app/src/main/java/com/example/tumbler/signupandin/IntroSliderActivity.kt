@@ -1,4 +1,4 @@
-package com.example.tumbler
+package com.example.tumbler.signupandin
 
 import android.content.Intent
 import android.os.Build
@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.example.tumbler.MainActivity
 import com.example.tumbler.databinding.ActivityIntroSliderBinding
 
 class IntroSliderActivity : AppCompatActivity() {

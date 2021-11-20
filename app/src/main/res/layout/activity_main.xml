@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-
-        android:id="@+id/footerNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/navy"
-        android:visibility="invisible"
-        app:itemIconTint="@color/light_white"
-        app:itemTextColor="@color/light_white"
-        app:labelVisibilityMode="selected"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/footer_navbar" />
-
-
     <fragment
         android:id="@+id/contentFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -36,20 +20,5 @@
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/navigation" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/createPostButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="20dp"
-        android:clickable="true"
-        android:src="@drawable/ic_pen"
-        app:backgroundTint="@color/navy"
-        app:tint="@color/light_white"
-        app:layout_constraintBottom_toTopOf="@+id/footerNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="invisible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

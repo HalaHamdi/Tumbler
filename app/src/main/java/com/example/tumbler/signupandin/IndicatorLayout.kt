@@ -1,9 +1,10 @@
-package com.example.tumbler
+package com.example.tumbler.signupandin
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import com.example.tumbler.R
 
 class IndicatorLayout : LinearLayout {
     private var indicatorCount: Int = 0

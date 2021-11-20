@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.example.tumbler.IndicatorLayout
+    <com.example.tumbler.signupandin.IndicatorLayout
         android:id="@+id/indicatorLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

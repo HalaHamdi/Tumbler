@@ -42,14 +42,18 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signup_tv_age"
             style="@style/edit_view_layout_container"
+            android:layout_width="408dp"
+            android:layout_height="61dp"
             android:layout_marginTop="20dp"
             app:errorEnabled="true"
             app:helperTextTextColor="@color/white"
             app:hintTextColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/signup_txt_Header3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_tv_name"
+            app:layout_constraintVertical_bias="0.0"
             app:placeholderTextColor="@color/white"
             app:prefixTextColor="@color/white"
             app:suffixTextColor="@color/white">
@@ -87,7 +91,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signup_tv_Email"
-            android:layout_marginTop="320dp"
+            style="@style/edit_view_layout_container"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
             app:boxStrokeColor="@color/light_white"
@@ -97,8 +101,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/edit_view_layout_container">
+            app:layout_constraintTop_toBottomOf="@+id/txt_Header2">
 
             <EditText
                 android:id="@+id/signup_txt_email"
@@ -117,11 +120,9 @@
             android:textAlignment="center"
             android:textColor="#D2D2D2"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/signup_tv_Email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_txt_Header1"
-            app:layout_constraintVertical_bias="0.357" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_txt_Header1" />
 
         <TextView
             android:id="@+id/signup_txt_Header1"

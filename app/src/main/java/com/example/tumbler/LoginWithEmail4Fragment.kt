@@ -1,5 +1,6 @@
 package com.example.tumbler
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,14 +23,15 @@ class LoginWithEmail4Fragment : Fragment() {
             view.findNavController().navigate(LoginWithEmail4FragmentDirections.actionLoginWithEmail4FragmentToForgetPasswordFragment())
         }
 
-        binding.loginWithEmail4LoginTxt.setOnClickListener { view:View->
+        binding.loginWithEmail4LoginTxt.setOnClickListener {
             if(binding.login4TxtEmail.text.isNullOrEmpty() || binding.login4TxtPassword.text.isNullOrEmpty())
             {
                 Toast.makeText(context, "missed inputs", Toast.LENGTH_SHORT).show()
             }
             else
             {
-                view.findNavController().navigate(LoginWithEmail4FragmentDirections.actionLoginWithEmail4FragmentToHomeFragment())
+                val INTENT = Intent (this.context,UserPagesActivity::class.java)
+                startActivity(INTENT)
             }
         }
         return binding.root

@@ -34,7 +34,7 @@
         android:id="@+id/loginWithEmailFragment"
         android:name="com.example.tumbler.signupandin.LoginWithEmailFragment"
         android:label="fragment_login_with_email"
-<<<<<<< HEAD
+
         tools:layout="@layout/fragment_login_with_email" >
         <action
             android:id="@+id/action_loginWithEmailFragment_to_loginWithEmail2Fragment"
@@ -89,8 +89,7 @@
         android:id="@+id/forgetPasswordFragment"
         android:name="com.example.tumbler.ForgetPasswordFragment"
         android:label="ForgetPasswordFragment" />
-=======
-        tools:layout="@layout/fragment_login_with_email" />
 
->>>>>>> 3a396495c14097fc2fce90126b90c6029ca5feb7
+
+
 </navigation>

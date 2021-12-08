@@ -2,26 +2,19 @@ package com.example.tumbler.home
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+//import com.example.tumbler.di.Base_URL
 import com.example.tumbler.model.entity.User
 import com.example.tumbler.model.entity.postbyid.PostByID
 import com.example.tumbler.model.entity.postnotesbyid.PostNotesByID
 import com.example.tumbler.model.entity.temp
 import com.example.tumbler.model.network.RemoteRepository
-import com.example.tumbler.model.network.RetroBuilder
 import com.example.tumbler.model.network.ServiceAPI
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class HomeViewModel(app: Application) : AndroidViewModel(app) {
-    private var remoteRepository: RemoteRepository
-
-    init {
-        var serviceInstance = RetroBuilder.getRetroBuilder().create(ServiceAPI::class.java)
-        remoteRepository = RemoteRepository(serviceInstance)
-    }
+class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel() {
 
     private var _usersListMutableLiveData = MutableLiveData<List<User>>()
     val usersListMutableLiveData: LiveData<List<User>> get() = _usersListMutableLiveData
@@ -32,6 +25,8 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
     private var _postNotesByIDMutableLiveData = MutableLiveData<PostNotesByID>()
     val postNotesByIDMutableLiveData: LiveData<PostNotesByID> get() = _postNotesByIDMutableLiveData
 
+    var x = MutableLiveData<Int>(2)
+    val xxx:LiveData<Int> get() = x
 
 //    private var _tem = MutableLiveData<temp>()
 //    val tem: LiveData<temp> get() = _tem
@@ -47,6 +42,10 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
 //        }
 //    }
 
+    fun addx() {
+        x.value = x.value!!.plus(1)
+    }
+    fun getx() = x.value.toString()
     /***
      * view model function that returns a list of all users. Logging the error if exists
      */

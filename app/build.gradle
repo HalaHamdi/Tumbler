@@ -3,6 +3,11 @@ plugins {
     id 'kotlin-android'
     id "org.jetbrains.dokka"
     id 'androidx.navigation.safeargs.kotlin'
+
+//    //Hilt
+////    kotlin("kapt")
+    id 'kotlin-kapt'
+//    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -19,11 +24,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-
+    dataBinding{
+        enabled = true
+    }
     buildFeatures {
         viewBinding true
         dataBinding true
     }
+
+
 
     buildTypes {
         release {
@@ -58,8 +67,35 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     testImplementation "com.google.truth:truth:1.0.1"
 
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc01'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc01'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-rc01'
+
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-}
 
+
+    //koin
+    // latest version
+    def koin_version = '2.0.1'
+
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // Koin Android Scope features
+    implementation "io.insert-koin:koin-android-scope:$koin_version"
+    // Koin Android ViewModel features
+    implementation "io.insert-koin:koin-android-viewmodel:$koin_version"
+    // Koin Android Experimental features
+    implementation "io.insert-koin:koin-android-ext:$koin_version"
+
+//    //Hilt
+//    implementation("com.google.dagger:hilt-android:2.38.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+}
+//
+kapt {
+    correctErrorTypes = true
+}

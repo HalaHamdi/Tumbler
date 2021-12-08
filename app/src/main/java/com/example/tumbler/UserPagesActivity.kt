@@ -6,8 +6,12 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.tumbler.databinding.ActivityUserPagesBinding
+import com.example.tumbler.home.HomeViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserPagesActivity : AppCompatActivity() {
+
+    //private val viewModel: HomeViewModel by viewModel()
 
     lateinit var binding: ActivityUserPagesBinding
     override fun onCreate(savedInstanceState: Bundle?) {

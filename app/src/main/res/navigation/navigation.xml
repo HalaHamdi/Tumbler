@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginSignupFragment">
+
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.tumbler.signupandin.SignUp.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginSignupFragment"
+            app:destination="@id/loginSignupFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginSignupFragment"
+        android:name="com.example.tumbler.signupandin.LoginSignupFragment"
+        android:label="fragment_login_signup"
+        tools:layout="@layout/fragment_login_signup" >
+        <action
+            android:id="@+id/action_loginSignupFragment_to_loginWithEmailOrGoogleFragment"
+            app:destination="@id/loginWithEmailOrGoogleFragment" />
+        <action
+            android:id="@+id/action_loginSignupFragment_to_signupWithEmailOrGoogleFragment"
+            app:destination="@id/signupWithEmailOrGoogleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginWithEmailOrGoogleFragment"
+        android:name="com.example.tumbler.signupandin.LoginWithEmailOrGoogleFragment"
+        android:label="LoginWithEmailOrGoogleFragment" >
+        <action
+            android:id="@+id/action_loginWithEmailOrGoogleFragment_to_loginWithEmail4Fragment"
+            app:destination="@id/loginWithEmail4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupWithEmailOrGoogleFragment"
+        android:name="com.example.tumbler.signupandin.SignupWithEmailOrGoogleFragment"
+        android:label="SignupWithEmailOrGoogleFragment" >
+        <action
+            android:id="@+id/action_signupWithEmailOrGoogleFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/magicLinkFragment"
+        android:name="com.example.tumbler.signupandin.MagicLinkFragment"
+        android:label="MagicLinkFragment" />
+    <fragment
+        android:id="@+id/loginWithEmail4Fragment"
+        android:name="com.example.tumbler.signupandin.LoginWithEmail4Fragment"
+        android:label="LoginWithEmail4Fragment" >
+        <action
+            android:id="@+id/action_loginWithEmail4Fragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginWithEmail4Fragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.tumbler.signupandin.ForgetPasswordFragment"
+        android:label="ForgetPasswordFragment" />
+
+
+
+</navigation>

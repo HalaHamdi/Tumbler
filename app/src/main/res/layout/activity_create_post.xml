@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreatePostActivity">
+
+
+
+    <include
+        android:id="@+id/toolbarCreatePost"
+        layout="@layout/create_post_toolbar" />
+
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/richEditorCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="574dp"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="@string/hint_create_post"
+        app:layout_constraintBottom_toTopOf="@+id/footerCreatePost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCreatePost"/>
+
+
+        <Spinner
+            android:id="@+id/spinnerCreatePost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarCreatePost"
+            tools:layout_editor_absoluteX="0dp" />
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/textInputCreatePost"-->
+<!--            android:layout_width="410dp"-->
+<!--            android:layout_height="574dp"-->
+<!--            android:background="@null"-->
+<!--            android:gravity="top"-->
+<!--            android:hint="@string/hint_create_post"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/footerCreatePost"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/spinnerCreatePost">-->
+
+<!--        </com.google.android.material.textfield.TextInputEditText>-->
+
+
+        <TableRow
+            android:id="@+id/footerCreatePost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="16dp"
+            android:paddingBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/addStyle"
+            android:background="@drawable/ic_style"
+            style="@style/footerCreatePost"/>
+        <ImageButton
+            android:id="@+id/addUrl"
+            android:background="@drawable/ic_attach"
+            style="@style/footerCreatePost"/>
+        <ImageButton
+            android:id="@+id/addGif"
+            android:background="@drawable/ic_gif"
+            style="@style/footerCreatePost"/>
+        <ImageButton
+            android:id="@+id/addPhoto"
+            android:background="@drawable/ic_photo_library"
+            style="@style/footerCreatePost"/>
+        <ImageButton
+            android:id="@+id/addMusic"
+            android:background="@drawable/ic_headset"
+            style="@style/footerCreatePost"/>
+
+            <RelativeLayout>
+                <ImageButton
+                    android:id="@+id/addTag"
+                    android:background="@drawable/ic_hashtag"
+                    style="@style/footerCreatePost"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </TableRow>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

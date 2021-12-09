@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/alike_angular</item>
+        <item>@font/anton</item>
+        <item>@font/arbutus_slab</item>
+        <item>@font/archivo_black</item>
+        <item>@font/biorhyme_extrabold</item>
+        <item>@font/cairo_bold</item>
+        <item>@font/days_one</item>
+        <item>@font/passion_one_bold</item>
+        <item>@font/roboto_medium</item>
+        <item>@font/ruda</item>
+        <item>@font/russo_one</item>
+    </array>
+</resources>

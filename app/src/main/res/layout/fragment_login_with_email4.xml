@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_up_fragment_contaianer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SignUpFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#001935">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login4_tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/light_white"
+            app:counterTextColor="@color/white"
+            app:errorEnabled="true"
+            app:helperTextTextColor="@color/white"
+            app:hintTextColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/login_with_email4_forget_password_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login4_tv_Email"
+            app:layout_constraintVertical_bias="0.0"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white"
+            app:placeholderTextColor="@color/white"
+            app:prefixTextColor="@color/white"
+            app:suffixTextColor="@color/white">
+
+            <EditText
+                android:id="@+id/login4_txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/navy"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/light_white"
+                android:textColorHint="#D2D2D2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login4_tv_password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/login4_tv_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white"
+            app:boxStrokeColor="@color/light_white"
+            app:errorContentDescription="please enter a valid mail"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/login4_txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/navy"
+                android:hint="email"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/light_white"
+                android:textColorHint="#D2D2D2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login4_tv_Email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/login_with_email4_forget_password_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Forgot your password?"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/tumblr_logo"
+            android:src="@drawable/tumblrsp"
+            app:layout_constraintBottom_toTopOf="@+id/login4_tv_Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+        <TextView
+            android:id="@+id/login_with_email4_login_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:enabled="true"
+            android:text="Log in"
+            android:textAlignment="textEnd"
+            android:textColor="@color/light_white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/login4_tv_Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

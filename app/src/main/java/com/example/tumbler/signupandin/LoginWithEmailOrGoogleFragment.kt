@@ -18,7 +18,7 @@ class LoginWithEmailOrGoogleFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginWithEmailOrGoogleBinding.inflate(inflater, container, false)
 
-        var LoginWithEmailAction = LoginWithEmailOrGoogleFragmentDirections.actionLoginWithEmailOrGoogleFragmentToLoginWithEmailFragment()
+        var LoginWithEmailAction = LoginWithEmailOrGoogleFragmentDirections.actionLoginWithEmailOrGoogleFragmentToLoginWithEmail4Fragment()
         binding.loginSignupLoginWithEmailBtn.setOnClickListener { view: View ->
             view.findNavController().navigate(LoginWithEmailAction)
         }

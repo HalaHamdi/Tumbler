@@ -1,6 +1,7 @@
 package com.example.tumbler.model.network
 
 import android.util.Log
+import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.randomposts.Posts
 import kotlinx.coroutines.Dispatchers
@@ -29,4 +30,9 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         Log.i("Hala","iN REMOTE REPO")
         api.createPost(createPostBody,blogId)
     }
+
+    override suspend fun SignUp(user: RequestBody)= withContext(Dispatchers.IO){
+        api.SignUp(user)
+    }
+
 }

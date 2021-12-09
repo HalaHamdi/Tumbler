@@ -3,8 +3,8 @@ package com.example.tumbler.di
 import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
-import com.example.tumbler.model.network.RemoteRepositoryInterface
 import com.example.tumbler.model.network.ServiceAPI
+import com.example.tumbler.signupandin.SignUp.SignupViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -21,6 +21,9 @@ val viewModelModule = module {
     }
     viewModel{
         CreatePostViewModel(get())
+    }
+    viewModel{
+        SignupViewModel(get())
     }
 }
 

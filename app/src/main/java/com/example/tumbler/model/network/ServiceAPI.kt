@@ -1,5 +1,7 @@
 package com.example.tumbler.model.network
 
+import com.example.tumbler.model.entity.SignUpResponse.RequestBody
+import com.example.tumbler.model.entity.SignUpResponse.SignupResponse
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.addpost.CreatePostResponse
 import com.example.tumbler.model.entity.randomposts.RandomPosts
@@ -14,4 +16,8 @@ interface ServiceAPI {
 
     @POST("/abbas/{blogId}")
     suspend fun createPost(@Body createPostBody: CreatePostBody, @Path("blogId")blogId:Int): Response<CreatePostResponse>
+
+    @Headers("Accept: application/json")
+    @POST("/api/register")
+    suspend fun SignUp(@Body user: RequestBody):Response<SignupResponse>
 }

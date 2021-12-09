@@ -18,13 +18,13 @@ class LoginWithEmail2Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginWithEmail2Binding.inflate(inflater, container, false)
-        binding.login2MagicLinkBtn.setOnClickListener { view: View ->
-            view.findNavController().navigate(LoginWithEmail2FragmentDirections.actionLoginWithEmail2FragmentToMagicLinkFragment())
-        }
-
-        binding.login2PasswordBtn.setOnClickListener { view: View ->
-            view.findNavController().navigate(LoginWithEmail2FragmentDirections.actionLoginWithEmail2FragmentToLoginWithEmail4Fragment())
-        }
+//        binding.login2MagicLinkBtn.setOnClickListener { view: View ->
+//            view.findNavController().navigate(LoginWithEmail2FragmentDirections.actionLoginWithEmail2FragmentToMagicLinkFragment())
+//        }
+//
+//        binding.login2PasswordBtn.setOnClickListener { view: View ->
+//            view.findNavController().navigate(LoginWithEmail2FragmentDirections.actionLoginWithEmail2FragmentToLoginWithEmail4Fragment())
+//        }
         return binding.root
     }
 }

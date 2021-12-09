@@ -17,7 +17,7 @@ class LoginWithEmailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginWithEmailBinding.inflate(inflater, container, false)
-        ValidateEmail()
+        //ValidateEmail()
         return binding.root
     }
 
@@ -27,23 +27,23 @@ class LoginWithEmailFragment : Fragment() {
      * checking if the email is empty or null
      * if the email is valid it navigates to next fragment
      */
-    fun ValidateEmail() {
-        binding.loginContinueBtn.setOnClickListener { view: View ->
-            if (binding.loginTxtEmail.text.isNullOrEmpty()) {
-                binding.loginErrorTxt.visibility = View.GONE
-                Toast.makeText(context, "Oops! You forgot to enter your email address!", Toast.LENGTH_SHORT).show()
-            } else if (!(binding.loginTxtEmail.text.toString().matches(emailPattern.toRegex()))) {
-                binding.loginErrorTxt.visibility = View.VISIBLE
-                binding.loginErrorTxt.text = "That email doesn't have a Tumblr account. Sign up now?"
-            } else {
-                binding.loginErrorTxt.visibility = View.GONE
-                view.findNavController().navigate(LoginWithEmailFragmentDirections.actionLoginWithEmailFragmentToLoginWithEmail2Fragment())
-            }
-        }
-
-        binding.loginErrorTxt.setOnClickListener { view: View ->
-            view.findNavController()
-                .navigate(LoginWithEmailFragmentDirections.actionLoginWithEmailFragmentToSignUpFragment())
-        }
-    }
+//    fun ValidateEmail() {
+//        binding.loginContinueBtn.setOnClickListener { view: View ->
+//            if (binding.loginTxtEmail.text.isNullOrEmpty()) {
+//                binding.loginErrorTxt.visibility = View.GONE
+//                Toast.makeText(context, "Oops! You forgot to enter your email address!", Toast.LENGTH_SHORT).show()
+//            } else if (!(binding.loginTxtEmail.text.toString().matches(emailPattern.toRegex()))) {
+//                binding.loginErrorTxt.visibility = View.VISIBLE
+//                binding.loginErrorTxt.text = "That email doesn't have a Tumblr account. Sign up now?"
+//            } else {
+//                binding.loginErrorTxt.visibility = View.GONE
+//                view.findNavController().navigate(LoginWithEmailFragmentDirections.actionLoginWithEmailFragmentToLoginWithEmail2Fragment())
+//            }
+//        }
+//
+//        binding.loginErrorTxt.setOnClickListener { view: View ->
+//            view.findNavController()
+//                .navigate(LoginWithEmailFragmentDirections.actionLoginWithEmailFragmentToSignUpFragment())
+//        }
+//    }
 }

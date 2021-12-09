@@ -1,5 +1,6 @@
 package com.example.tumbler.di
 
+import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
 import com.example.tumbler.model.network.RemoteRepositoryInterface
@@ -13,7 +14,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val Base_URL: String = "https://my-json-server.typicode.com/"
 
 val viewModelModule = module {
-    viewModel { HomeViewModel(get()) }
+
+    viewModel {
+        HomeViewModel(get())
+    }
+    viewModel{
+        CreatePostViewModel(get())
+    }
 }
 
 val repositoryModule = module{

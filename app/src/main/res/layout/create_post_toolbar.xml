@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/curved_button"
         android:text="Post"
-        android:backgroundTint="@color/light_grey"
+        android:backgroundTint="@color/baby_blue"
         android:textColor="@color/grey"
         android:layout_marginLeft="280dp"
         />

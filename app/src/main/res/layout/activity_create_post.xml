@@ -8,46 +8,30 @@
     tools:context=".CreatePostActivity">
 
 
-
     <include
         android:id="@+id/toolbarCreatePost"
         layout="@layout/create_post_toolbar" />
 
+    <Spinner
+        android:id="@+id/spinnerCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/richEditorCreatePost"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCreatePost"
+        tools:layout_editor_absoluteX="0dp" />
+
     <jp.wasabeef.richeditor.RichEditor
         android:id="@+id/richEditorCreatePost"
-        android:layout_width="match_parent"
-        android:layout_height="574dp"
+        android:layout_width="408dp"
+        android:layout_height="531dp"
         android:background="@null"
         android:gravity="top"
         android:hint="@string/hint_create_post"
         app:layout_constraintBottom_toTopOf="@+id/footerCreatePost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCreatePost"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-        <Spinner
-            android:id="@+id/spinnerCreatePost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarCreatePost"
-            tools:layout_editor_absoluteX="0dp" />
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/textInputCreatePost"-->
-<!--            android:layout_width="410dp"-->
-<!--            android:layout_height="574dp"-->
-<!--            android:background="@null"-->
-<!--            android:gravity="top"-->
-<!--            android:hint="@string/hint_create_post"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/footerCreatePost"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/spinnerCreatePost">-->
-
-<!--        </com.google.android.material.textfield.TextInputEditText>-->
 
 
         <TableRow

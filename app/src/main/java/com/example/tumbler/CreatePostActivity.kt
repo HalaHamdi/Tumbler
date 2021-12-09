@@ -155,7 +155,7 @@ class CreatePostActivity : AppCompatActivity() {
                     styleEditor!!.html.toString()
                 )
 
-                viewModel.createPost(postBody, 1)
+                viewModel.createPost(postBody, 5)
             }
 
         }

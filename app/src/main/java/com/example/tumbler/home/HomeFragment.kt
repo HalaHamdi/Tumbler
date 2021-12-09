@@ -23,43 +23,34 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        val adapter = PostAdapter()
+        binding.postList.adapter = adapter
+
+        viewModel.getRandomPosts()
+
+        viewModel.postsLiveData.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                //adapter.postList = it
+                adapter.setlist(it)
+            }
+        })
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getPostByID(5)
-        viewModel.getPostNotesByID(5)
-        viewModel.getUsersList()
+//        viewModel.postNotesByIDMutableLiveData.observe(
+//            viewLifecycleOwner,
+//            Observer {
+//                if (it != null) {
+//                    binding.postNumNotes.text = it.postNotesByIDResponse.replies.size.toString()
+//                }
+//            }
+//        )
 
-        viewModel.usersListMutableLiveData.observe(
-            viewLifecycleOwner,
-            Observer {
-                if (!it.isNullOrEmpty()) {
-                    binding.userNamePost.text = it[0].title
-                }
-            }
-        )
 
-        viewModel.postByIDMutableLiveData.observe(
-            viewLifecycleOwner,
-            Observer {
-                if (it != null) {
-                    binding.userNamePost.text = it.postByIDResponse.blogUsername
-                    // binding.postContent.text = it.postByIDResponse.postBody
-                    binding.postContent.setText(Html.fromHtml(it.postByIDResponse.postBody))
-                }
-            }
-        )
-
-        viewModel.postNotesByIDMutableLiveData.observe(
-            viewLifecycleOwner,
-            Observer {
-                if (it != null) {
-                    binding.postNumNotes.text = it.postNotesByIDResponse.replies.size.toString()
-                }
-            }
-        )
     }
 }

@@ -12,13 +12,14 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isEmpty
-import androidx.lifecycle.ViewModelProvider
 import com.example.tumbler.databinding.ActivityCreatePostBinding
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import jp.wasabeef.richeditor.RichEditor
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.io.File
 import java.util.*
 
 
@@ -67,6 +68,23 @@ class CreatePostActivity : AppCompatActivity() {
         if (resultCode == RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
             Log.i("Hala", imageUri.toString())
+
+            val file = File(imageUri.toString())
+            val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"),file)
+
+            Log.i("Hala", "file=${file}  requestfile=${requestFile}")
+
+            // MultipartBody.Part is used to send also the actual file name
+
+            // MultipartBody.Part is used to send also the actual file name
+            val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+
+            // add another part within the multipart request
+
+            // add another part within the multipart request
+            val fullName: RequestBody =
+                RequestBody.create(MediaType.parse("multipart/form-data"), "Your Name")
+
             if (imageUri.toString().startsWith("content://media/external/images")) {
                 styleEditor!!.insertImage(imageUri.toString(), "Image Not Found", 200, 200)
             } else {
@@ -146,7 +164,9 @@ class CreatePostActivity : AppCompatActivity() {
             } else {
                 Log.i("Hala", styleEditor!!.html.toString())
                 val cal=Calendar.getInstance(TimeZone.getTimeZone("Egypt/Cairo"))
-                val time:String="${cal.get(Calendar.DAY_OF_MONTH)} - ${cal.get(Calendar.MONTH)} - ${cal.get(Calendar.YEAR)} "
+                val time:String="${cal.get(Calendar.DAY_OF_MONTH)} - ${cal.get(Calendar.MONTH)} - ${cal.get(
+                    Calendar.YEAR
+                )} "
                 Log.i("Hala", "time=${time}")
                 val postBody= CreatePostBody(
                     "published",

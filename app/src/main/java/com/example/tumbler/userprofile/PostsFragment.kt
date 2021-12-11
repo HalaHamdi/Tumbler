@@ -1,16 +1,13 @@
 package com.example.tumbler.userprofile
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.tumbler.R
+import androidx.fragment.app.Fragment
 import com.example.tumbler.databinding.FragmentPostsBinding
 
-
-class PostsFragment :Fragment(){
+class PostsFragment : Fragment() {
     lateinit var binding: FragmentPostsBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,9 +15,7 @@ class PostsFragment :Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentPostsBinding.inflate(inflater,container,false)
+        binding = FragmentPostsBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 }
-

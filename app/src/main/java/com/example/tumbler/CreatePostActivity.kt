@@ -22,10 +22,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.util.*
 
-
 class CreatePostActivity : AppCompatActivity() {
 
-    private val viewModel:CreatePostViewModel by viewModel()
+    private val viewModel: CreatePostViewModel by viewModel()
 
     private lateinit var binding: ActivityCreatePostBinding
     private var styleEditor: RichEditor? = null
@@ -35,7 +34,6 @@ class CreatePostActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
     private var musicUri: Uri? = null
     private var styleIndex: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -70,9 +68,9 @@ class CreatePostActivity : AppCompatActivity() {
             Log.i("Hala", imageUri.toString())
 
             val file = File(imageUri.toString())
-            val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"),file)
+            val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
 
-            Log.i("Hala", "file=${file}  requestfile=${requestFile}")
+            Log.i("Hala", "file=$file  requestfile=$requestFile")
 
             // MultipartBody.Part is used to send also the actual file name
 
@@ -163,12 +161,12 @@ class CreatePostActivity : AppCompatActivity() {
                 Log.i("Hala", "will not post")
             } else {
                 Log.i("Hala", styleEditor!!.html.toString())
-                val cal=Calendar.getInstance(TimeZone.getTimeZone("Egypt/Cairo"))
-                val time:String="${cal.get(Calendar.DAY_OF_MONTH)} - ${cal.get(Calendar.MONTH)} - ${cal.get(
+                val cal = Calendar.getInstance(TimeZone.getTimeZone("Egypt/Cairo"))
+                val time: String = "${cal.get(Calendar.DAY_OF_MONTH)} - ${cal.get(Calendar.MONTH)} - ${cal.get(
                     Calendar.YEAR
                 )} "
-                Log.i("Hala", "time=${time}")
-                val postBody= CreatePostBody(
+                Log.i("Hala", "time=$time")
+                val postBody = CreatePostBody(
                     "published",
                     time,
                     "general",
@@ -177,7 +175,6 @@ class CreatePostActivity : AppCompatActivity() {
 
                 viewModel.createPost(postBody, 5)
             }
-
         }
     }
 

@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_loginWithEmailOrGoogleFragment_to_loginWithEmail4Fragment"
             app:destination="@id/loginWithEmail4Fragment" />
+        <action
+            android:id="@+id/action_loginWithEmailOrGoogleFragment_to_signupAgeandUsername"
+            app:destination="@id/signupAgeandUsername" />
     </fragment>
     <fragment
         android:id="@+id/signupWithEmailOrGoogleFragment"
@@ -45,6 +48,9 @@
         <action
             android:id="@+id/action_signupWithEmailOrGoogleFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signupWithEmailOrGoogleFragment_to_signupAgeandUsername"
+            app:destination="@id/signupAgeandUsername" />
     </fragment>
     <fragment
         android:id="@+id/magicLinkFragment"
@@ -52,7 +58,7 @@
         android:label="MagicLinkFragment" />
     <fragment
         android:id="@+id/loginWithEmail4Fragment"
-        android:name="com.example.tumbler.signupandin.LoginWithEmail4Fragment"
+        android:name="com.example.tumbler.signupandin.Login.LoginWithEmail4Fragment"
         android:label="LoginWithEmail4Fragment" >
         <action
             android:id="@+id/action_loginWithEmail4Fragment_to_forgetPasswordFragment"
@@ -65,7 +71,11 @@
         android:id="@+id/forgetPasswordFragment"
         android:name="com.example.tumbler.signupandin.ForgetPasswordFragment"
         android:label="ForgetPasswordFragment" />
-
+    <fragment
+        android:id="@+id/signupAgeandUsername"
+        android:name="com.example.tumbler.signupandin.SignupAgeandUsername"
+        android:label="fragment_signup_ageand_username"
+        tools:layout="@layout/fragment_signup_ageand_username" />
 
 
 </navigation>

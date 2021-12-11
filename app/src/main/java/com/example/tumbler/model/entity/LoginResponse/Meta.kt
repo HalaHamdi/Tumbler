@@ -1,4 +1,4 @@
-package com.example.tumbler.model.entity.SignUpResponse
+package com.example.tumbler.model.entity.LoginResponse
 
 data class Meta(
     val msg: String,

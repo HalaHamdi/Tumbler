@@ -5,25 +5,33 @@ import androidx.lifecycle.*
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.SignUpResponse.SignupResponse
 import com.example.tumbler.model.network.RemoteRepository
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
-class SignupViewModel (private val remoteRepository: RemoteRepository) : ViewModel() {
+class SignupViewModel(private val remoteRepository: RemoteRepository) : ViewModel() {
 
     private var SignUpMutableLiveData = MutableLiveData<SignupResponse>()
     val SignUpLiveData: LiveData<SignupResponse> get() = SignUpMutableLiveData
 
+    private var SignUpSuccesfulMutableLiveData = MutableLiveData<Int>(0)
+    val SignUpSuccesfulLiveData: LiveData<Int> get() = SignUpSuccesfulMutableLiveData
 
-    fun AddUser(user:RequestBody) = viewModelScope.launch {
-        Log.i("MOstafa","abbas")
+    fun SignUp(user: RequestBody) = viewModelScope.launch {
+        Log.i("req", user.toString())
+        var gson: Gson = Gson()
         var result = remoteRepository.SignUp(user)
-        Log.i("MOstafa",result.toString())
+
+        Log.i("res", result.body().toString())
         if (result.isSuccessful) {
-            if (result.body() != null)
-                if(result.body()!!.meta.status=="422"|| result.body()!!.meta.status=="500")
-                    Log.i("err", result.body()!!.meta.msg)
-            else
+            if (result.body() != null) {
                 SignUpMutableLiveData.postValue(result.body())
+                Log.i("sus", result.body().toString())
+            }
+        } else {
+            val jsonObj = JSONObject(result.errorBody()!!.charStream().readText())
+            SignUpMutableLiveData.postValue(gson.fromJson(jsonObj.toString(), SignupResponse::class.java))
+            Log.i("err", jsonObj.toString())
         }
     }
-
 }

@@ -13,9 +13,11 @@ class BaseApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@BaseApplication)
-            modules(listOf(
-                viewModelModule, repositoryModule,serviceAPIModule
-            ))
+            modules(
+                listOf(
+                    viewModelModule, repositoryModule, serviceAPIModule
+                )
+            )
         }
     }
 }

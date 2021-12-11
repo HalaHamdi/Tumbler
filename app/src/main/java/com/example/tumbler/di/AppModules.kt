@@ -4,14 +4,14 @@ import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
 import com.example.tumbler.model.network.ServiceAPI
+import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-//private const val Base_URL: String = "https://my-json-server.typicode.com/"
+// private const val Base_URL: String = "https://my-json-server.typicode.com/"
 private const val Base_URL: String = "https://api.tumbler.social/api/"
 
 val viewModelModule = module {
@@ -19,19 +19,22 @@ val viewModelModule = module {
     viewModel {
         HomeViewModel(get())
     }
-    viewModel{
+    viewModel {
         CreatePostViewModel(get())
     }
-    viewModel{
+    viewModel {
         SignupViewModel(get())
+    }
+    viewModel {
+        LoginViewModel(get())
     }
 }
 
-val repositoryModule = module{
-    single { RemoteRepository(api = get())}
+val repositoryModule = module {
+    single { RemoteRepository(api = get()) }
 }
 
-val serviceAPIModule = module{
+val serviceAPIModule = module {
     fun getRetroBuilder(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Base_URL)
@@ -39,11 +42,11 @@ val serviceAPIModule = module{
             .build()
     }
 
-    single { getRetroBuilder()}
+    single { getRetroBuilder() }
 
     fun getServiceAPIInstance(retrofit: Retrofit): ServiceAPI {
         return retrofit.create(ServiceAPI::class.java)
     }
 
-    single { getServiceAPIInstance(retrofit = get())}
+    single { getServiceAPIInstance(retrofit = get()) }
 }

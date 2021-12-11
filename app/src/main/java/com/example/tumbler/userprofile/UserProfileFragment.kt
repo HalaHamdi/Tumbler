@@ -5,36 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.ViewPager
 import com.example.tumbler.databinding.FragmentUserProfileBinding
-import com.google.android.material.tabs.TabLayout
-import org.koin.android.ext.android.bind
-
 
 class UserProfileFragment : Fragment() {
     lateinit var binding: FragmentUserProfileBinding
-    private val myContext=FragmentActivity()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
         return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        configureTopNavigation()
-    }
-
-    private fun configureTopNavigation() {
-        binding.viewPager.adapter=ViewPagerAdapter(childFragmentManager,3)
-        binding.viewPager.offscreenPageLimit=3
-        binding.tabs.setupWithViewPager(binding.viewPager)
-    }
-
 }
-

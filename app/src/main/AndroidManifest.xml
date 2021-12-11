@@ -2,33 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tumbler">
 
+    //user permission for retrofit
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tumbler">
-        <activity android:name=".UserPagesActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-
-        <activity android:name=".CreatePostActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-
-        </activity>
+        <activity android:name=".UserPagesActivity"></activity>
+        <activity
+            android:name=".CreatePostActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".signupandin.IntroSliderActivity"
             android:exported="false" />

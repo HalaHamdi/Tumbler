@@ -1,6 +1,7 @@
 package com.example.tumbler.signupandin.Login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 class LoginWithEmail4Fragment : Fragment() {
 
     private val viewModel: LoginViewModel by sharedViewModel()
+    var myshared: SharedPreferences?=null
 
     lateinit var binding: FragmentLoginWithEmail4Binding
     override fun onCreateView(
@@ -43,6 +45,10 @@ class LoginWithEmail4Fragment : Fragment() {
                 } else {
 
                     Toast.makeText(context, it.meta.msg, Toast.LENGTH_SHORT).show()
+                    myshared = getActivity()?.getSharedPreferences("myshared",0)
+                    var editor:SharedPreferences.Editor=myshared!!.edit()
+                    editor.putString("Token",it.response.access_token.toString())
+                    editor.commit()
                     val INTENT = Intent(this.context, UserPagesActivity::class.java)
                     startActivity(INTENT)
                 }

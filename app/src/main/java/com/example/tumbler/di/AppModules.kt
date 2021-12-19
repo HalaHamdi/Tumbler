@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 // private const val Base_URL: String = "https://my-json-server.typicode.com/"
-private const val Base_URL: String = "https://api.tumbler.social/api/"
+private const val Base_URL: String = "https://api.dev.tumbler.social/api/"
 
 val viewModelModule = module {
 

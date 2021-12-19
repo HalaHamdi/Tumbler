@@ -12,13 +12,13 @@ class App: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         myshered = getSharedPreferences("myshared", 0)
-        var token = myshered?.getString("Token","")
+        var token = myshered?.getString("access_token","")
 
         if(token != ""){
-            val INTENT = Intent(this@App, UserPagesActivity::class.java)
+            val INTENT = Intent(this, UserPagesActivity::class.java)
             startActivity(INTENT)
         }else if (token == ""){
-            val INTENT = Intent(this@App, SplashScreenActivity::class.java)
+            val INTENT = Intent(this, SplashScreenActivity::class.java)
             startActivity(INTENT)
         }
     }

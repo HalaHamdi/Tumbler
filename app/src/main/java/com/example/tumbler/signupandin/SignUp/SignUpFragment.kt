@@ -81,6 +81,8 @@ class SignUpFragment : Fragment() {
                     editor.putString("blog_username",it.response.blog_username.toString())
                     editor.putString("email",it.response.email.toString())
                     editor.putString("blog_avatar",it.response.blog_avatar.toString())
+                    editor.putString("blog_id",it.response.blog_id.toString())
+                    editor.putString("is_verified",it.response.is_verified.toString())
                     editor.commit()
                     val INTENT = Intent(this.context, UserPagesActivity::class.java)
                     startActivity(INTENT)

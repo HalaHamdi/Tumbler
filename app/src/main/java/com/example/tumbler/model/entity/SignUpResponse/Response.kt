@@ -1,9 +1,11 @@
 package com.example.tumbler.model.entity.SignUpResponse
 
 data class Response(
-    val access_token: String,
-    val blog_avatar: String,
+    val id: String,
+    val blog_id: String,
     val blog_username: String,
     val email: String,
-    val id: String
+    val is_verified: String,
+    val blog_avatar: String,
+    val access_token: String
 )

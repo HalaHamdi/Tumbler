@@ -38,10 +38,12 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
     }
 
     fun getDashboard() = viewModelScope.launch {
-        _dashhboardPostsMutableLiveData.postValue(remoteRepository.Dashboard(BaseApplication.user.access_token))
-        _dashhboardPostsMutableLiveData.value?.forEachIndexed { index, element ->
-            _dashhboardPostsisLikedMutableLiveData.value!![index] = remoteRepository.isLiked(element.post_id,BaseApplication.user.blog_id,BaseApplication.user.access_token)!!
+        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.access_token)
+        _dashhboardPostsMutableLiveData.postValue(posts)
+        val likes:MutableList<Boolean> = MutableList<Boolean>(posts.size){
+            remoteRepository.isLiked(posts[it].post_id,BaseApplication.user.blog_id,BaseApplication.user.access_token)!!
         }
+        _dashhboardPostsisLikedMutableLiveData.postValue(likes)
     }
 
     fun LikePost(pos:Int, postID:Int,blogID: Int){
@@ -51,7 +53,10 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
         _dashhboardPostsisLikedMutableLiveData.value!![pos] = true
     }
 
-    fun isLiked(pos:Int) = _dashhboardPostsisLikedMutableLiveData.value!![pos]
+    fun isLiked(pos:Int) :Boolean{
+        Log.i("Like2",_dashhboardPostsisLikedMutableLiveData.value?.size.toString())
+        return _dashhboardPostsisLikedMutableLiveData.value!![pos]
+    }
 
     fun UnLikePost(pos:Int, postID : Int, blogID:Int){
         viewModelScope.launch {

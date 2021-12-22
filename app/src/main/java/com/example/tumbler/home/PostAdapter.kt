@@ -1,6 +1,7 @@
 package com.example.tumbler.home
 
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,7 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         var post: DashboardPost = postList.get(position)
         holder.binding.postLoveIcon.setOnClickListener {
+            Log.i("Like",position.toString())
             if(viewModel.isLiked(position)){
                 viewModel.UnLikePost(position,post.post_id,BaseApplication.user.blog_id)
             }

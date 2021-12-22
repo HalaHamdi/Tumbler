@@ -70,15 +70,17 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     }
 
     override suspend fun isLiked(postID: Int, blogID: Int, token: String): Boolean? {
-        var abbas:Boolean? =null
+        var abbas:Boolean? = null
         withContext(Dispatchers.IO){
             val result = api.isLiked(postID,blogID, token)
             if (result.isSuccessful) {
-                 result.body()!!.response.status
+                 abbas = result.body()!!.response.status
             } else {
                 Log.i("err", result.message())
             }
         }
+        //Log.i("TTT",abbas.toString())
+        //abbas = false
         return abbas
     }
 

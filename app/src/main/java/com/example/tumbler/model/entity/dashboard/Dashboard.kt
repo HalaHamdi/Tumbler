@@ -34,5 +34,5 @@ data class DashboardPost(
     @SerializedName("blog_avatar") val blog_avatar : String,
     @SerializedName("blog_avatar_shape") val blog_avatar_shape : String,
     @SerializedName("blog_title") val blog_title : String,
-    @SerializedName("post_time") val post_time : String
+    @SerializedName("post_time") val post_time : String,
 )

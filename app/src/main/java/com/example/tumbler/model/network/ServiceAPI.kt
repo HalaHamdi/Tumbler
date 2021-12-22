@@ -3,11 +3,13 @@ package com.example.tumbler.model.network
 import com.example.tumbler.BaseApplication
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.LoginResponse
+import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.SignUpResponse.SignupResponse
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.addpost.CreatePostResponse
 import com.example.tumbler.model.entity.dashboard.Dashboard
+import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.RandomPosts
 import retrofit2.Response
 import retrofit2.http.*
@@ -33,9 +35,21 @@ interface ServiceAPI {
     @POST("login")
     suspend fun Login(@Body user: LoginRequest): Response<LoginResponse>
 
-    @Headers(
-        "Accept: application/json",
-    )
+    @Headers("Accept: application/json")
     @GET("posts/dashboard")
     suspend fun Dashboard(@Header("Authorization") token : String):Response<Dashboard>
+
+    @Headers("Accept: application/json")
+    @POST("/post/like/{post_id}")
+    suspend fun LikePost(@Path("post_id") postID:Int,@Header("Authorization") token:String): Response<Meta>
+
+    @Headers("Accept: application/json")
+    @GET("/post/like/{blog_id}/{post_id}")
+    suspend fun isLiked(@Path("post_id") postID:Int,@Path("blog_id")blogID:Int, @Header("Authorization") token:String) : Response<IsLiked>
+
+    @Headers("Accept: application/json")
+    @DELETE("/post/like/{post_id}")
+    suspend fun UnLike(@Path("post_id") postID:Int,@Header("Authorization") token:String): Response<Meta>
+
+
 }

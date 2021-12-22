@@ -2,8 +2,10 @@ package com.example.tumbler.home
 
 import android.text.Html
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tumbler.BaseApplication
 import com.example.tumbler.databinding.PostItemBinding
 import com.example.tumbler.di.viewModelModule
 import com.example.tumbler.model.entity.Post
@@ -30,6 +32,10 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
         fun bind(post: DashboardPost) {
             binding.postContent.text = Html.fromHtml(post.post_body)
             binding.userNamePost.text = post.blog_username
+//            if(isliked)
+//                binding.postLoveIcon.visibility = View.VISIBLE
+//            else
+//                binding.postLoveIcon.visibility = View.GONE
         }
     }
 
@@ -42,10 +48,14 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         var post: DashboardPost = postList.get(position)
-        holder.bind(post)
         holder.binding.postLoveIcon.setOnClickListener {
-//            viewModel.LikePost()
+            if(viewModel.isLiked(position)){
+                viewModel.UnLikePost(position,post.post_id,BaseApplication.user.blog_id)
+            }
+            else {
+                viewModel.LikePost(position,post.post_id, BaseApplication.user.blog_id)
+            }
         }
-
+        holder.bind(post)
     }
 }

@@ -2,6 +2,7 @@ package com.example.tumbler.model.network
 
 import android.util.Log
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
+import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.dashboard.Dashboard
@@ -57,5 +58,39 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         api.Login(user)
     }
 
+    override suspend fun LikePost(postID: Int,blogID:Int, token: String) {
+        withContext(Dispatchers.IO){
+            val result = api.LikePost(postID,token)
+            if (result.isSuccessful) {
+
+            } else {
+                Log.i("err", result.message())
+            }
+        }
+    }
+
+    override suspend fun isLiked(postID: Int, blogID: Int, token: String): Boolean? {
+        var abbas:Boolean? =null
+        withContext(Dispatchers.IO){
+            val result = api.isLiked(postID,blogID, token)
+            if (result.isSuccessful) {
+                 result.body()!!.response.status
+            } else {
+                Log.i("err", result.message())
+            }
+        }
+        return abbas
+    }
+
+    override suspend fun UnLike(postID: Int, blogID: Int, token: String) {
+        withContext(Dispatchers.IO){
+            val result = api.UnLike(postID,token)
+            if (result.isSuccessful) {
+
+            } else {
+                Log.i("err", result.message())
+            }
+        }
+    }
 
 }

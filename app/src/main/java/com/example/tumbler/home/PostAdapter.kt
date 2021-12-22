@@ -5,13 +5,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.databinding.PostItemBinding
+import com.example.tumbler.di.viewModelModule
 import com.example.tumbler.model.entity.Post
+import com.example.tumbler.model.entity.dashboard.DashboardPost
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
-    var postList = listOf<Post>()
+class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
-    fun setlist(pstList: List<Post>) {
+    var postList = listOf<DashboardPost>()
+
+    //private val viewModel: HomeViewModel by sharedViewModel()
+
+
+    fun setlist(pstList: List<DashboardPost>) {
         this.postList = pstList
         notifyDataSetChanged()
     }
@@ -20,9 +27,9 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     class PostViewHolder(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(post: Post) {
-            binding.postContent.text = Html.fromHtml(post.body)
-            binding.userNamePost.text = post.user
+        fun bind(post: DashboardPost) {
+            binding.postContent.text = Html.fromHtml(post.post_body)
+            binding.userNamePost.text = post.blog_username
         }
     }
 
@@ -34,7 +41,11 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        var post: Post = postList.get(position)
+        var post: DashboardPost = postList.get(position)
         holder.bind(post)
+        holder.binding.postLoveIcon.setOnClickListener {
+//            viewModel.LikePost()
+        }
+
     }
 }

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import com.example.tumbler.BaseApplication
 import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentLoginWithEmail4Binding
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
@@ -55,6 +56,16 @@ class LoginWithEmail4Fragment : Fragment() {
                     editor.putString("blog_id",it.response.blog_id.toString())
                     editor.putString("is_verified",it.response.is_verified.toString())
                     editor.commit()
+                    Log.i("YY","HERE")
+                    (activity?.applicationContext as BaseApplication).setUser(
+                        it.response.access_token.toString(),
+                        it.response.blog_id.toInt(),
+                        it.response.blog_avatar.toString(),
+                        it.response.id.toInt(),
+                        it.response.blog_username.toString(),
+                        it.response.is_verified.toBoolean(),
+                        it.response.email.toString()
+                    )
                     val INTENT = Intent(this.context, UserPagesActivity::class.java)
                     startActivity(INTENT)
                 }

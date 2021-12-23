@@ -1,6 +1,10 @@
 package com.example.tumbler.model.network
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
+import android.widget.Toast.makeText
+import com.example.tumbler.R
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
@@ -8,6 +12,8 @@ import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.example.tumbler.model.entity.randomposts.Posts
+import com.example.tumbler.model.entity.search.Blogs
+import com.example.tumbler.model.entity.search.SuggestedBlogs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -93,5 +99,26 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             }
         }
     }
+
+    override suspend fun recommendedBlogs(token: String): List<Blogs>  {
+        Log.i("Hala","in the remote repo")
+        lateinit var recommendedBlogs: List<Blogs>
+        withContext(Dispatchers.IO) {
+            val result = api.recommendedBlogs("Bearer $token")
+            Log.i("Hala",result.toString())
+
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    recommendedBlogs = result.body()!!.response.blogs
+                } else {
+                    Log.i("Hala","empty blogs")
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+        return recommendedBlogs
+    }
+
 
 }

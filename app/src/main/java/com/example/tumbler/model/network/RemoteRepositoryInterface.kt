@@ -13,6 +13,8 @@ import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.Posts
+import com.example.tumbler.model.entity.search.Blogs
+import com.example.tumbler.model.entity.search.SuggestedBlogs
 import retrofit2.Response
 import retrofit2.http.Header
 import retrofit2.http.Path
@@ -30,6 +32,8 @@ interface RemoteRepositoryInterface {
     suspend fun LikePost(postID: Int,blogID:Int, token: String)
     suspend fun isLiked(postID:Int,blogID:Int, token:String): Boolean?
     suspend fun UnLike(postID: Int, blogID: Int, token: String)
+
+    suspend fun recommendedBlogs(token:String): List<Blogs>
 
 
 }

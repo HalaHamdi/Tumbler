@@ -12,6 +12,7 @@ import com.example.tumbler.model.entity.addpost.CreatePostResponse
 import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.RandomPosts
+import com.example.tumbler.model.entity.search.SuggestedBlogs
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -50,5 +51,9 @@ interface ServiceAPI {
     @DELETE("/post/like/{post_id}")
     suspend fun UnLike(@Path("post_id") postID:Int,@Header("Authorization") token:String): Response<Meta>
 
+    @Headers("Accept: application/json",
+        "Content-Type: application/json")
+    @GET("blogs/trending")
+    suspend fun recommendedBlogs(@Header("Authorization")token:String):Response<SuggestedBlogs>
 
 }

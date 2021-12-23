@@ -1,5 +1,6 @@
 package com.example.tumbler.model.network
 
+import android.content.SharedPreferences
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.LoginResponse
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
@@ -11,6 +12,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ServiceAPI {
+
 
     @GET("/api/posts/random_posts")
     suspend fun getRandomPosts(): Response<RandomPosts>
@@ -29,4 +31,10 @@ interface ServiceAPI {
     @Headers("Accept: application/json")
     @POST("login")
     suspend fun Login(@Body user: LoginRequest): Response<LoginResponse>
+
+//    @Headers("Accept: application/json")
+//    @POST("blog")
+//    suspend fun CreateBlog(@Body user: LoginRequest): Response<LoginResponse>
+
+
 }

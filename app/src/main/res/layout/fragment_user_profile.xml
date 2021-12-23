@@ -12,7 +12,7 @@
         android:id="@+id/profile_cover"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="@drawable/profile2"
+        android:background="@drawable/profile3"
         app:layout_constraintBottom_toTopOf="@+id/tabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,21 +20,50 @@
         app:layout_constraintVertical_bias="0.0">
 
 
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/share_profile"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_share_24"
+            app:layout_constraintEnd_toStartOf="@+id/settings_icon"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="117dp"
-        android:layout_height="122dp"
+        android:id="@+id/profile_pic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="40dp"
         android:src="@drawable/avatar2"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/profile_cover"
         app:layout_constraintVertical_bias="1.0"
         tools:src="@tools:sample/avatars" />
+
+    <Spinner
+        android:id="@+id/user_blogs_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:dropDownWidth="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -58,6 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs">
+
     </androidx.viewpager.widget.ViewPager>
 
     <TextView

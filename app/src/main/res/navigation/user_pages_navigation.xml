@@ -20,13 +20,34 @@
         android:id="@+id/activityAndMessagesFragment"
         android:name="com.example.tumbler.activityandmessages.ActivityAndMessagesFragment"
         android:label="fragment_activity_and_messages"
-        tools:layout="@layout/fragment_activity_and_messages" />
+        tools:layout="@layout/fragment_activity_and_messages" >
+        <action
+            android:id="@+id/action_activityAndMessagesFragment_to_createNewTumblrFragment"
+            app:destination="@id/createNewTumblrFragment" />
+    </fragment>
 
 
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.example.tumbler.userprofile.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_createNewTumblrFragment"
+            app:destination="@id/createNewTumblrFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.tumbler.userprofile.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/createNewTumblrFragment"
+        android:name="com.example.tumbler.CreateNewTumblrFragment"
+        android:label="fragment_create_new_tumblr"
+        tools:layout="@layout/fragment_create_new_tumblr" />
 
 </navigation>

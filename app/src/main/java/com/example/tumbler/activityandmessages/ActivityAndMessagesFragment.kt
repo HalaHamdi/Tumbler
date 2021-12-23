@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.tumbler.databinding.FragmentActivityAndMessagesBinding
 
 class ActivityAndMessagesFragment : Fragment() {
@@ -16,6 +17,10 @@ class ActivityAndMessagesFragment : Fragment() {
     ): View? {
         binding = FragmentActivityAndMessagesBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
+        binding.testButton.setOnClickListener{ view:View ->
+            view.findNavController().navigate(ActivityAndMessagesFragmentDirections.actionActivityAndMessagesFragmentToCreateNewTumblrFragment())
+
+        }
         return binding.root
     }
 }

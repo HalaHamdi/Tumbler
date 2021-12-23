@@ -21,25 +21,19 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("Hala","In the search Fragment")
 
         binding=FragmentSearchBinding.inflate(inflater)
-        Log.i("Hala","After Binding")
 
         binding.lifecycleOwner = this
-        Log.i("Hala","After Life cycle owner ")
 
         //for data binding
         binding.viewModel= this.viewModel
-        Log.i("Hala","After  data binding")
 
 
         val adapter =RecommendedBlogsAdapter(viewModel)
         binding.rvRecommendedBlogs.adapter=adapter
-        Log.i("Hala","After Adapter")
 
         viewModel.getRecommendedBlogs()
-        Log.i("Hala","After recommended blogs")
 
 
         //for UI modification

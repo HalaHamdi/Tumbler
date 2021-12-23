@@ -6,6 +6,7 @@ import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
 import com.example.tumbler.model.network.ServiceAPI
+import com.example.tumbler.search.SearchViewModel
 import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -31,6 +32,9 @@ val viewModelModule = module {
     }
     viewModel {
         LoginViewModel(get())
+    }
+    viewModel{
+        SearchViewModel(get())
     }
 }
 

@@ -34,6 +34,9 @@ interface RemoteRepositoryInterface {
     suspend fun UnLike(postID: Int, blogID: Int, token: String)
 
     suspend fun recommendedBlogs(token:String): List<Blogs>
+    suspend fun followBlog(token:String, blog_id:Int)
+    suspend fun unfollowBlog(token:String, blog_id:Int)
+
 
 
 }

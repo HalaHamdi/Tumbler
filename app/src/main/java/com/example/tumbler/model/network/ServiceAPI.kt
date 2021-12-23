@@ -56,4 +56,15 @@ interface ServiceAPI {
     @GET("blogs/trending")
     suspend fun recommendedBlogs(@Header("Authorization")token:String):Response<SuggestedBlogs>
 
+    @Headers("Accept: application/json",
+        "Content-Type: application/json")
+    @POST("follow_blog/{blog_id}")
+    suspend fun followBlog(@Header("Authorization")token:String, @Path("blog_id")blog_id:Int):Response<Meta>
+
+
+    @Headers("Accept: application/json",
+        "Content-Type: application/json")
+    @DELETE("follow_blog/{blog_id}")
+    suspend fun unfollowBlog(@Header("Authorization")token:String, @Path("blog_id")blog_id:Int):Response<Meta>
+
 }

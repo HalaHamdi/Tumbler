@@ -30,11 +30,13 @@
         android:layout_marginTop="20dp"
         android:text="blogName"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blogImage" />
+        app:layout_constraintTop_toBottomOf="@+id/blogImage"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"/>
 
     <Button
         android:id="@+id/btnFollowBlog"

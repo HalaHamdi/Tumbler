@@ -85,7 +85,7 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             }
         }
         //Log.i("TTT",abbas.toString())
-        //abbas = false
+        abbas = false
         return abbas
     }
 
@@ -119,6 +119,37 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         }
         return recommendedBlogs
     }
+
+    override suspend fun followBlog(token: String, blog_id: Int){
+        withContext(Dispatchers.IO) {
+            val result=api.followBlog("Bearer $token",blog_id)
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    Log.i("Hala","Successful Creation")
+                } else {
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+    }
+
+    override suspend fun unfollowBlog(token: String, blog_id: Int){
+        withContext(Dispatchers.IO) {
+            val result=api.unfollowBlog("Bearer $token",blog_id)
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    Log.i("Hala","Successful unfollow of blog")
+                } else {
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+    }
+
+
+
 
 
 }

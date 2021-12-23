@@ -45,9 +45,8 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return dashboardPosts
     }
 
-    override suspend fun createPost(createPostBody: CreatePostBody, blogId: Int) = withContext(Dispatchers.IO) {
-        Log.i("Hala", "iN REMOTE REPO")
-        api.createPost(createPostBody, blogId)
+    override suspend fun createPost(token:String,createPostBody: CreatePostBody, blogId: Int)= withContext(Dispatchers.IO) {
+        api.createPost(token,createPostBody,blogId)
     }
 
     override suspend fun SignUp(user: RequestBody) = withContext(Dispatchers.IO) {

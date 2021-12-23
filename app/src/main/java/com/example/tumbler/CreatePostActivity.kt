@@ -1,12 +1,18 @@
 package com.example.tumbler
 
+import android.content.ContentResolver
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.session.MediaSession
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.util.Patterns
+import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -15,12 +21,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tumbler.databinding.ActivityCreatePostBinding
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import jp.wasabeef.richeditor.RichEditor
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.io.File
+import java.io.ByteArrayOutputStream
 import java.util.*
+
 
 class CreatePostActivity : AppCompatActivity() {
 
@@ -34,6 +38,7 @@ class CreatePostActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
     private var musicUri: Uri? = null
     private var styleIndex: Int = 0
+    private var myshered:SharedPreferences?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -50,11 +55,15 @@ class CreatePostActivity : AppCompatActivity() {
 
         styleEditor = binding.richEditorCreatePost
         styleEditor!!.setPlaceholder("Add something, if you would like")
+        myshered=getSharedPreferences("myshared",0)
+        var token=myshered?.getString("access_token","")
+        var blog_id=myshered?.getString("blog_id","")
+
         addImage()
         addStyle()
         addUrl()
         addMusic()
-        submitPost()
+        submitPost(token!!,blog_id!!.toInt())
         spinnerTumblrAccount()
 
         // some padding are added since the editor refuses to add an initial audio, image, video as the first item in the editor
@@ -67,21 +76,9 @@ class CreatePostActivity : AppCompatActivity() {
             imageUri = data?.data
             Log.i("Hala", imageUri.toString())
 
-            val file = File(imageUri.toString())
-            val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+//            var encodedImg=encoder(imageUri!!)
+//            Log.i("Hala",encodedImg.toString())
 
-            Log.i("Hala", "file=$file  requestfile=$requestFile")
-
-            // MultipartBody.Part is used to send also the actual file name
-
-            // MultipartBody.Part is used to send also the actual file name
-            val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
-
-            // add another part within the multipart request
-
-            // add another part within the multipart request
-            val fullName: RequestBody =
-                RequestBody.create(MediaType.parse("multipart/form-data"), "Your Name")
 
             if (imageUri.toString().startsWith("content://media/external/images")) {
                 styleEditor!!.insertImage(imageUri.toString(), "Image Not Found", 200, 200)
@@ -105,6 +102,28 @@ class CreatePostActivity : AppCompatActivity() {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
         }
+    }
+
+     fun encoder(imageUri: Uri): String {
+        val input = this.contentResolver.openInputStream(imageUri)
+        //val bm = BitmapFactory.decodeResource(resources, R.drawable.test)
+        val image = BitmapFactory.decodeStream(input, null, null)
+        //encode image to base64 string
+        val baos = ByteArrayOutputStream()
+        //bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        image!!.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        var imageBytes = baos.toByteArray()
+
+        return android.util.Base64.encodeToString(imageBytes, android.util.Base64.NO_WRAP)
+        //return Base64.getEncoder().encodeToString(imageBytes) // Not Worked, too.
+    }
+
+    fun getMediaType(imageUri: Uri):String{
+        val cR: ContentResolver = this.getContentResolver()
+        val mime = MimeTypeMap.getSingleton()
+        val type = mime.getExtensionFromMimeType(cR.getType(imageUri!!))
+        return type.toString()
+
     }
 /**
      * while adding a new post/ blog , you could change the text style/formating using this function
@@ -154,7 +173,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
-    fun submitPost() {
+    fun submitPost(token:String,blog_id:Int) {
         binding.toolbarCreatePost.submitPost.setOnClickListener {
 
             if (styleEditor!!.html == null || styleEditor!!.html.toString().isEmpty() || styleEditor!!.html.toString() == "<br>") {
@@ -162,18 +181,19 @@ class CreatePostActivity : AppCompatActivity() {
             } else {
                 Log.i("Hala", styleEditor!!.html.toString())
                 val cal = Calendar.getInstance(TimeZone.getTimeZone("Egypt/Cairo"))
-                val time: String = "${cal.get(Calendar.DAY_OF_MONTH)} - ${cal.get(Calendar.MONTH)} - ${cal.get(
+                val time =" ${cal.get(Calendar.DAY_OF_MONTH)} - ${cal.get(Calendar.MONTH)} - ${cal.get(
                     Calendar.YEAR
-                )} "
+                )}"
                 Log.i("Hala", "time=$time")
                 val postBody = CreatePostBody(
-                    "published",
-                    time,
-                    "general",
+                     "published",
+                 " ",
+                 "general",
                     styleEditor!!.html.toString()
                 )
 
-                viewModel.createPost(postBody, 5)
+                var authToken="Bearer ${token}"
+                viewModel.createPost(authToken,postBody, blog_id)
             }
         }
     }

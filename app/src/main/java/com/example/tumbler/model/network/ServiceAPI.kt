@@ -13,6 +13,7 @@ import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.RandomPosts
 import com.example.tumbler.model.entity.search.SuggestedBlogs
+import com.example.tumbler.model.entity.userprofile.Followings
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -67,4 +68,8 @@ interface ServiceAPI {
     @DELETE("follow_blog/{blog_id}")
     suspend fun unfollowBlog(@Header("Authorization")token:String, @Path("blog_id")blog_id:Int):Response<Meta>
 
+    @Headers("Accept: application/json",
+        "Content-Type: application/json")
+    @GET("followings")
+    suspend fun getFollowings(@Header("Authorization")token:String):Response<Followings>
 }

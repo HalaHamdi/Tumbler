@@ -14,6 +14,7 @@ import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.model.entity.search.SuggestedBlogs
+import com.example.tumbler.model.entity.userprofile.Following
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -148,8 +149,24 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         }
     }
 
+    override suspend fun getFollowings(token: String): List<Following> {
+        lateinit var following: List<Following>
+        withContext(Dispatchers.IO) {
+            val result = api.getFollowings("Bearer $token")
+            Log.i("Hala",result.toString())
 
-
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    following = result.body()!!.response.followings
+                } else {
+                    Log.i("Hala","empty blogs")
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+        return following
+    }
 
 
 }

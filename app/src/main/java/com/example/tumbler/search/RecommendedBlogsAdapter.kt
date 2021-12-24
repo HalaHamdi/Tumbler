@@ -1,11 +1,17 @@
 package com.example.tumbler.search
 
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.databinding.RecommendedBlogsListItemBinding
 import com.example.tumbler.model.entity.search.Blogs
+import com.example.tumbler.userprofile.FollowingAdapter
 import java.io.InputStream
 import java.net.URL
 
@@ -26,14 +32,32 @@ class RecommendedBlogsAdapter(val viewModel: SearchViewModel):RecyclerView.Adapt
 
         fun bind(blog: Blogs){
         binding.blogName.text=blog.username
-
-//            val newurl = URL(blog.avatar)
-//            binding.blogImage.setImageBitmap(BitmapFactory.decodeStream(newurl.openConnection().getInputStream()))
-
+            Log.i("Hala",blog.avatar.toString())
+            FollowingAdapter.DownloadImageFromInternet(binding.blogImage).execute(blog.avatar)
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
+    @Suppress("DEPRECATION")
+    class DownloadImageFromInternet(var imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
 
+        override fun doInBackground(vararg urls: String): Bitmap? {
+            val imageURL = urls[0]
+            var image: Bitmap? = null
+            try {
+                val `in` = java.net.URL(imageURL).openStream()
+                image = BitmapFactory.decodeStream(`in`)
+            }
+            catch (e: Exception) {
+                Log.e("Error Message", e.message.toString())
+                e.printStackTrace()
+            }
+            return image
+        }
+        override fun onPostExecute(result: Bitmap?) {
+            imageView.setImageBitmap(result)
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendedBlogsViewHolder{
         var inflater= LayoutInflater.from(parent.context)
         val binding=RecommendedBlogsListItemBinding.inflate(inflater, parent, false)

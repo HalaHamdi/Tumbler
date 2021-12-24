@@ -1,5 +1,6 @@
 package com.example.tumbler
 
+import android.annotation.SuppressLint
 import android.content.ContentResolver
 import android.content.DialogInterface
 import android.content.Intent
@@ -13,10 +14,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.util.Patterns
 import android.webkit.MimeTypeMap
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tumbler.databinding.ActivityCreatePostBinding
 import com.example.tumbler.model.entity.addpost.CreatePostBody
@@ -89,8 +87,6 @@ class CreatePostActivity : AppCompatActivity() {
         } else if (resultCode == RESULT_OK && requestCode == pickMusic) {
             musicUri = data?.data
             Log.i("Hala", musicUri.toString())
-            // some padding are added since the editor refuses to add an initial audio, image, video as the first item in the editor
-//            styleEditor!!.setPadding(10,10,10,10)
             styleEditor!!.insertAudio(musicUri.toString())
         }
     }
@@ -173,11 +169,12 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
-    fun submitPost(token:String,blog_id:Int) {
+    @SuppressLint("WrongConstant")
+    fun submitPost(token:String, blog_id:Int) {
         binding.toolbarCreatePost.submitPost.setOnClickListener {
 
             if (styleEditor!!.html == null || styleEditor!!.html.toString().isEmpty() || styleEditor!!.html.toString() == "<br>") {
-                Log.i("Hala", "will not post")
+                Toast.makeText(this,"Write Somthing to post ,It is still empty",5).show()
             } else {
                 Log.i("Hala", styleEditor!!.html.toString())
                 val cal = Calendar.getInstance(TimeZone.getTimeZone("Egypt/Cairo"))
@@ -194,6 +191,8 @@ class CreatePostActivity : AppCompatActivity() {
 
                 var authToken="Bearer ${token}"
                 viewModel.createPost(authToken,postBody, blog_id)
+                Toast.makeText(this," Your Post is created Successfully",5).show()
+                finish()
             }
         }
     }

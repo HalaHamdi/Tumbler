@@ -7,9 +7,14 @@ import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
 import com.example.tumbler.model.network.ServiceAPI
+import com.example.tumbler.search.SearchViewModel
 import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
+
 import com.example.tumbler.userprofile.SettingsViewModel
+
+import com.example.tumbler.userprofile.FollowingViewModel
+
 import com.google.android.material.internal.ContextUtils.getActivity
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
@@ -34,11 +39,19 @@ val viewModelModule = module {
     viewModel {
         LoginViewModel(get())
     }
+
     viewModel {
         CreateNewTumblrViewModel(get())
     }
     viewModel {
         SettingsViewModel(get())
+
+    viewModel{
+        SearchViewModel(get())
+    }
+    viewModel {
+        FollowingViewModel(get())
+
     }
 }
 

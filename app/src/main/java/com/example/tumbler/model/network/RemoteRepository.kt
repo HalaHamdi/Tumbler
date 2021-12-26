@@ -1,6 +1,10 @@
 package com.example.tumbler.model.network
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
+import android.widget.Toast.makeText
+import com.example.tumbler.R
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
@@ -9,6 +13,9 @@ import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.example.tumbler.model.entity.randomposts.Posts
+import com.example.tumbler.model.entity.search.Blogs
+import com.example.tumbler.model.entity.search.SuggestedBlogs
+import com.example.tumbler.model.entity.userprofile.Following
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -90,7 +97,7 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             }
         }
         //Log.i("TTT",abbas.toString())
-        //abbas = false
+        abbas = false
         return abbas
     }
 
@@ -104,5 +111,73 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             }
         }
     }
+
+    override suspend fun recommendedBlogs(token: String): List<Blogs>  {
+        Log.i("Hala","in the remote repo")
+        lateinit var recommendedBlogs: List<Blogs>
+        withContext(Dispatchers.IO) {
+            val result = api.recommendedBlogs("Bearer $token")
+            Log.i("Hala",result.toString())
+
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    recommendedBlogs = result.body()!!.response.blogs
+                } else {
+                    Log.i("Hala","empty blogs")
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+        return recommendedBlogs
+    }
+
+    override suspend fun followBlog(token: String, blog_id: Int){
+        withContext(Dispatchers.IO) {
+            val result=api.followBlog("Bearer $token",blog_id)
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    Log.i("Hala","Successful Creation")
+                } else {
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+    }
+
+    override suspend fun unfollowBlog(token: String, blog_id: Int){
+        withContext(Dispatchers.IO) {
+            val result=api.unfollowBlog("Bearer $token",blog_id)
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    Log.i("Hala","Successful unfollow of blog")
+                } else {
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+    }
+
+    override suspend fun getFollowings(token: String): List<Following> {
+        lateinit var following: List<Following>
+        withContext(Dispatchers.IO) {
+            val result = api.getFollowings("Bearer $token")
+            Log.i("Hala",result.toString())
+
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    following = result.body()!!.response.followings
+                } else {
+                    Log.i("Hala","empty blogs")
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+        return following
+    }
+
 
 }

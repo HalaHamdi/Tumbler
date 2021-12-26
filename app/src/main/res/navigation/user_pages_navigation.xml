@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/user_pages_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/userProfileFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -48,6 +48,10 @@
         android:id="@+id/createNewTumblrFragment"
         android:name="com.example.tumbler.CreateNewTumblrFragment"
         android:label="fragment_create_new_tumblr"
-        tools:layout="@layout/fragment_create_new_tumblr" />
+        tools:layout="@layout/fragment_create_new_tumblr" >
+        <action
+            android:id="@+id/action_createNewTumblrFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
 
 </navigation>

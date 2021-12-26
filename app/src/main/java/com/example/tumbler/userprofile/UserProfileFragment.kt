@@ -18,7 +18,9 @@ import androidx.navigation.Navigation.createNavigateOnClickListener
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.example.tumbler.CreateNewTumblrViewModel
 import com.example.tumbler.databinding.FragmentUserProfileBinding
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class UserProfileFragment : Fragment() {
     lateinit var binding: FragmentUserProfileBinding

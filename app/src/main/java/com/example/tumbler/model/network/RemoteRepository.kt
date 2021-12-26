@@ -9,6 +9,7 @@ import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
+import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.example.tumbler.model.entity.randomposts.Posts
@@ -52,9 +53,19 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return dashboardPosts
     }
 
+    override suspend fun CreateNewTumblr(token: String, blogInfo: CreateBlogRequest)= withContext(Dispatchers.IO) {
+        api.CreateNewTumblr("Bearer $token",blogInfo)
+    }
+
+    override suspend fun Logout(token: String)= withContext(Dispatchers.IO) {
+        api.Logout("Bearer $token")
+    }
+
     override suspend fun createPost(token:String,createPostBody: CreatePostBody, blogId: Int)= withContext(Dispatchers.IO) {
         api.createPost(token,createPostBody,blogId)
     }
+
+
 
     override suspend fun SignUp(user: RequestBody) = withContext(Dispatchers.IO) {
         api.SignUp(user)

@@ -13,9 +13,10 @@ import android.view.View.GONE
 import co.intentservice.chatui.fab.FloatingActionButton
 import com.example.tumbler.MainActivity
 import com.google.android.material.navigation.NavigationView
+import co.intentservice.chatui.models.ChatMessage
 
-
-
+import co.intentservice.chatui.ChatView
+import co.intentservice.chatui.ChatView.OnSentMessageListener
 
 
 class ChatFragment : Fragment() {
@@ -31,6 +32,9 @@ class ChatFragment : Fragment() {
         val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
         fab.visibility = GONE
         navBar.visibility= GONE
+        binding.chatView.setOnSentMessageListener { // perform actual message sending
+            true
+        }
         return binding.root
     }
 

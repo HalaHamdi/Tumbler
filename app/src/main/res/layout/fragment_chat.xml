@@ -14,8 +14,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        chatview:backgroundColor="#A0EBF4"
+        chatview:backgroundColor="@color/white"
         chatview:sendBtnBackgroundTint="#03A9F4"
-        chatview:bubbleBackgroundRcv="@color/black"
-        chatview:bubbleBackgroundSend="@color/black"/>
+        chatview:bubbleBackgroundRcv="@color/baby_blue"
+    chatview:bubbleBackgroundSend="#A4D3F8"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

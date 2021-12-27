@@ -24,13 +24,15 @@ import java.net.URL
 
 class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
-    var postList = listOf<DashboardPost>()
+    var postList = ArrayList<DashboardPost>()
+    var maxReachedPosts :Int = 0
 
     //private val viewModel: HomeViewModel by sharedViewModel()
 
 
-    fun setlist(pstList: List<DashboardPost>) {
-        this.postList = pstList
+    fun setlist(pstList: ArrayList<DashboardPost>) {
+        this.postList.addAll(pstList)
+
         notifyDataSetChanged()
     }
 
@@ -60,6 +62,7 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+
         var post: DashboardPost = postList.get(position)
         holder.binding.postNumNotes.setOnClickListener { view:View ->
             view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())

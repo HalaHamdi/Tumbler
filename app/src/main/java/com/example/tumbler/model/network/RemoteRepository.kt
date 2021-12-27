@@ -36,10 +36,10 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return randomPosts
     }
 
-    override suspend fun Dashboard(blog_id: Int, token :String): List<DashboardPost> {
+    override suspend fun Dashboard(blog_id: Int, token :String,page:Int): List<DashboardPost> {
         lateinit var dashboardPosts: List<DashboardPost>
         withContext(Dispatchers.IO) {
-            val result = api.Dashboard("Bearer $token")
+            val result = api.Dashboard("Bearer $token",page)
             Log.i("dashboard",result.toString())
             if (result.isSuccessful) {
                 if (result.body() != null) {

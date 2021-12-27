@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.tumbler.BaseApplication
 import com.example.tumbler.R
 import com.example.tumbler.databinding.FragmentHomeBinding
+import com.example.tumbler.model.entity.dashboard.DashboardPost
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -41,7 +42,10 @@ class HomeFragment : Fragment() {
         binding.postList.adapter = adapter
 
         //viewModel.getRandomPosts()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ab0d074c6fc997dd2b0f515e814c2dbead0dfe5
 
 //        viewModel.postsLiveData.observe(
 //            viewLifecycleOwner,
@@ -57,7 +61,7 @@ class HomeFragment : Fragment() {
             viewLifecycleOwner,
             Observer {
                 it?.let {
-                    adapter.setlist(it)
+                    adapter.setlist(it as ArrayList<DashboardPost>)
                 }
             }
         )
@@ -68,6 +72,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDashboard()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ab0d074c6fc997dd2b0f515e814c2dbead0dfe5
 //        viewModel.postNotesByIDMutableLiveData.observe(
 //            viewLifecycleOwner,
 //            Observer {

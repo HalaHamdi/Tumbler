@@ -35,8 +35,8 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
         _postsMutableLiveData.postValue(posts)
     }
 
-    fun getDashboard() = viewModelScope.launch {
-        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.blog_id,BaseApplication.user.access_token)
+    fun getDashboard(page:Int = 1) = viewModelScope.launch {
+        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.blog_id,BaseApplication.user.access_token,page)
         _dashhboardPostsMutableLiveData.postValue(posts)
     }
 

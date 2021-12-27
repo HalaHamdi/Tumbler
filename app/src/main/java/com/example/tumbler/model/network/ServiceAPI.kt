@@ -39,7 +39,7 @@ interface ServiceAPI {
 
     @Headers("Accept: application/json")
     @GET("posts/dashboard")
-    suspend fun Dashboard(@Header("Authorization") token : String):Response<Dashboard>
+    suspend fun Dashboard(@Header("Authorization") token : String, @Query("page")page:Int):Response<Dashboard>
 
     @Headers("Accept: application/json",
         "Content-Type:application/json")

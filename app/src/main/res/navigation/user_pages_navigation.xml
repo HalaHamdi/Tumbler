@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.tumbler.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_postNotesFragment"
+            app:destination="@id/postNotesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
@@ -62,5 +66,27 @@
         android:name="com.example.tumbler.activityandmessages.Chat2Fragment"
         android:label="fragment_chat2"
         tools:layout="@layout/fragment_chat2" />
+    <fragment
+        android:id="@+id/postNotesFragment"
+        android:name="com.example.tumbler.home.PostNotesFragment"
+        android:label="fragment_post_notes"
+        tools:layout="@layout/fragment_post_notes" >
+        <action
+            android:id="@+id/action_postNotesFragment_to_notesLikesFragment"
+            app:destination="@id/notesLikesFragment" />
+        <action
+            android:id="@+id/action_postNotesFragment_to_notesReblogsFragment"
+            app:destination="@id/notesReblogsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesLikesFragment"
+        android:name="com.example.tumbler.home.NotesLikesFragment"
+        android:label="fragment_notes_likes"
+        tools:layout="@layout/fragment_notes_likes" />
+    <fragment
+        android:id="@+id/notesReblogsFragment"
+        android:name="com.example.tumbler.home.NotesReblogsFragment"
+        android:label="fragment_notes_reblogs"
+        tools:layout="@layout/fragment_notes_reblogs" />
 
 </navigation>

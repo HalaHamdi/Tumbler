@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable
 import com.example.tumbler.R
 
 import android.widget.ImageView
+import androidx.navigation.findNavController
 import java.io.InputStream
 import java.net.URL
 
@@ -60,6 +61,13 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         var post: DashboardPost = postList.get(position)
+        holder.binding.postNumNotes.setOnClickListener { view:View ->
+            view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
+        }
+        holder.binding.postCommentIcon.setOnClickListener { view:View ->
+            view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
+        }
+
         holder.binding.postLoveIcon.setOnClickListener {
             //Log.i("Like",position.toString())
             if(post.isLiked){

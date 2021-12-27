@@ -4,9 +4,11 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.tumbler.BaseApplication
+import com.example.tumbler.R
 import com.example.tumbler.databinding.FragmentHomeBinding
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -39,7 +41,7 @@ class HomeFragment : Fragment() {
         binding.postList.adapter = adapter
 
         //viewModel.getRandomPosts()
-        viewModel.getDashboard()
+
 
 //        viewModel.postsLiveData.observe(
 //            viewLifecycleOwner,
@@ -60,14 +62,12 @@ class HomeFragment : Fragment() {
             }
         )
 
-
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.getDashboard()
 //        viewModel.postNotesByIDMutableLiveData.observe(
 //            viewLifecycleOwner,
 //            Observer {

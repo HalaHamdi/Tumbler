@@ -18,6 +18,7 @@ import com.example.tumbler.R
 
 import android.widget.ImageView
 import androidx.navigation.findNavController
+import com.example.tumbler.userprofile.FollowingAdapter
 import java.io.InputStream
 import java.net.URL
 
@@ -45,13 +46,11 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
             binding.postContent.text = Html.fromHtml(post.post_body)
             binding.userNamePost.text = post.blog_username
             binding.postNumNotes.text = post.numNotes.toString()
-//            binding.profilePhotoPost.setImageResource(Drawable.createFromStream( URL(post.blog_avatar).content as InputStream, "src name"))
-
-
             if(post.isLiked)
                 binding.postLoveIcon.setImageResource(R.drawable.ic_baseline_love_red_button)
             else
                 binding.postLoveIcon.setImageResource(R.drawable.ic_baseline_love_button)
+            FollowingAdapter.DownloadImageFromInternet(binding.profilePhotoPost).execute(post.blog_avatar)
         }
     }
 
@@ -78,20 +77,35 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
         }
 
         holder.binding.postLoveIcon.setOnClickListener {
-            //Log.i("Like",position.toString())
-            if(post.isLiked){
-                viewModel.UnLikePost(post.post_id,BaseApplication.user.blog_id)
-                post.numNotes--
-                post.isLiked = false
-            }
-            else {
-                viewModel.LikePost(post.post_id, BaseApplication.user.blog_id)
-                post.numNotes++
-                post.isLiked = true
-            }
-            notifyDataSetChanged()
+            LoveClickListner(post)
         }
-        //Log.i("TTT","adapter " + viewModel.dashhboardPostsisLikedMutableLiveData.value.toString())
+
+        holder.binding.profilePhotoPost.setOnClickListener{view:View ->
+            navigatetoUser(post,view)
+        }
+        holder.binding.userNamePost.setOnClickListener {view:View ->
+            navigatetoUser(post,view)
+        }
+
         holder.bind(post)
+    }
+
+    fun navigatetoUser(post:DashboardPost,view:View){
+        //view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
+    }
+
+    fun LoveClickListner(post: DashboardPost){
+        //Log.i("Like",position.toString())
+        if(post.isLiked){
+            viewModel.UnLikePost(post.post_id,BaseApplication.user.blog_id)
+            post.numNotes--
+            post.isLiked = false
+        }
+        else {
+            viewModel.LikePost(post.post_id, BaseApplication.user.blog_id)
+            post.numNotes++
+            post.isLiked = true
+        }
+        notifyDataSetChanged()
     }
 }

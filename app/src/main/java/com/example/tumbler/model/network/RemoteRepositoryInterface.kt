@@ -29,7 +29,7 @@ interface RemoteRepositoryInterface {
     suspend fun SignUp(user: RequestBody): Response<SignupResponse>
     suspend fun Login(user: LoginRequest): Response<LoginResponse>
 
-    suspend fun Dashboard(blog_id:Int, token :String):List<DashboardPost>
+    suspend fun Dashboard(blog_id:Int, token :String,page:Int):List<DashboardPost>
     suspend fun CreateNewTumblr(token:String,blogInfo: CreateBlogRequest): Response<ObjectOfMeta>
     suspend fun Logout(token: String): Response<ObjectOfMeta>
 

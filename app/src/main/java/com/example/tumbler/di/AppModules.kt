@@ -45,13 +45,13 @@ val viewModelModule = module {
     }
     viewModel {
         SettingsViewModel(get())
+    }
 
-    viewModel{
+    viewModel {
         SearchViewModel(get())
     }
     viewModel {
         FollowingViewModel(get())
-
     }
 }
 

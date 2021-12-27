@@ -10,8 +10,7 @@ import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
-import com.example.tumbler.model.entity.dashboard.Dashboard
-import com.example.tumbler.model.entity.dashboard.DashboardPost
+import com.example.tumbler.model.entity.dashboard.*
 import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.model.entity.search.SuggestedBlogs
@@ -37,7 +36,7 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return randomPosts
     }
 
-    override suspend fun Dashboard(token :String): List<DashboardPost> {
+    override suspend fun Dashboard(blog_id: Int, token :String): List<DashboardPost> {
         lateinit var dashboardPosts: List<DashboardPost>
         withContext(Dispatchers.IO) {
             val result = api.Dashboard("Bearer $token")
@@ -45,6 +44,10 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             if (result.isSuccessful) {
                 if (result.body() != null) {
                     dashboardPosts = result.body()!!.response.posts
+                    dashboardPosts.forEach {
+                        it.isLiked = isLiked(it.post_id,blog_id,token)!!
+                        it.numNotes = getNumNotes(it.post_id,token)!!
+                    }
                 } else {}
             } else {
                 Log.i("err", result.message())
@@ -52,6 +55,8 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         }
         return dashboardPosts
     }
+
+
 
     override suspend fun CreateNewTumblr(token: String, blogInfo: CreateBlogRequest)= withContext(Dispatchers.IO) {
         api.CreateNewTumblr("Bearer $token",blogInfo)
@@ -77,11 +82,12 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
 
     override suspend fun LikePost(postID: Int,blogID:Int, token: String) {
         withContext(Dispatchers.IO){
-            val result = api.LikePost(postID,token)
+            val result = api.LikePost(postID,"Bearer $token")
+            Log.i("Like Post",result.toString())
             if (result.isSuccessful) {
-
+                Log.i("Like Post",result.toString())
             } else {
-                Log.i("err", result.message())
+                Log.i("err in likepost", result.message())
             }
         }
     }
@@ -89,25 +95,27 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     override suspend fun isLiked(postID: Int, blogID: Int, token: String): Boolean? {
         var abbas:Boolean? = null
         withContext(Dispatchers.IO){
-            val result = api.isLiked(postID,blogID, token)
+            val result = api.isLiked(postID,blogID, "Bearer $token")
+            Log.i("Abbas", result.toString())
             if (result.isSuccessful) {
                  abbas = result.body()!!.response.status
             } else {
-                Log.i("err", result.message())
+                Log.i("err in islike", result.message())
             }
         }
         //Log.i("TTT",abbas.toString())
-        abbas = false
+        //abbas = true
         return abbas
     }
 
     override suspend fun UnLike(postID: Int, blogID: Int, token: String) {
         withContext(Dispatchers.IO){
-            val result = api.UnLike(postID,token)
+            val result = api.UnLike(postID,"Bearer $token")
+            Log.i("Unlike Post",result.toString())
             if (result.isSuccessful) {
-
+                Log.i("Unlike Post",result.toString())
             } else {
-                Log.i("err", result.message())
+                Log.i("err in unlike", result.message())
             }
         }
     }
@@ -179,5 +187,39 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return following
     }
 
+    override suspend fun getNumNotes(postID: Int, token: String): Int? {
+        val notes = getNotes(postID,token,1)
+        return notes.likes.pagination.total!! + notes.reblogs.pagination.total!! + notes.replies.pagination.total!!
+    }
 
+    override suspend fun getNotes(postID: Int, token: String, page:Int): NotesResponse {
+        lateinit var notes: NotesResponse
+        withContext(Dispatchers.IO) {
+            val result = api.getNotes("Bearer $token",postID,page)
+            Log.i("Notes",result.toString())
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    notes = result.body()!!.response!!
+                } else {}
+            } else {
+                Log.i("err", result.message())
+            }
+        }
+        return notes
+    }
+
+    override suspend fun getLikes(postID: Int, token: String, page: Int): ArrayList<LikesPage> {
+        val notes = getNotes(postID,token,page)
+        return notes.likes.likes
+    }
+
+    override suspend fun getReplies(postID: Int, token: String, page: Int): ArrayList<RepliesPage> {
+        val notes = getNotes(postID,token,page)
+        return notes.replies.replies
+    }
+
+    override suspend fun getReblogs(postID: Int, token: String, page:Int ): ArrayList<ReblogsPage> {
+        val notes = getNotes(postID,token,page)
+        return notes.reblogs.reblogs
+    }
 }

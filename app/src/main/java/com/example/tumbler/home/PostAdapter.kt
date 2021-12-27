@@ -12,6 +12,13 @@ import com.example.tumbler.di.viewModelModule
 import com.example.tumbler.model.entity.Post
 import com.example.tumbler.model.entity.dashboard.DashboardPost
 import org.koin.android.viewmodel.ext.android.sharedViewModel
+import android.graphics.drawable.Drawable
+
+import com.example.tumbler.R
+
+import android.widget.ImageView
+import java.io.InputStream
+import java.net.URL
 
 
 class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
@@ -33,10 +40,14 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
         fun bind(post: DashboardPost) {
             binding.postContent.text = Html.fromHtml(post.post_body)
             binding.userNamePost.text = post.blog_username
-//            if(isliked)
-//                binding.postLoveIcon.visibility = View.VISIBLE
-//            else
-//                binding.postLoveIcon.visibility = View.GONE
+            binding.postNumNotes.text = post.numNotes.toString()
+//            binding.profilePhotoPost.setImageResource(Drawable.createFromStream( URL(post.blog_avatar).content as InputStream, "src name"))
+
+
+            if(post.isLiked)
+                binding.postLoveIcon.setImageResource(R.drawable.ic_baseline_love_red_button)
+            else
+                binding.postLoveIcon.setImageResource(R.drawable.ic_baseline_love_button)
         }
     }
 
@@ -50,14 +61,20 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         var post: DashboardPost = postList.get(position)
         holder.binding.postLoveIcon.setOnClickListener {
-            Log.i("Like",position.toString())
-            if(viewModel.isLiked(position)){
-                viewModel.UnLikePost(position,post.post_id,BaseApplication.user.blog_id)
+            //Log.i("Like",position.toString())
+            if(post.isLiked){
+                viewModel.UnLikePost(post.post_id,BaseApplication.user.blog_id)
+                post.numNotes--
+                post.isLiked = false
             }
             else {
-                viewModel.LikePost(position,post.post_id, BaseApplication.user.blog_id)
+                viewModel.LikePost(post.post_id, BaseApplication.user.blog_id)
+                post.numNotes++
+                post.isLiked = true
             }
+            notifyDataSetChanged()
         }
+        //Log.i("TTT","adapter " + viewModel.dashhboardPostsisLikedMutableLiveData.value.toString())
         holder.bind(post)
     }
 }

@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         //Log.i("Nebo",token)
         // Inflate the layout for this fragment
         //token = (activity?.applicationContext as BaseApplication).user.id.toString()

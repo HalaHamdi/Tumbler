@@ -11,8 +11,7 @@ import com.example.tumbler.model.entity.addpost.CreatePost
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.addpost.CreatePostResponse
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
-import com.example.tumbler.model.entity.dashboard.Dashboard
-import com.example.tumbler.model.entity.dashboard.DashboardPost
+import com.example.tumbler.model.entity.dashboard.*
 import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.Blogs
@@ -30,7 +29,7 @@ interface RemoteRepositoryInterface {
     suspend fun SignUp(user: RequestBody): Response<SignupResponse>
     suspend fun Login(user: LoginRequest): Response<LoginResponse>
 
-    suspend fun Dashboard(token :String):List<DashboardPost>
+    suspend fun Dashboard(blog_id:Int, token :String):List<DashboardPost>
     suspend fun CreateNewTumblr(token:String,blogInfo: CreateBlogRequest): Response<ObjectOfMeta>
     suspend fun Logout(token: String): Response<ObjectOfMeta>
 
@@ -42,5 +41,11 @@ interface RemoteRepositoryInterface {
     suspend fun followBlog(token:String, blog_id:Int)
     suspend fun unfollowBlog(token:String, blog_id:Int)
     suspend fun getFollowings(token:String):List<Following>
+
+    suspend fun getNumNotes(postID:Int, token:String): Int?
+    suspend fun getNotes(postID:Int, token:String,page:Int): NotesResponse
+    suspend fun getLikes(postID:Int, token:String, page:Int): ArrayList<LikesPage>
+    suspend fun getReplies(postID:Int, token:String, page:Int):ArrayList<RepliesPage>
+    suspend fun getReblogs(postID:Int, token:String, page:Int): ArrayList<ReblogsPage>
 
 }

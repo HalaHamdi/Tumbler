@@ -75,15 +75,15 @@
             android:layout_marginBottom="@dimen/margin_bottom"
             android:text="@string/post_content_temp" />
 
-        <TextView
-            android:id="@+id/post_tags"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_left"
-            android:layout_marginTop="@dimen/margin_top"
-            android:layout_marginRight="@dimen/margin_right"
-            android:layout_marginBottom="@dimen/margin_bottom"
-            android:text="@string/post_tags_temp" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/post_tags"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="@dimen/margin_left"-->
+        <!--            android:layout_marginTop="@dimen/margin_top"-->
+        <!--            android:layout_marginRight="@dimen/margin_right"-->
+        <!--            android:layout_marginBottom="@dimen/margin_bottom"-->
+        <!--            android:text="@string/post_tags_temp" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -106,7 +106,18 @@
                 android:id="@+id/post_share_icon"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="9dp"
                 android:src="@drawable/ic_share_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/post_comment_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/post_comment_icon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="9dp"
+                android:src="@drawable/ic_baseline_comment"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/post_retweet_icon"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -115,6 +126,7 @@
                 android:id="@+id/post_retweet_icon"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="9dp"
                 android:src="@drawable/ic_baseline_repeat_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/post_love_icon"
@@ -124,6 +136,7 @@
                 android:id="@+id/post_love_icon"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="9dp"
                 android:src="@drawable/ic_baseline_love_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -21,8 +21,6 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
     private var _dashhboardPostsMutableLiveData = MutableLiveData<List<DashboardPost>>()
     val dashhboardPostsMutableLiveData: LiveData<List<DashboardPost>> get() = _dashhboardPostsMutableLiveData
 
-    private var _dashhboardPostsisLikedMutableLiveData = MutableLiveData<MutableList<Boolean>>()
-    val dashhboardPostsisLikedMutableLiveData: LiveData<MutableList<Boolean>> get() = _dashhboardPostsisLikedMutableLiveData
 
 
 
@@ -38,31 +36,21 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
     }
 
     fun getDashboard() = viewModelScope.launch {
-        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.access_token)
+        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.blog_id,BaseApplication.user.access_token)
         _dashhboardPostsMutableLiveData.postValue(posts)
-        val likes:MutableList<Boolean> = MutableList<Boolean>(posts.size){
-            remoteRepository.isLiked(posts[it].post_id,BaseApplication.user.blog_id,BaseApplication.user.access_token)!!
-        }
-        _dashhboardPostsisLikedMutableLiveData.postValue(likes)
     }
 
-    fun LikePost(pos:Int, postID:Int,blogID: Int){
+    fun LikePost(postID:Int,blogID: Int){
         viewModelScope.launch {
             remoteRepository.LikePost(postID, blogID, BaseApplication.user.access_token)
         }
-        _dashhboardPostsisLikedMutableLiveData.value!![pos] = true
     }
 
-    fun isLiked(pos:Int) :Boolean{
-        Log.i("Like2",_dashhboardPostsisLikedMutableLiveData.value?.size.toString())
-        return _dashhboardPostsisLikedMutableLiveData.value!![pos]
-    }
 
-    fun UnLikePost(pos:Int, postID : Int, blogID:Int){
+    fun UnLikePost(postID : Int, blogID:Int){
         viewModelScope.launch {
             remoteRepository.UnLike(postID, blogID, BaseApplication.user.access_token)
         }
-        _dashhboardPostsisLikedMutableLiveData.value!![pos] = false
     }
 
 }

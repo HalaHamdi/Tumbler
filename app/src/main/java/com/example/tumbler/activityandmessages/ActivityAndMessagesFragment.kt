@@ -17,8 +17,8 @@ class ActivityAndMessagesFragment : Fragment() {
     ): View? {
         binding = FragmentActivityAndMessagesBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        binding.testButton.setOnClickListener{ view:View ->
-            view.findNavController().navigate(ActivityAndMessagesFragmentDirections.actionActivityAndMessagesFragmentToCreateNewTumblrFragment())
+        binding.chatBtn.setOnClickListener{ view:View->
+            view.findNavController().navigate(ActivityAndMessagesFragmentDirections.actionActivityAndMessagesFragmentToChat2Fragment())
 
         }
         return binding.root

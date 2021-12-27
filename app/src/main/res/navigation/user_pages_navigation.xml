@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/user_pages_navigation"
-    app:startDestination="@id/userProfileFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -22,8 +22,11 @@
         android:label="fragment_activity_and_messages"
         tools:layout="@layout/fragment_activity_and_messages" >
         <action
-            android:id="@+id/action_activityAndMessagesFragment_to_createNewTumblrFragment"
-            app:destination="@id/createNewTumblrFragment" />
+            android:id="@+id/action_activityAndMessagesFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_activityAndMessagesFragment_to_chat2Fragment"
+            app:destination="@id/chat2Fragment" />
     </fragment>
 
 
@@ -48,10 +51,16 @@
         android:id="@+id/createNewTumblrFragment"
         android:name="com.example.tumbler.CreateNewTumblrFragment"
         android:label="fragment_create_new_tumblr"
-        tools:layout="@layout/fragment_create_new_tumblr" >
-        <action
-            android:id="@+id/action_createNewTumblrFragment_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_create_new_tumblr" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.tumbler.activityandmessages.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/chat2Fragment"
+        android:name="com.example.tumbler.activityandmessages.Chat2Fragment"
+        android:label="fragment_chat2"
+        tools:layout="@layout/fragment_chat2" />
 
 </navigation>

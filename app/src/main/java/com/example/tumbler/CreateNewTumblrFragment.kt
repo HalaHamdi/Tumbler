@@ -42,10 +42,10 @@ class CreateNewTumblrFragment : Fragment() {
             Log.i("E1", it.status.toString())
             if(it.status.toInt()==200) {
                 Log.i("Elonsoool", "MyObserver:status 200 ")
-
+                Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
             }
             else
-                Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Enter a new Username", Toast.LENGTH_SHORT).show()
         })
     }
 

@@ -18,6 +18,7 @@ import androidx.navigation.Navigation.createNavigateOnClickListener
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.example.tumbler.BaseApplication
 import com.example.tumbler.CreateNewTumblrViewModel
 import com.example.tumbler.databinding.FragmentUserProfileBinding
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -33,6 +34,7 @@ class UserProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
+        binding.textView2.text=BaseApplication.user.blog_username
         val UserBlogsAdapter=ArrayAdapter<String>(requireContext(),android.R.layout.simple_spinner_dropdown_item,UserBlogs)
         binding.userBlogsSpinner.adapter=UserBlogsAdapter
         var p2s=false

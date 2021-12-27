@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tumbler.model.entity.LoginResponse.LoginResponse
 import com.example.tumbler.model.entity.Meta
+import com.example.tumbler.model.entity.SignUpResponse.SignupResponse
 import com.example.tumbler.model.entity.addpost.CreatePost
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
@@ -20,15 +21,17 @@ class CreateNewTumblrViewModel (private val remoteRepository: RemoteRepository) 
     val createNewTumblrLiveData: LiveData<com.example.tumbler.model.entity.Meta> get() = createNewTumblrMutableLiveData
 
     fun CreateNewTumblr(blogInfo: CreateBlogRequest) = viewModelScope.launch {
+        var gson: Gson = Gson()
         var result = remoteRepository.CreateNewTumblr(BaseApplication.user.access_token,blogInfo)
-        Log.i("Abbas", result.toString())
-
+        Log.i("Abbas", result.body().toString())
+        Log.i("Abbas", result.errorBody().toString())
         if (result.isSuccessful) {
-            Log.i("Elonsol1", result.body().toString())
+            Log.i("Elonsol1", result.body()!!.meta.toString())
             createNewTumblrMutableLiveData.postValue(result.body()!!.meta)
         } else {
+            //createNewTumblrMutableLiveData.postValue(result as Meta)
             Log.i("Elonsol4","error ")
-            Log.i("Elonsol5", "error = ${result.message()}")
+            //Log.i("Elonsol5",(result as Meta).toString() )
         }
     }
 }

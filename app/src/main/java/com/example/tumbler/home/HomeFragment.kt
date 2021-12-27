@@ -42,10 +42,6 @@ class HomeFragment : Fragment() {
         binding.postList.adapter = adapter
 
         //viewModel.getRandomPosts()
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ab0d074c6fc997dd2b0f515e814c2dbead0dfe5
 
 //        viewModel.postsLiveData.observe(
 //            viewLifecycleOwner,
@@ -72,10 +68,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDashboard()
-<<<<<<< HEAD
-=======
 
->>>>>>> 5ab0d074c6fc997dd2b0f515e814c2dbead0dfe5
 //        viewModel.postNotesByIDMutableLiveData.observe(
 //            viewLifecycleOwner,
 //            Observer {

@@ -25,7 +25,8 @@ import java.net.URL
 class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     var postList = ArrayList<DashboardPost>()
-    var maxReachedPosts :Int = 0
+    val maxReachedPosts :Int get() = postList.size
+
 
     //private val viewModel: HomeViewModel by sharedViewModel()
 
@@ -64,6 +65,11 @@ class PostAdapter(val viewModel:HomeViewModel) : RecyclerView.Adapter<PostAdapte
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
 
         var post: DashboardPost = postList.get(position)
+
+        if(position == maxReachedPosts - 2){
+            viewModel.updateDashboard()
+        }
+
         holder.binding.postNumNotes.setOnClickListener { view:View ->
             view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
         }

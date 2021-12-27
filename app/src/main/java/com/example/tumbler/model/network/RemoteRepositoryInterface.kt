@@ -47,5 +47,7 @@ interface RemoteRepositoryInterface {
     suspend fun getLikes(postID:Int, token:String, page:Int): ArrayList<LikesPage>
     suspend fun getReplies(postID:Int, token:String, page:Int):ArrayList<RepliesPage>
     suspend fun getReblogs(postID:Int, token:String, page:Int): ArrayList<ReblogsPage>
+    suspend fun getDashboardMaxPage(blog_id: Int, token :String): Int
 
-}
+
+    }

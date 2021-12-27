@@ -31,9 +31,13 @@ class RecommendedBlogsAdapter(val viewModel: SearchViewModel):RecyclerView.Adapt
     class RecommendedBlogsViewHolder(val binding: RecommendedBlogsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(blog: Blogs){
-        binding.blogName.text=blog.username
+            binding.blogName.text=blog.username
             Log.i("Hala",blog.avatar.toString())
             FollowingAdapter.DownloadImageFromInternet(binding.blogImage).execute(blog.avatar)
+            if(blog.is_followed)
+                binding.btnFollowBlog.text = "UnFollow"
+            else
+                binding.btnFollowBlog.text = "Follow"
         }
     }
 
@@ -69,14 +73,16 @@ class RecommendedBlogsAdapter(val viewModel: SearchViewModel):RecyclerView.Adapt
         var recommendedBlog:Blogs=blogsList.get(position)
         holder.bind(recommendedBlog)
         holder.binding.btnFollowBlog.setOnClickListener{
-            if(viewModel.blogsFollowedLiveData.value?.get(position)==true){
+            if(recommendedBlog.is_followed){
                     viewModel.unfollowBlog(blogsList[position].id,position)
 
                 holder.binding.btnFollowBlog.text = "Follow"
+                recommendedBlog.is_followed = false
             }
             else{
                 viewModel.followBlog(blogsList[position].id,position)
                 holder.binding.btnFollowBlog.text= "UnFollow"
+                recommendedBlog.is_followed = true
             }
             notifyDataSetChanged()
 

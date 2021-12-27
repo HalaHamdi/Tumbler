@@ -21,7 +21,8 @@ data class Blogs (
     @SerializedName("avatar_shape" ) var avatarShape : String,
     @SerializedName("header_image" ) var headerImage : String,
     @SerializedName("title"        ) var title       : String,
-    @SerializedName("description"  ) var description : String
+    @SerializedName("description"  ) var description : String,
+    @SerializedName("followed") var is_followed:Boolean
 
 )
 

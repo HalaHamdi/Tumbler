@@ -16,8 +16,11 @@ import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.model.entity.search.SuggestedBlogs
 import com.example.tumbler.model.entity.userprofile.Following
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.lang.Exception
+import kotlin.math.max
 
 class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface {
 
@@ -36,24 +39,50 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return randomPosts
     }
 
-    override suspend fun Dashboard(blog_id: Int, token :String,page:Int): List<DashboardPost> {
-        lateinit var dashboardPosts: List<DashboardPost>
-        withContext(Dispatchers.IO) {
-            val result = api.Dashboard("Bearer $token",page)
-            Log.i("dashboard",result.toString())
-            if (result.isSuccessful) {
-                if (result.body() != null) {
-                    dashboardPosts = result.body()!!.response.posts
-                    dashboardPosts.forEach {
-                        it.isLiked = isLiked(it.post_id,blog_id,token)!!
-                        it.numNotes = getNumNotes(it.post_id,token)!!
-                    }
-                } else {}
-            } else {
-                Log.i("err", result.message())
+    override suspend fun getDashboardMaxPage(blog_id: Int, token :String): Int{
+        try {
+            var maxPage:Int = 0
+            withContext(Dispatchers.IO) {
+                val result = api.Dashboard("Bearer $token",1)
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        maxPage = result.body()!!.response.pagination.total_pages
+                    } else {}
+                } else {
+                    Log.i("err", result.message())
+                }
             }
+            return maxPage
+        }catch(e:Exception){
+            delay(1000)
+            return getDashboardMaxPage(blog_id,token)
         }
-        return dashboardPosts
+    }
+
+    override suspend fun Dashboard(blog_id: Int, token :String,page:Int): List<DashboardPost> {
+        try {
+            lateinit var dashboardPosts: List<DashboardPost>
+            withContext(Dispatchers.IO) {
+                val result = api.Dashboard("Bearer $token",page)
+                Log.i("dashboard", "$result  $page")
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        dashboardPosts = result.body()!!.response.posts
+                        Log.i("Dashboard Pagination",result.body()!!.response.pagination.total_pages.toString())
+//                        dashboardPosts.forEach {
+//                            it.isLiked = isLiked(it.post_id,blog_id,token)!!
+//                            it.numNotes = getNumNotes(it.post_id,token)!!
+//                        }
+                    } else {}
+                } else {
+                    Log.i("err", result.message())
+                }
+            }
+            return dashboardPosts
+        }catch(e:Exception){
+            delay(1000)
+            return Dashboard(blog_id,token,page)
+        }
     }
 
 
@@ -193,19 +222,25 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     }
 
     override suspend fun getNotes(postID: Int, token: String, page:Int): NotesResponse {
-        lateinit var notes: NotesResponse
-        withContext(Dispatchers.IO) {
-            val result = api.getNotes("Bearer $token",postID,page)
-            Log.i("Notes",result.toString())
-            if (result.isSuccessful) {
-                if (result.body() != null) {
-                    notes = result.body()!!.response!!
-                } else {}
-            } else {
-                Log.i("err", result.message())
+        try {
+            lateinit var notes: NotesResponse
+            withContext(Dispatchers.IO) {
+                val result = api.getNotes("Bearer $token",postID,page)
+                Log.i("Notes",result.toString())
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        notes = result.body()!!.response!!
+                    } else {}
+                } else {
+                    Log.i("err", result.message())
+                }
             }
+            return notes
+        }catch (e: Exception){
+            delay(1000)
+            return getNotes(postID,token,page)
         }
-        return notes
+
     }
 
     override suspend fun getLikes(postID: Int, token: String, page: Int): ArrayList<LikesPage> {

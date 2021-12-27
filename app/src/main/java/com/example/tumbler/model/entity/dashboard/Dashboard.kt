@@ -35,6 +35,6 @@ data class DashboardPost(
     @SerializedName("blog_avatar_shape") val blog_avatar_shape : String,
     @SerializedName("blog_title") val blog_title : String,
     @SerializedName("post_time") val post_time : String,
-    var isLiked: Boolean = false,
-    var numNotes: Int = 0
+    @SerializedName("is_liked") var isLiked: Boolean = false,
+    @SerializedName("notes_count") var numNotes: Int = 0
 )

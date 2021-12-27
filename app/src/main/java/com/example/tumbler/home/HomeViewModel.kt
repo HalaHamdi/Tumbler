@@ -21,7 +21,8 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
     private var _dashhboardPostsMutableLiveData = MutableLiveData<List<DashboardPost>>()
     val dashhboardPostsMutableLiveData: LiveData<List<DashboardPost>> get() = _dashhboardPostsMutableLiveData
 
-
+    private var curPage = 0
+    private var maxPage:Int = 0
 
 
 
@@ -35,9 +36,25 @@ class HomeViewModel(private val remoteRepository: RemoteRepository) : ViewModel(
         _postsMutableLiveData.postValue(posts)
     }
 
-    fun getDashboard(page:Int = 1) = viewModelScope.launch {
-        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.blog_id,BaseApplication.user.access_token,page)
+    fun getDashboard() = viewModelScope.launch {
+        val posts :List<DashboardPost> = remoteRepository.Dashboard(BaseApplication.user.blog_id,BaseApplication.user.access_token,1)
         _dashhboardPostsMutableLiveData.postValue(posts)
+        maxPage = remoteRepository.getDashboardMaxPage(BaseApplication.user.blog_id,BaseApplication.user.access_token)
+        curPage = 1
+        Log.i("getDashboard",maxPage.toString())
+    }
+
+    fun updateDashboard() = viewModelScope.launch {
+        if(curPage <= maxPage) {
+            val posts: List<DashboardPost> = remoteRepository.Dashboard(
+                BaseApplication.user.blog_id,
+                BaseApplication.user.access_token,
+                curPage + 1
+            )
+            _dashhboardPostsMutableLiveData.postValue(posts)
+            curPage = curPage + 1
+            Log.i("update dashboard", curPage.toString())
+        }
     }
 
     fun LikePost(postID:Int,blogID: Int){

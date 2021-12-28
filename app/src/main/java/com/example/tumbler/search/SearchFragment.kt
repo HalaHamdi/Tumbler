@@ -1,11 +1,13 @@
 package com.example.tumbler.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.tumbler.CreatePostActivity
 import com.example.tumbler.databinding.FragmentSearchBinding
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -21,6 +23,12 @@ class SearchFragment : Fragment() {
     ): View? {
 
         binding = FragmentSearchBinding.inflate(inflater)
+
+        //listining on the search button
+        binding.seacrhButton.setOnClickListener {
+            val intent = Intent(activity,SearchingActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.lifecycleOwner = this
 

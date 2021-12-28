@@ -12,14 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tumbler">
-        <activity android:name=".UserPagesActivity">
-
-        </activity>
-
-        <activity android:name=".CreatePostActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan">
-
-        </activity>
+        <activity android:name=".search.SearchingActivity"></activity>
+        <activity android:name=".UserPagesActivity"></activity>
+        <activity
+            android:name=".CreatePostActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
         <activity
             android:name=".signupandin.IntroSliderActivity"
             android:exported="false" />
@@ -28,13 +25,15 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".CheckToken.App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

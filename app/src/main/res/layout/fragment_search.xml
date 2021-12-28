@@ -16,16 +16,33 @@
         tools:context=".search.SearchFragment"
         android:background="@color/navy">
 
+
+        <Button
+            android:id="@+id/seacrhButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/curved_button"
+            android:text="Search Tumblr"
+            android:textColor="@color/grey"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/textviewRecommendedTags"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="@+id/textviewRecommendedTags"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25" />
+
         <TextView
             android:id="@+id/textviewRecommendedTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="96dp"
             android:text="Check out these Tags"
             android:textColor="@color/white"
             android:textSize="25dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.052"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,12 +50,13 @@
             android:id="@+id/rvRecommendedTags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="@+id/textviewRecommendedTags"
+            app:layout_constraintTop_toBottomOf="@+id/textviewRecommendedTags"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp"
-            tools:listitem="@layout/recommended_tags_list_item"/>
+            tools:listitem="@layout/recommended_tags_list_item" />
 
         <TextView
             android:id="@+id/textViewRecommendedBlogs"
@@ -50,20 +68,22 @@
             android:textSize="25dp"
             app:layout_constraintBottom_toTopOf="@+id/rvRecommendedBlogs"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvRecommendedTags"
+            app:layout_constraintVertical_bias="1.0" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecommendedBlogs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="76dp"
+            android:layout_marginBottom="56dp"
             android:orientation="horizontal"
+            android:paddingBottom="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:listitem="@layout/recommended_blogs_list_item"
-            android:paddingBottom="10dp"/>
+            tools:layout_editor_absoluteX="9dp"
+            tools:listitem="@layout/recommended_blogs_list_item" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

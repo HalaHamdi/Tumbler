@@ -1,17 +1,11 @@
 package com.example.tumbler.home
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.example.tumbler.BaseApplication
-import com.example.tumbler.R
 import com.example.tumbler.databinding.FragmentHomeBinding
 import com.example.tumbler.model.entity.dashboard.DashboardPost
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class HomeFragment : Fragment() {
@@ -19,10 +13,10 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by sharedViewModel()
     lateinit var binding: FragmentHomeBinding
 
-    //val sharedPreferences: SharedPreferences by inject()
+    // val sharedPreferences: SharedPreferences by inject()
 
-    //lateinit var token:String
-    //((MyApplication) this.getApplication()).getSomeVariable();
+    // lateinit var token:String
+    // ((MyApplication) this.getApplication()).getSomeVariable();
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,10 +24,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //Log.i("Nebo",token)
+        // Log.i("Nebo",token)
         // Inflate the layout for this fragment
-        //token = (activity?.applicationContext as BaseApplication).user.id.toString()
-        //Log.i("Nebo",token)
+        // token = (activity?.applicationContext as BaseApplication).user.id.toString()
+        // Log.i("Nebo",token)
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -41,7 +35,7 @@ class HomeFragment : Fragment() {
         val adapter = PostAdapter(viewModel)
         binding.postList.adapter = adapter
 
-        //viewModel.getRandomPosts()
+        // viewModel.getRandomPosts()
 
 //        viewModel.postsLiveData.observe(
 //            viewLifecycleOwner,

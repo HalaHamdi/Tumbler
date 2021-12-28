@@ -9,24 +9,24 @@ import org.koin.core.context.startKoin
 
 class BaseApplication : Application() {
 
-    companion object{
+    companion object {
         private lateinit var _user: User
-        public val user :User get() = _user
+        public val user: User get() = _user
     }
 //    private lateinit var _user: User
 //    public val user :User get() = _user
 
     fun setUser(
-        access_token:String,
+        access_token: String,
         blog_id: Int,
         blog_avatar: String,
-        id:Int,
-        blog_username:String,
+        id: Int,
+        blog_username: String,
         is_verified: Boolean,
-        email: String){
-        _user = User(access_token,blog_id,blog_avatar,id,blog_username,is_verified,email)
+        email: String
+    ) {
+        _user = User(access_token, blog_id, blog_avatar, id, blog_username, is_verified, email)
     }
-
 
     override fun onCreate() {
         super.onCreate()

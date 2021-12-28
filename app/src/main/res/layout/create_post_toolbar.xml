@@ -5,6 +5,15 @@
     android:background="@color/white">
 
 
+    <ImageButton
+        android:id="@+id/exitCreatePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_arrow"
+        android:backgroundTint="@color/white"
+        android:layoutDirection="inherit"></ImageButton>
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitPost"
         android:layout_width="wrap_content"
@@ -13,7 +22,7 @@
         android:text="Post"
         android:backgroundTint="@color/baby_blue"
         android:textColor="@color/grey"
-        android:layout_marginLeft="280dp"
+        android:layout_marginLeft="200dp"
         />
 
 </androidx.appcompat.widget.Toolbar>

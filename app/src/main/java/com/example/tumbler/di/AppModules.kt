@@ -10,12 +10,8 @@ import com.example.tumbler.model.network.ServiceAPI
 import com.example.tumbler.search.SearchViewModel
 import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
-
-import com.example.tumbler.userprofile.SettingsViewModel
-
 import com.example.tumbler.userprofile.FollowingViewModel
-
-import com.google.android.material.internal.ContextUtils.getActivity
+import com.example.tumbler.userprofile.SettingsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -23,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 private const val Base_URL: String = "https://api.dev.tumbler.social/api/"
-//private const val Base_URL: String = "https://mocki.io/v1/"
+// private const val Base_URL: String = "https://mocki.io/v1/"
 
 val viewModelModule = module {
 
@@ -55,10 +51,9 @@ val viewModelModule = module {
     }
 }
 
-
 val appModule = module {
 
-    single{
+    single {
         getSharedPrefs(androidApplication())
     }
 
@@ -67,8 +62,8 @@ val appModule = module {
     }
 }
 
-fun getSharedPrefs(androidApplication: Application): SharedPreferences{
-    return  androidApplication.getSharedPreferences("myshared", 0)
+fun getSharedPrefs(androidApplication: Application): SharedPreferences {
+    return androidApplication.getSharedPreferences("myshared", 0)
 }
 
 val repositoryModule = module {

@@ -9,12 +9,11 @@ import com.example.tumbler.model.entity.userprofile.Following
 import com.example.tumbler.model.network.RemoteRepository
 import kotlinx.coroutines.launch
 
-class FollowingViewModel(private val remoteRepository: RemoteRepository):ViewModel() {
-    private var _followingsMutalbleLiveData=MutableLiveData<List<Following>>()
-    val followingLiveData:LiveData<List<Following>> get()=_followingsMutalbleLiveData
+class FollowingViewModel(private val remoteRepository: RemoteRepository) : ViewModel() {
+    private var _followingsMutalbleLiveData = MutableLiveData<List<Following>>()
+    val followingLiveData: LiveData<List<Following>> get() = _followingsMutalbleLiveData
 
-
-    fun getFollowings()=viewModelScope.launch{
+    fun getFollowings() = viewModelScope.launch {
         val following: List<Following> = remoteRepository.getFollowings(BaseApplication.user.access_token)
         _followingsMutalbleLiveData.postValue(following)
     }

@@ -8,7 +8,6 @@ data class IsLiked(
     @SerializedName("response") var response: IsLikedResponse
 )
 
-
 data class IsLikedResponse(
     @SerializedName("like_status") var status: Boolean,
 )

@@ -2,18 +2,16 @@ package com.example.tumbler.activityandmessages
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.R
 import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentChat2Binding
-import com.example.tumbler.databinding.FragmentChatBinding
 import com.example.tumbler.model.entity.chat.Chat_User_Data
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -30,7 +28,8 @@ class Chat2Fragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -55,7 +54,7 @@ class Chat2Fragment : Fragment() {
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation
         val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
         fab.visibility = View.GONE
-        navBar.visibility= View.GONE
+        navBar.visibility = View.GONE
         return binding.root
     }
 }

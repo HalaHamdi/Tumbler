@@ -23,7 +23,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 class SignUpFragment : Fragment() {
 
     private val viewModel: SignupViewModel by sharedViewModel()
-    var myshared: SharedPreferences?=null
+    var myshared: SharedPreferences? = null
 
     lateinit var binding: FragmentSignUpBinding
     private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
@@ -39,9 +39,6 @@ class SignUpFragment : Fragment() {
         CheckAndNavigate()
         return binding.root
     }
-
-
-
 
     /**
      * When user Click Login From Sign up with email page
@@ -75,15 +72,15 @@ class SignUpFragment : Fragment() {
                 } else {
 
                     Toast.makeText(context, it.meta.msg, Toast.LENGTH_SHORT).show()
-                    myshared = getActivity()?.getSharedPreferences("myshared",0)
-                    var editor:SharedPreferences.Editor=myshared!!.edit()
-                    editor.putString("access_token",it.response.access_token.toString())
-                    editor.putString("id",it.response.id.toString())
-                    editor.putString("blog_username",it.response.blog_username.toString())
-                    editor.putString("email",it.response.email.toString())
-                    editor.putString("blog_avatar",it.response.blog_avatar.toString())
-                    editor.putString("blog_id",it.response.blog_id.toString())
-                    editor.putString("is_verified",it.response.is_verified.toString())
+                    myshared = getActivity()?.getSharedPreferences("myshared", 0)
+                    var editor: SharedPreferences.Editor = myshared!!.edit()
+                    editor.putString("access_token", it.response.access_token.toString())
+                    editor.putString("id", it.response.id.toString())
+                    editor.putString("blog_username", it.response.blog_username.toString())
+                    editor.putString("email", it.response.email.toString())
+                    editor.putString("blog_avatar", it.response.blog_avatar.toString())
+                    editor.putString("blog_id", it.response.blog_id.toString())
+                    editor.putString("is_verified", it.response.is_verified.toString())
                     editor.commit()
                     (activity?.applicationContext as BaseApplication).setUser(
                         it.response.access_token.toString(),

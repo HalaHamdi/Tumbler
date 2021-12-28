@@ -62,7 +62,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp"
-            tools:listitem="@layout/recommended_blogs_list_item" />
+            tools:listitem="@layout/recommended_blogs_list_item"
+            android:paddingBottom="10dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

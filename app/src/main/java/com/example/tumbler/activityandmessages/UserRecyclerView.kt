@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.R
 import com.example.tumbler.model.entity.chat.Chat_User_Data
-import com.example.tumbler.user.User
 
 class UserRecyclerView : RecyclerView.Adapter<UserRecyclerView.UserViewHolder>() {
     var userList: ArrayList<Chat_User_Data> = ArrayList()
@@ -18,17 +17,15 @@ class UserRecyclerView : RecyclerView.Adapter<UserRecyclerView.UserViewHolder>()
         notifyDataSetChanged()
     }
 
-
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var iv_userImage: ImageView = itemView.findViewById(R.id.iv_item_user_image)
         var tv_username: TextView = itemView.findViewById(R.id.tv_item_username)
         var tv_message: TextView = itemView.findViewById(R.id.tv_item_message)
         fun bind(user: Chat_User_Data) {
             iv_userImage.setImageResource(user.imgId)
-            tv_username.text=user.name
-            tv_message.text=user.message
+            tv_username.text = user.name
+            tv_message.text = user.message
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -45,5 +42,4 @@ class UserRecyclerView : RecyclerView.Adapter<UserRecyclerView.UserViewHolder>()
     override fun getItemCount(): Int {
         return userList.size
     }
-
 }

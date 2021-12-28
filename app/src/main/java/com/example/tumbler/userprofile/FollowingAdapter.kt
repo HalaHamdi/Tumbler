@@ -8,33 +8,29 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.databinding.FollowingsListItemBinding
 import com.example.tumbler.model.entity.userprofile.Following
 
+class FollowingAdapter(val viewModel: FollowingViewModel) : RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>() {
 
-class FollowingAdapter(val viewModel: FollowingViewModel): RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>() {
+    var followings = listOf<Following>()
+    override fun getItemCount(): Int = followings.size
 
-    var followings= listOf<Following>()
-    override fun getItemCount():Int=followings.size
-
-    fun setList(allFollowings: List<Following>){
-        this.followings=allFollowings
+    fun setList(allFollowings: List<Following>) {
+        this.followings = allFollowings
         notifyDataSetChanged()
     }
 
-    class FollowingViewHolder(val binding: FollowingsListItemBinding): RecyclerView.ViewHolder(binding.root)  {
-        fun bind(following:Following){
-            binding.followingName.text=following.blogUsername
-           DownloadImageFromInternet(binding.followingImage).execute(following.blogAvatar)
-
+    class FollowingViewHolder(val binding: FollowingsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(following: Following) {
+            binding.followingName.text = following.blogUsername
+            DownloadImageFromInternet(binding.followingImage).execute(following.blogAvatar)
         }
-
     }
     @SuppressLint("StaticFieldLeak")
     @Suppress("DEPRECATION")
-      class DownloadImageFromInternet(var imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
+    class DownloadImageFromInternet(var imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
 
         override fun doInBackground(vararg urls: String): Bitmap? {
             val imageURL = urls[0]
@@ -42,8 +38,7 @@ class FollowingAdapter(val viewModel: FollowingViewModel): RecyclerView.Adapter<
             try {
                 val `in` = java.net.URL(imageURL).openStream()
                 image = BitmapFactory.decodeStream(`in`)
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 Log.e("Error Message", e.message.toString())
                 e.printStackTrace()
             }
@@ -55,15 +50,13 @@ class FollowingAdapter(val viewModel: FollowingViewModel): RecyclerView.Adapter<
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
-        var inflater= LayoutInflater.from(parent.context)
-        val binding= FollowingsListItemBinding.inflate(inflater, parent, false)
+        var inflater = LayoutInflater.from(parent.context)
+        val binding = FollowingsListItemBinding.inflate(inflater, parent, false)
         return FollowingViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
-        val following:Following=followings.get(position)
+        val following: Following = followings.get(position)
         holder.bind(following)
     }
-
-
 }

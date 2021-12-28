@@ -12,29 +12,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.databinding.RecommendedBlogsListItemBinding
 import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.userprofile.FollowingAdapter
-import java.io.InputStream
-import java.net.URL
 
-
-class RecommendedBlogsAdapter(val viewModel: SearchViewModel):RecyclerView.Adapter<RecommendedBlogsAdapter.RecommendedBlogsViewHolder>() {
+class RecommendedBlogsAdapter(val viewModel: SearchViewModel) : RecyclerView.Adapter<RecommendedBlogsAdapter.RecommendedBlogsViewHolder>() {
 
     var blogsList = listOf<Blogs>()
 
-    override fun getItemCount(): Int =blogsList.count()
+    override fun getItemCount(): Int = blogsList.count()
 
-    fun setList(allBlogs: List<Blogs>){
-        this.blogsList=allBlogs
+    fun setList(allBlogs: List<Blogs>) {
+        this.blogsList = allBlogs
         notifyDataSetChanged()
-
     }
 
     class RecommendedBlogsViewHolder(val binding: RecommendedBlogsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(blog: Blogs){
-            binding.blogName.text=blog.username
-            Log.i("Hala",blog.avatar.toString())
+        fun bind(blog: Blogs) {
+            binding.blogName.text = blog.username
+            Log.i("Hala", blog.avatar.toString())
             FollowingAdapter.DownloadImageFromInternet(binding.blogImage).execute(blog.avatar)
-            if(blog.is_followed)
+            if (blog.is_followed)
                 binding.btnFollowBlog.text = "UnFollow"
             else
                 binding.btnFollowBlog.text = "Follow"
@@ -51,8 +47,7 @@ class RecommendedBlogsAdapter(val viewModel: SearchViewModel):RecyclerView.Adapt
             try {
                 val `in` = java.net.URL(imageURL).openStream()
                 image = BitmapFactory.decodeStream(`in`)
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 Log.e("Error Message", e.message.toString())
                 e.printStackTrace()
             }
@@ -62,32 +57,27 @@ class RecommendedBlogsAdapter(val viewModel: SearchViewModel):RecyclerView.Adapt
             imageView.setImageBitmap(result)
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendedBlogsViewHolder{
-        var inflater= LayoutInflater.from(parent.context)
-        val binding=RecommendedBlogsListItemBinding.inflate(inflater, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendedBlogsViewHolder {
+        var inflater = LayoutInflater.from(parent.context)
+        val binding = RecommendedBlogsListItemBinding.inflate(inflater, parent, false)
         return RecommendedBlogsViewHolder(binding)
     }
 
-
     override fun onBindViewHolder(holder: RecommendedBlogsViewHolder, position: Int) {
-        var recommendedBlog:Blogs=blogsList.get(position)
+        var recommendedBlog: Blogs = blogsList.get(position)
         holder.bind(recommendedBlog)
-        holder.binding.btnFollowBlog.setOnClickListener{
-            if(recommendedBlog.is_followed){
-                    viewModel.unfollowBlog(blogsList[position].id,position)
+        holder.binding.btnFollowBlog.setOnClickListener {
+            if (recommendedBlog.is_followed) {
+                viewModel.unfollowBlog(blogsList[position].id, position)
 
                 holder.binding.btnFollowBlog.text = "Follow"
                 recommendedBlog.is_followed = false
-            }
-            else{
-                viewModel.followBlog(blogsList[position].id,position)
-                holder.binding.btnFollowBlog.text= "UnFollow"
+            } else {
+                viewModel.followBlog(blogsList[position].id, position)
+                holder.binding.btnFollowBlog.text = "UnFollow"
                 recommendedBlog.is_followed = true
             }
             notifyDataSetChanged()
-
         }
-
     }
-
 }

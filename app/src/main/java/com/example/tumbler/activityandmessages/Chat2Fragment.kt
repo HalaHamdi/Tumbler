@@ -41,15 +41,17 @@ class Chat2Fragment : Fragment() {
         btn_send = binding.btnSend
         rv_showData.adapter = userRecyclerView
         btn_send.setOnClickListener {
-            userList.add(
-                Chat_User_Data(
-                    userName.toString(),
-                    edt_message.text.toString(),
-                    R.drawable.chatvector2
+            if (binding.editMessage.text.isNotEmpty()) {
+                userList.add(
+                    Chat_User_Data(
+                        userName.toString(),
+                        edt_message.text.toString(),
+                        R.drawable.chatvector2
+                    )
                 )
-            )
-            userRecyclerView.setList(userList)
-            edt_message.setText("")
+                userRecyclerView.setList(userList)
+                edt_message.setText("")
+            }
         }
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation
         val fab = (requireActivity() as UserPagesActivity).binding.createPostButton

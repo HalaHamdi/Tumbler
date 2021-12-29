@@ -1,11 +1,14 @@
 package com.example.tumbler.userprofile
 
+import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import androidx.core.view.get
 import androidx.databinding.adapters.AdapterViewBindingAdapter.*
 import androidx.fragment.app.Fragment
@@ -28,6 +31,10 @@ class UserProfileFragment : Fragment() {
     ): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         binding.textView2.text = BaseApplication.user.blog_username
+        FollowingAdapter.DownloadImageFromInternet(binding.profilePic).execute(BaseApplication.user.blog_avatar)
+
+
+        //binding.profilePic.setImageURI(BaseApplication.user.blog_avatar as Uri)
         val UserBlogsAdapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, UserBlogs)
         binding.userBlogsSpinner.adapter = UserBlogsAdapter
         var p2s = false

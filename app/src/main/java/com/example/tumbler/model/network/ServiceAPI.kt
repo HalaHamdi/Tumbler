@@ -10,6 +10,7 @@ import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.entity.dashboard.Dashboard
 import com.example.tumbler.model.entity.dashboard.Notes
+import com.example.tumbler.model.entity.dashboard.ReplyBody
 import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.RandomPosts
 import com.example.tumbler.model.entity.search.SuggestedBlogs
@@ -134,4 +135,15 @@ interface ServiceAPI {
     )
     @DELETE("follow_tag/{tag_description}")
     suspend fun unfollowTag(@Header("Authorization")token: String, @Path("tag_description")tag_description: String): Response<Meta>
+
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    @POST("post/reply/{post_id}")
+    suspend fun reply(@Body replyBody: ReplyBody, @Header("Authorization")token: String, @Path("post_id")post_id: Int): Response<Meta>
+
+
 }
+

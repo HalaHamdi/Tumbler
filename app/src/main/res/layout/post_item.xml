@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <WebView
             android:id="@+id/post_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +75,8 @@
             android:layout_marginTop="@dimen/margin_top"
             android:layout_marginRight="@dimen/margin_right"
             android:layout_marginBottom="@dimen/margin_bottom"
-            android:text="@string/post_content_temp" />
+            android:text="@string/post_content_temp"
+            />
 
         <!--        <TextView-->
         <!--            android:id="@+id/post_tags"-->

@@ -22,15 +22,16 @@
             android:layout_width="409dp"
             android:layout_height="729dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="120dp"
+            android:padding="25dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/post_item"
-            android:padding="25dp"/>
+            tools:listitem="@layout/post_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -2,6 +2,7 @@ package com.example.tumbler.model.network
 
 import android.util.Log
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
+import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
@@ -13,6 +14,7 @@ import com.example.tumbler.model.entity.userprofile.Following
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 import java.lang.Exception
 
 class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface {
@@ -290,5 +292,26 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     override suspend fun getReblogs(postID: Int, token: String, page: Int): ArrayList<ReblogsPage> {
         val notes = getNotes(postID, token, page)
         return notes.reblogs.reblogs
+    }
+
+    override suspend fun reply(replyBody: ReplyBody, token: String, post_id: Int){
+        try{
+            withContext(Dispatchers.IO){
+                val result = api.reply(replyBody,token,post_id)
+                Log.i("Reply",result.toString())
+                Log.i("Reply",token)
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+
+                    } else {}
+                } else {
+                    Log.i("err", result.message())
+                }
+            }
+        }catch (e: Exception) {
+            delay(1000)
+            reply(replyBody, token, post_id)
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.tumbler.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -34,7 +35,6 @@ class HomeFragment : Fragment() {
 
         val adapter = PostAdapter(viewModel)
         binding.postList.adapter = adapter
-
         // viewModel.getRandomPosts()
 
 //        viewModel.postsLiveData.observe(
@@ -59,8 +59,16 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStop() {
+        super.onStop()
+        Log.i("DashboardBug","Abbas")
+
+        (binding.postList.adapter as PostAdapter).clear()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.i("Dashboard Bug", "onviewcreated")
         viewModel.getDashboard()
 
 //        viewModel.postNotesByIDMutableLiveData.observe(

@@ -18,7 +18,11 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
     val maxReachedPosts: Int get() = postList.size
 
     // private val viewModel: HomeViewModel by sharedViewModel()
+    public fun clear(){
+        postList.clear()
+        notifyDataSetChanged()
 
+    }
     fun setlist(pstList: ArrayList<DashboardPost>) {
         this.postList.addAll(pstList)
 
@@ -30,7 +34,8 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
     class PostViewHolder(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(post: DashboardPost) {
-            binding.postContent.text = Html.fromHtml(post.post_body)
+            binding.postContent.loadData("<style>img{display: inline;height: auto;max-width: 100%;}</style>" + post.post_body,"text/html", "UTF-8")
+            //binding.postContent.text = Html.fromHtml(post.post_body)
             binding.userNamePost.text = post.blog_username
             binding.postNumNotes.text = post.numNotes.toString()
             if (post.isLiked)
@@ -57,9 +62,11 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
         }
 
         holder.binding.postNumNotes.setOnClickListener { view: View ->
+            viewModel.currentPost = post.post_id
             view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
         }
         holder.binding.postCommentIcon.setOnClickListener { view: View ->
+            viewModel.currentPost = post.post_id
             view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
         }
 

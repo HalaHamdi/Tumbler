@@ -2,6 +2,7 @@ package com.example.tumbler.model.network
 
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.LoginResponse
+import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.ObjectOfMeta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.SignUpResponse.SignupResponse
@@ -14,6 +15,9 @@ import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.model.entity.search.Tags
 import com.example.tumbler.model.entity.userprofile.Following
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.Path
 
 interface RemoteRepositoryInterface {
     suspend fun createPost(token: String, createPostBody: CreatePostBody, blogId: Int): Response<CreatePost>
@@ -44,4 +48,7 @@ interface RemoteRepositoryInterface {
     suspend fun getReplies(postID: Int, token: String, page: Int): ArrayList<RepliesPage>
     suspend fun getReblogs(postID: Int, token: String, page: Int): ArrayList<ReblogsPage>
     suspend fun getDashboardMaxPage(blog_id: Int, token: String): Int
+
+    suspend fun reply(replyBody: ReplyBody, token: String, post_id: Int)
+
 }

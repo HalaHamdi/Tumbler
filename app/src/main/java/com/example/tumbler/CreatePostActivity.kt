@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tumbler.databinding.ActivityCreatePostBinding
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import jp.wasabeef.richeditor.RichEditor
+import kotlinx.coroutines.delay
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -78,10 +79,10 @@ class CreatePostActivity : AppCompatActivity() {
             Log.i("Hala", encodedImg.toString())
 
             if (imageUri.toString().startsWith("content://media/external/images")) {
-                styleEditor!!.insertImage(imageUri.toString(), "Image Not Found", 200, 200)
+                styleEditor!!.insertImage("data:image/jpeg;base64, $encodedImg", "Image Not Found", 200, 200)
             } else {
                 // TODO: Make the with of the imgae match parent
-                styleEditor!!.insertVideo("data:image/jpeg;base64, $encodedImg", 200, 200)
+                styleEditor!!.insertVideo(imageUri.toString(), 200, 200)
             }
         } else if (resultCode == RESULT_OK && requestCode == pickMusic) {
             musicUri = data?.data
@@ -186,8 +187,7 @@ class CreatePostActivity : AppCompatActivity() {
                     styleEditor!!.html.toString()
                 )
 
-                var authToken = "Bearer $token"
-                viewModel.createPost(authToken, postBody, blog_id)
+                viewModel.createPost(token, postBody, blog_id)
                 Toast.makeText(this, " Your Post is created Successfully", 5).show()
                 finish()
             }

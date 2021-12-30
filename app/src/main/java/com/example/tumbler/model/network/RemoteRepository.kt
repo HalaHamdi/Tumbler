@@ -89,7 +89,16 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     }
 
     override suspend fun createPost(token: String, createPostBody: CreatePostBody, blogId: Int) = withContext(Dispatchers.IO) {
-        api.createPost(token, createPostBody, blogId)
+        api.createPost("Bearer $token", createPostBody, blogId)
+    }
+
+    override suspend fun uploadPhoto(token: String, base64img: String): String {
+
+        val result:String=api.uploadPhoto("Bearer $token",base64img)
+
+        Log.i("Hala","Result of image base64 ${result}")
+        return  result
+
     }
 
     override suspend fun SignUp(user: RequestBody) = withContext(Dispatchers.IO) {
@@ -117,19 +126,19 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     }
 
     override suspend fun isLiked(postID: Int, blogID: Int, token: String): Boolean? {
-        var abbas: Boolean? = null
+        var isliked: Boolean? = null
         withContext(Dispatchers.IO) {
             val result = api.isLiked(postID, blogID, "Bearer $token")
             Log.i("Abbas", result.toString())
             if (result.isSuccessful) {
-                abbas = result.body()!!.response.status
+                isliked = result.body()!!.response.status
             } else {
                 Log.i("err in islike", result.message())
             }
         }
         // Log.i("TTT",abbas.toString())
         // abbas = true
-        return abbas
+        return isliked
     }
 
     override suspend fun UnLike(postID: Int, blogID: Int, token: String) {
@@ -145,23 +154,28 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     }
 
     override suspend fun recommendedBlogs(token: String): List<Blogs> {
-        Log.i("Hala", "in the remote repo")
-        lateinit var recommendedBlogs: List<Blogs>
-        withContext(Dispatchers.IO) {
-            val result = api.recommendedBlogs("Bearer $token")
-            Log.i("Hala", result.toString())
 
-            if (result.isSuccessful) {
-                if (result.body() != null) {
-                    recommendedBlogs = result.body()!!.response.blogs
+        try{ lateinit var recommendedBlogs: List<Blogs>
+            withContext(Dispatchers.IO) {
+                val result = api.recommendedBlogs("Bearer $token")
+                Log.i("Hala", result.toString())
+
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        recommendedBlogs = result.body()!!.response.blogs
+                    } else {
+                        Log.i("Hala", "empty blogs")
+                    }
                 } else {
-                    Log.i("Hala", "empty blogs")
+                    Log.i("Hala", result.message())
                 }
-            } else {
-                Log.i("Hala", result.message())
             }
+            return recommendedBlogs}
+        catch (e: Exception){
+            delay(1000)
+            return recommendedBlogs(token)
+
         }
-        return recommendedBlogs
     }
 
     override suspend fun followBlog(token: String, blog_id: Int) {
@@ -193,40 +207,54 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
     }
 
     override suspend fun getFollowings(token: String): List<Following> {
-        lateinit var following: List<Following>
-        withContext(Dispatchers.IO) {
-            val result = api.getFollowings("Bearer $token")
-            Log.i("Hala", result.toString())
+        try{
+            lateinit var following: List<Following>
+            withContext(Dispatchers.IO) {
+                val result = api.getFollowings("Bearer $token")
+                Log.i("Hala", result.toString())
 
-            if (result.isSuccessful) {
-                if (result.body() != null) {
-                    following = result.body()!!.response.followings
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        following = result.body()!!.response.followings
+                    } else {
+                        Log.i("Hala", "empty blogs")
+                    }
                 } else {
-                    Log.i("Hala", "empty blogs")
+                    Log.i("Hala", result.message())
                 }
-            } else {
-                Log.i("Hala", result.message())
             }
+            return following
         }
-        return following
+        catch (e:Exception)
+        { delay(1000)
+            return  getFollowings(token)
+        }
     }
 
     override suspend fun recommendedTags(token: String): List<Tags> {
-        lateinit var recommendedTags: List<Tags>
-        withContext(Dispatchers.IO) {
-            val result = api.recommendedTags("Bearer $token")
+        try{
+            lateinit var recommendedTags: List<Tags>
+            withContext(Dispatchers.IO) {
+                val result = api.recommendedTags("Bearer $token")
 
-            if (result.isSuccessful) {
-                if (result.body() != null) {
-                    recommendedTags = result.body()!!.response.tags
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        recommendedTags = result.body()!!.response.tags
+                    } else {
+                        Log.i("Hala", "empty tags")
+                    }
                 } else {
-                    Log.i("Hala", "empty tags")
+                    Log.i("Hala", result.message())
                 }
-            } else {
-                Log.i("Hala", result.message())
             }
+            return recommendedTags
+
         }
-        return recommendedTags
+        catch(e:Exception){
+            delay(1000)
+            return  recommendedTags(token)
+        }
+
     }
 
     override suspend fun followTag(token: String, tag_description: String) {
@@ -264,17 +292,19 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             if (result.isSuccessful) {
                 if (result.body() != null) {
                     isFollowing = result.body()!!.response.isFollowing
+                    Log.i("Hala"," is following = ${isFollowing.toString()}" )
                 } else {
                     Log.i("Hala", "empty tags")
                 }
             } else {
-                Log.i("Hala", result.message())
+                Log.i("Hala","In error ${ result.message()}")
             }
         }
         return isFollowing
     }
 
     override suspend fun getTagsFollowed(token: String): List<UserTags> {
+        try{
         lateinit var followedTags: List<UserTags>
         Log.i("Hala", "Get tags followed remote repo")
         withContext(Dispatchers.IO) {
@@ -290,7 +320,11 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
                 Log.i("Hala", result.message())
             }
         }
-        return followedTags
+        return followedTags}
+        catch(e:Exception){
+            delay(1000)
+            return getTagsFollowed(token)
+        }
     }
     override suspend fun getPostSubmitted(blogID: Int,token: String): List<Post> {
         try {

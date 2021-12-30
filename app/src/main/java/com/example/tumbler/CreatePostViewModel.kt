@@ -12,16 +12,24 @@ class CreatePostViewModel(private val remoteRepository: RemoteRepository) : View
     private var createPostMutableLiveData = MutableLiveData<CreatePost>()
     val createPostLiveData: LiveData<CreatePost> get() = createPostMutableLiveData
 
+    private var imageMutableLiveData = MutableLiveData<String>()
+    val imageLiveData: LiveData<String> get() = imageMutableLiveData
+
     fun createPost(token: String, createPostBody: CreatePostBody, blogId: Int) = viewModelScope.launch {
-        Log.i("Hala", "in model")
 
         var result = remoteRepository.createPost(token, createPostBody, blogId)
         Log.i("Hala", result.toString())
         if (result.isSuccessful) {
             Log.i("Hala", "sucessful Creation Of post")
         } else {
-            Log.i("Hala", "error creating post=")
-            Log.i("Hala", "error = ${result.message()}")
+            Log.i("Hala", "error  creating post= ${result.message()}")
         }
+    }
+
+    fun uploadImage(token:String,img:String)=viewModelScope.launch{
+        var imgresult=remoteRepository.uploadPhoto(token,img)
+        imageMutableLiveData.postValue(imgresult)
+        Log.i("Hala","mUTALBLE = ${imageMutableLiveData.value}")
+        Log.i("Hala","live data  = ${imageLiveData.value}")
     }
 }

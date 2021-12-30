@@ -1,5 +1,6 @@
 package com.example.tumbler.search
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,18 +30,24 @@ class FollowedTagsEditAdapter(val viewModel: FollowedTagsEditViewModel) : Recycl
         return FollowedTagsEditViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FollowedTagsEditViewHolder, position: Int) {
+   override  fun onBindViewHolder(holder: FollowedTagsEditViewHolder, position: Int) {
         var userFollowedTag: UserTags = userTagList.get(position)
         holder.bind(userFollowedTag)
         holder.binding.tagFollowedBtn.setOnClickListener {
-            val res = viewModel.isFollowing(userTagList[position].tagDescription, position)
-            if (res.equals(true)) {
-                viewModel.unfollowTag(userTagList[position].tagDescription, position)
-                holder.binding.tagFollowedBtn.text = "UNFOLLOW"
-            } else {
+
+//            viewModel.isFollowing(userTagList[position].tagDescription, position)
+            Log.i("Hala",holder.binding.tagFollowedBtn.text.toString())
+            if(holder.binding.tagFollowedBtn.text=="FOLLOW"){
+                Log.i("Hala","will follow")
                 viewModel.followTag(userTagList[position].tagDescription, position)
                 holder.binding.tagFollowedBtn.text = "FOLLOWING"
             }
+            else{
+                Log.i("Hala","will unfollow")
+                viewModel.unfollowTag(userTagList[position].tagDescription, position)
+                holder.binding.tagFollowedBtn.text = "FOLLOW"
+            }
+
         }
     }
 }

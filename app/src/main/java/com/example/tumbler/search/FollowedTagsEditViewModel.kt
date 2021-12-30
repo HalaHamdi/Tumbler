@@ -1,5 +1,6 @@
 package com.example.tumbler.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.tumbler.BaseApplication
 import com.example.tumbler.model.entity.search.UserTags
 import com.example.tumbler.model.network.RemoteRepository
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class FollowedTagsEditViewModel(private val remoteRepository: RemoteRepository) : ViewModel() {
@@ -28,8 +30,13 @@ class FollowedTagsEditViewModel(private val remoteRepository: RemoteRepository) 
         remoteRepository.unfollowTag(BaseApplication.user.access_token, tag_description)
     }
 
-    fun isFollowing(tag_description: String, position: Int) = viewModelScope.launch {
-        val isfollowing: Boolean = remoteRepository.isFollowingTag(BaseApplication.user.access_token, tag_description)
-        isFollowingTagMutableLiveData.postValue(isfollowing)
+
+  fun isFollowing(tag_description: String, position: Int) {
+viewModelScope.launch {
+    var isfollowing:Boolean =
+        remoteRepository.isFollowingTag(BaseApplication.user.access_token, tag_description)
+    Log.i("Hala", "view model= ${isfollowing.toString()}")
+    isFollowingTagMutableLiveData.postValue(isfollowing)
+}
     }
 }

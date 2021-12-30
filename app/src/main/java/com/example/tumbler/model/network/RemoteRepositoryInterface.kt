@@ -18,6 +18,8 @@ import retrofit2.Response
 
 interface RemoteRepositoryInterface {
     suspend fun createPost(token: String, createPostBody: CreatePostBody, blogId: Int): Response<CreatePost>
+    suspend fun uploadPhoto(token: String,base64img:String): String
+
     suspend fun getRandomPosts(): List<Posts>
 
     suspend fun SignUp(user: RequestBody): Response<SignupResponse>

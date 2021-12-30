@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.tumbler.BaseApplication
 import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentUserProfileBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class UserProfileFragment : Fragment() {
     lateinit var binding: FragmentUserProfileBinding
@@ -61,6 +62,13 @@ class UserProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         configureTopNavigation()
+    }
+    override fun onResume() {
+        super.onResume()
+        val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation
+        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
+        fab.visibility = View.VISIBLE
+        navBar.visibility = View.VISIBLE
     }
 
     private fun configureTopNavigation() {

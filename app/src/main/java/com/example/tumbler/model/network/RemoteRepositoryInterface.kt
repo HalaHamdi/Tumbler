@@ -12,9 +12,10 @@ import com.example.tumbler.model.entity.dashboard.*
 import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.*
 import com.example.tumbler.model.entity.settings.change_password
-import com.example.tumbler.model.entity.userprofile.Following
-import com.example.tumbler.model.entity.userprofile.Post
+import com.example.tumbler.model.entity.userprofile.*
 import retrofit2.Response
+import retrofit2.http.Header
+import retrofit2.http.Path
 
 interface RemoteRepositoryInterface {
     suspend fun createPost(token: String, createPostBody: CreatePostBody, blogId: Int): Response<CreatePost>
@@ -36,6 +37,8 @@ interface RemoteRepositoryInterface {
 
     suspend fun recommendedBlogs(token: String): List<Blogs>
     suspend fun getPostSubmitted(blogID: Int,token: String) :List<Post>
+    suspend fun getPostsLiked(token: String, blog_id: Int): List<PostsLiked>
+
 
     suspend fun followBlog(token: String, blog_id: Int)
     suspend fun unfollowBlog(token: String, blog_id: Int)

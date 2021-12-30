@@ -10,7 +10,9 @@ import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.*
 import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.model.entity.userprofile.Following
+import com.example.tumbler.model.entity.userprofile.LikedPostsResponse
 import com.example.tumbler.model.entity.userprofile.Post
+import com.example.tumbler.model.entity.userprofile.PostsLiked
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -348,6 +350,28 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         } catch (e: Exception) {
             delay(1000)
             return getPostSubmitted(blogID,token)
+        }
+    }
+
+    override suspend fun getPostsLiked(token: String, blog_id: Int): List<PostsLiked> {
+        try {
+            lateinit var likedPosts: List<PostsLiked>
+            withContext(Dispatchers.IO) {
+                val result = api.getPostsLiked("Bearer $token",blog_id)
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        likedPosts = result.body()!!.response.likedPosts
+                    } else {
+                        Log.i("Hala", "No Posts")
+                    }
+                } else {
+                    Log.i("Hala", result.message())
+                }
+            }
+            return likedPosts
+        } catch (e: Exception) {
+            delay(1000)
+            return getPostsLiked(token,blog_id)
         }
     }
 

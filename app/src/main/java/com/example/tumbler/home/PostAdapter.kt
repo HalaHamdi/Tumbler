@@ -59,6 +59,10 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
             viewModel.updateDashboard()
         }
 
+        holder.binding.profilePhotoPost.setOnClickListener{view:View->
+            view.findNavController().navigate((HomeFragmentDirections.actionHomeFragmentToUserBlogFragment()))
+        }
+
         holder.binding.postNumNotes.setOnClickListener { view: View ->
             viewModel.currentPost = post.post_id
             view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostNotesFragment())
@@ -72,9 +76,9 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
             LoveClickListner(post)
         }
 
-        holder.binding.profilePhotoPost.setOnClickListener { view: View ->
-            navigatetoUser(post, view)
-        }
+//        holder.binding.profilePhotoPost.setOnClickListener { view: View ->
+//            navigatetoUser(post, view)
+//        }
         holder.binding.userNamePost.setOnClickListener { view: View ->
             navigatetoUser(post, view)
         }

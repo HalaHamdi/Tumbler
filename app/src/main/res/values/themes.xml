@@ -19,10 +19,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    
-    <style name="Theme.Tumbler.Background">
-        <item name="android:windowBackground">@drawable/pic4</item>
-    </style>
+<!--    -->
+<!--    <style name="Theme.Tumbler.Background">-->
+<!--        <item name="android:windowBackground">@drawable/pic4</item>-->
+<!--    </style>-->
 
     <style name="AlertDialogCustom" >
         <item name="android:colorPrimary" tools:targetApi="lollipop">#00397F</item>0

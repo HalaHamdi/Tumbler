@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_postNotesFragment"
             app:destination="@id/postNotesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userBlogFragment"
+            app:destination="@id/userBlogFragment" />
     </fragment>
 
     <fragment
@@ -97,5 +100,14 @@
         android:name="com.example.tumbler.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/userBlogFragment"
+        android:name="com.example.tumbler.userprofile.UserBlogFragment"
+        android:label="fragment_user_blog"
+        tools:layout="@layout/fragment_user_blog" >
+        <action
+            android:id="@+id/action_userBlogFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
 
 </navigation>

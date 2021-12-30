@@ -13,6 +13,7 @@ import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
 import com.example.tumbler.userprofile.FollowingViewModel
 import com.example.tumbler.userprofile.SettingsViewModel
+import com.example.tumbler.userprofile.UserBlogViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -52,6 +53,9 @@ val viewModelModule = module {
     }
     viewModel {
         FollowedTagsEditViewModel(get())
+    }
+    viewModel {
+        UserBlogViewModel(get())
     }
 }
 

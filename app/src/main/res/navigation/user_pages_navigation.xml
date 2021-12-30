@@ -108,6 +108,12 @@
         <action
             android:id="@+id/action_userBlogFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <argument
+            android:name="userID"
+            app:argType="integer" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
     </fragment>
 
 </navigation>

@@ -10,6 +10,7 @@ import androidx.core.view.get
 import androidx.databinding.adapters.AdapterViewBindingAdapter.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
@@ -17,6 +18,8 @@ import com.example.tumbler.BaseApplication
 import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentUserProfileBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.android.viewmodel.ext.android.sharedViewModel
+
 
 class UserProfileFragment : Fragment() {
     lateinit var binding: FragmentUserProfileBinding
@@ -48,6 +51,7 @@ class UserProfileFragment : Fragment() {
         binding.settingsIcon.setOnClickListener { view: View ->
             view.findNavController().navigate(action)
         }
+
 //        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
 //        fab.visibility = View.VISIBLE
         return binding.root

@@ -331,11 +331,11 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             lateinit var profilePosts: List<Post>
             withContext(Dispatchers.IO) {
                 val result = api.getPostSubmitted(blogID,"Bearer $token")
-                Log.i("Lalala", "No Posts")
+                Log.i("Lalala", result.toString())
                 if (result.isSuccessful) {
                     Log.i("Lalala1", "No Posts")
                     if (result.body() != null) {
-                        Log.i("Lalala2", "No Posts")
+                        Log.i("Lalala2", result.body()!!.response.toString())
                         profilePosts = result.body()!!.response.posts
                     } else {
                         Log.i("Elonsol", "No Posts")

@@ -58,9 +58,9 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
         if (position == maxReachedPosts - 2) {
             viewModel.updateDashboard()
         }
-
+        var userID:Int = post.blog_id
         holder.binding.profilePhotoPost.setOnClickListener{view:View->
-            view.findNavController().navigate((HomeFragmentDirections.actionHomeFragmentToUserBlogFragment()))
+            view.findNavController().navigate((HomeFragmentDirections.actionHomeFragmentToUserBlogFragment(userID, post.blog_username)))
         }
 
         holder.binding.postNumNotes.setOnClickListener { view: View ->

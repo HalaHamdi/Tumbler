@@ -19,6 +19,7 @@ import com.example.tumbler.model.entity.search.SuggestedTags
 import com.example.tumbler.model.entity.search.TagsFollowed
 import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.model.entity.userprofile.Followings
+import com.example.tumbler.model.entity.userprofile.LikedPosts
 import com.example.tumbler.model.entity.userprofile.PostSubmissionResponse
 import retrofit2.Response
 import retrofit2.http.*
@@ -78,6 +79,13 @@ interface ServiceAPI {
     @POST("upload_base64_photo")
     suspend fun uploadPhoto(@Header("Authorization")token: String, @Body base64img:String): String
 
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    @POST("post/reply/{post_id}")
+    suspend fun reply(@Body replyBody: ReplyBody, @Header("Authorization")token: String, @Path("post_id")post_id: Int): Response<Meta>
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // get requests
@@ -144,6 +152,14 @@ interface ServiceAPI {
     @GET("post_notes/{post_id}")
     suspend fun getNotes(@Header("Authorization")token: String, @Path("post_id")post_id: Int, @Query("page")page: Int): Response<Notes>
 
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    @GET("blogs/likes/{blog_id}")
+    suspend fun getPostsLiked(@Header("Authorization")token: String, @Path("blog_id")blog_id: Int): Response<LikedPosts>
+
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Delete Requests
@@ -172,10 +188,5 @@ interface ServiceAPI {
     @PUT("change_password")
     suspend fun ChangePassword(@Header("Authorization")token: String,@Body passwordInfo:change_password) : Response<ObjectOfMeta>
 
-    @Headers(
-        "Accept: application/json",
-        "Content-Type: application/json"
-    )
-    @POST("post/reply/{post_id}")
-    suspend fun reply(@Body replyBody: ReplyBody, @Header("Authorization")token: String, @Path("post_id")post_id: Int): Response<Meta>
+
 }

@@ -14,16 +14,19 @@ class FollowingViewModel(private val remoteRepository: RemoteRepository) : ViewM
     private var _followingsMutalbleLiveData = MutableLiveData<List<Following>>()
     val followingLiveData: LiveData<List<Following>> get() = _followingsMutalbleLiveData
 
+    private var submittedPostsMutalbleLiveData = MutableLiveData<List<Post>>()
+    val submittedPostsLiveData: LiveData<List<Post>> get() = submittedPostsMutalbleLiveData
+
     fun getFollowings() = viewModelScope.launch {
         val following: List<Following> = remoteRepository.getFollowings(BaseApplication.user.access_token)
         _followingsMutalbleLiveData.postValue(following)
     }
 
-    private var submittedPostsMutalbleLiveData = MutableLiveData<List<Post>>()
-    val submittedPostsLiveData: LiveData<List<Post>> get() = submittedPostsMutalbleLiveData
+
 
     fun getsubmittedPosts() = viewModelScope.launch {
         val posts: List<Post> = remoteRepository.getPostSubmitted(BaseApplication.user.blog_id,BaseApplication.user.access_token)
         submittedPostsMutalbleLiveData.postValue(posts)
     }
+
 }

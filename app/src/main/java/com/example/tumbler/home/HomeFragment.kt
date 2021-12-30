@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentHomeBinding
 import com.example.tumbler.model.entity.dashboard.DashboardPost
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class HomeFragment : Fragment() {
@@ -55,7 +57,8 @@ class HomeFragment : Fragment() {
                 }
             }
         )
-
+//        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
+//        fab.visibility = View.VISIBLE
         return binding.root
     }
 
@@ -79,5 +82,13 @@ class HomeFragment : Fragment() {
 //                }
 //            }
 //        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation
+        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
+        fab.visibility = View.VISIBLE
+        navBar.visibility = View.VISIBLE
     }
 }

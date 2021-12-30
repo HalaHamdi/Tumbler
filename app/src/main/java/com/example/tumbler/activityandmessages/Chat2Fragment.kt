@@ -59,4 +59,12 @@ class Chat2Fragment : Fragment() {
         navBar.visibility = View.GONE
         return binding.root
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation
+        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
+        fab.visibility = View.VISIBLE
+        navBar.visibility = View.VISIBLE
+    }
 }

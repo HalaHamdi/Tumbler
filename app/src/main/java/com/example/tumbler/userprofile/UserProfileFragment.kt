@@ -14,6 +14,7 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.tumbler.BaseApplication
+import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentUserProfileBinding
 
 class UserProfileFragment : Fragment() {
@@ -27,8 +28,6 @@ class UserProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
-        binding.textView2.text = BaseApplication.user.blog_username
-        FollowingAdapter.DownloadImageFromInternet(binding.profilePic).execute(BaseApplication.user.blog_avatar)
 
         // binding.profilePic.setImageURI(BaseApplication.user.blog_avatar as Uri)
         val UserBlogsAdapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, UserBlogs)
@@ -48,7 +47,15 @@ class UserProfileFragment : Fragment() {
         binding.settingsIcon.setOnClickListener { view: View ->
             view.findNavController().navigate(action)
         }
+//        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
+//        fab.visibility = View.VISIBLE
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.textView2.text = BaseApplication.user.blog_username
+        FollowingAdapter.DownloadImageFromInternet(binding.profilePic).execute(BaseApplication.user.blog_avatar)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

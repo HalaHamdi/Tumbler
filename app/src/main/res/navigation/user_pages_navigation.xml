@@ -62,7 +62,11 @@
         android:id="@+id/createNewTumblrFragment"
         android:name="com.example.tumbler.settings.CreateNewTumblrFragment"
         android:label="fragment_create_new_tumblr"
-        tools:layout="@layout/fragment_create_new_tumblr" />
+        tools:layout="@layout/fragment_create_new_tumblr" >
+        <action
+            android:id="@+id/action_createNewTumblrFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.tumbler.activityandmessages.ChatFragment"

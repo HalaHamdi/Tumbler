@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.tumbler.databinding.FragmentCreateNewTumblrBinding
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -38,6 +39,7 @@ class CreateNewTumblrFragment : Fragment() {
                 if (it.status.toInt() == 200) {
                     Log.i("Elonsoool", "MyObserver:status 200 ")
                     Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
+                    view?.findNavController()?.navigate(CreateNewTumblrFragmentDirections.actionCreateNewTumblrFragmentToUserProfileFragment())
                 } else
                     Toast.makeText(requireContext(), "Enter a new Username", Toast.LENGTH_SHORT).show()
             }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import com.example.tumbler.BaseApplication
 import com.example.tumbler.R
 import com.example.tumbler.databinding.FragmentUserBlogBinding
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -26,7 +27,8 @@ class UserBlogFragment : Fragment() {
         val args = UserBlogFragmentArgs.fromBundle(requireArguments())
         val adapter = BlogProfilePostsAdapter(viewModel)
         binding.textView2.text=args.userName
-      binding.rvUserBlogPosts.adapter = adapter
+        FollowingAdapter.DownloadImageFromInternet(binding.profilePic).execute(args.userProfilePic)
+        binding.rvUserBlogPosts.adapter = adapter
         viewModel.getsubmittedPosts(args.userID)
         viewModel.userBlogLiveData.observe(
             viewLifecycleOwner,

@@ -114,6 +114,9 @@
         <argument
             android:name="userName"
             app:argType="string" />
+        <argument
+            android:name="userProfilePic"
+            app:argType="string" />
     </fragment>
 
 </navigation>

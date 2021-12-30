@@ -60,7 +60,7 @@ class PostAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<PostAdapt
         }
         var userID:Int = post.blog_id
         holder.binding.profilePhotoPost.setOnClickListener{view:View->
-            view.findNavController().navigate((HomeFragmentDirections.actionHomeFragmentToUserBlogFragment(userID, post.blog_username)))
+            view.findNavController().navigate((HomeFragmentDirections.actionHomeFragmentToUserBlogFragment(userID, post.blog_username,post.blog_avatar)))
         }
 
         holder.binding.postNumNotes.setOnClickListener { view: View ->

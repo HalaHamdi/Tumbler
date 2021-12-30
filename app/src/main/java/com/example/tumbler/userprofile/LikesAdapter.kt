@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tumbler.R
 import com.example.tumbler.databinding.PostItemBinding
 import com.example.tumbler.model.entity.userprofile.LikedPosts
 import com.example.tumbler.model.entity.userprofile.Post
@@ -25,6 +26,7 @@ class LikesAdapter(val viewModel: LikesViewModel) : RecyclerView.Adapter<LikesAd
 
     class LikesViewHolder(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(post: PostsLiked) {
+            binding.postLoveIcon.setImageResource(R.drawable.ic_baseline_love_red_button)
             binding.userNamePost.text =post.blogUsername
             DownloadImageFromInternet(binding.profilePhotoPost).execute(post.blogAvatar)
             binding.postContent.loadData("<style>img{display: inline;height: auto;max-width: 100%;}</style>" + post.postBody

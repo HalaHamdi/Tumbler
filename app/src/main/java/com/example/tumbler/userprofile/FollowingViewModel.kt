@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tumbler.BaseApplication
 import com.example.tumbler.model.entity.userprofile.Following
+import com.example.tumbler.model.entity.userprofile.Post
 import com.example.tumbler.model.network.RemoteRepository
 import kotlinx.coroutines.launch
 
@@ -16,5 +17,13 @@ class FollowingViewModel(private val remoteRepository: RemoteRepository) : ViewM
     fun getFollowings() = viewModelScope.launch {
         val following: List<Following> = remoteRepository.getFollowings(BaseApplication.user.access_token)
         _followingsMutalbleLiveData.postValue(following)
+    }
+
+    private var submittedPostsMutalbleLiveData = MutableLiveData<List<Post>>()
+    val submittedPostsLiveData: LiveData<List<Post>> get() = submittedPostsMutalbleLiveData
+
+    fun getsubmittedPosts() = viewModelScope.launch {
+        val posts: List<Post> = remoteRepository.getPostSubmitted(BaseApplication.user.blog_id,BaseApplication.user.access_token)
+        submittedPostsMutalbleLiveData.postValue(posts)
     }
 }

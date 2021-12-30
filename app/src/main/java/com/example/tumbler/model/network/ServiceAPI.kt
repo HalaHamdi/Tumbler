@@ -19,6 +19,7 @@ import com.example.tumbler.model.entity.search.SuggestedTags
 import com.example.tumbler.model.entity.search.TagsFollowed
 import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.model.entity.userprofile.Followings
+import com.example.tumbler.model.entity.userprofile.PostSubmissionResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -80,6 +81,7 @@ interface ServiceAPI {
     @GET("posts/dashboard")
     suspend fun Dashboard(@Header("Authorization") token: String, @Query("page")page: Int): Response<Dashboard>
 
+
     @Headers(
         "Accept: application/json",
         "Content-Type:application/json"
@@ -107,6 +109,11 @@ interface ServiceAPI {
     )
     @GET("followings")
     suspend fun getFollowings(@Header("Authorization")token: String): Response<Followings>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @GET("posts/{blog_id}/published")
+    suspend fun getPostSubmitted(@Path("blog_id") blogID: Int,@Header("Authorization")token: String) :Response<PostSubmissionResponse>
+
 
     @Headers(
         "Accept: application/json",

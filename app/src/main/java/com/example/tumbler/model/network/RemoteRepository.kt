@@ -2,7 +2,6 @@ package com.example.tumbler.model.network
 
 import android.util.Log
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
-import com.example.tumbler.model.entity.ObjectOfMeta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
@@ -11,11 +10,10 @@ import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.*
 import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.model.entity.userprofile.Following
+import com.example.tumbler.model.entity.userprofile.Post
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import retrofit2.Response
-import retrofit2.http.Body
 import java.lang.Exception
 import kotlin.properties.Delegates
 
@@ -293,6 +291,30 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             }
         }
         return followedTags
+    }
+    override suspend fun getPostSubmitted(blogID: Int,token: String): List<Post> {
+        try {
+            lateinit var profilePosts: List<Post>
+            withContext(Dispatchers.IO) {
+                val result = api.getPostSubmitted(blogID,"Bearer $token")
+                Log.i("Lalala", "No Posts")
+                if (result.isSuccessful) {
+                    Log.i("Lalala1", "No Posts")
+                    if (result.body() != null) {
+                        Log.i("Lalala2", "No Posts")
+                        profilePosts = result.body()!!.response.posts
+                    } else {
+                        Log.i("Elonsol", "No Posts")
+                    }
+                } else {
+                    Log.i("Elonsol", result.message())
+                }
+            }
+            return profilePosts
+        } catch (e: Exception) {
+            delay(1000)
+            return getPostSubmitted(blogID,token)
+        }
     }
 
     override suspend fun getNumNotes(postID: Int, token: String): Int? {

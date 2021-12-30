@@ -69,6 +69,14 @@ interface ServiceAPI {
     @POST("follow_tag/{tag_description}")
     suspend fun followTag(@Header("Authorization")token: String, @Path("tag_description")tag_description: String): Response<Meta>
 
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    @POST("upload_base64_photo")
+    suspend fun uploadPhoto(@Header("Authorization")token: String, @Body base64img:String): String
+
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // get requests

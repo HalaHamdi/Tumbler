@@ -1,7 +1,9 @@
 package com.example.tumbler.search
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.tumbler.databinding.ActivityFollowedTagsEditBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -34,5 +36,7 @@ class FollowedTagsEditActivity : AppCompatActivity() {
                 }
             }
         )
+
+
     }
 }

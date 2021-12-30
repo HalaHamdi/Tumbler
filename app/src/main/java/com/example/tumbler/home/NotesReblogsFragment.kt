@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.tumbler.UserPagesActivity
 import com.example.tumbler.databinding.FragmentNotesReblogsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class NotesReblogsFragment : Fragment() {
@@ -35,6 +37,10 @@ class NotesReblogsFragment : Fragment() {
                 }
             }
         )
+        val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation
+        val fab = (requireActivity() as UserPagesActivity).binding.createPostButton
+        fab.visibility = View.GONE
+        navBar.visibility = View.GONE
 
         return binding.root
     }

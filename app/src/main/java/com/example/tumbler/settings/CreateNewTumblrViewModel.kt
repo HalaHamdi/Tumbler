@@ -1,11 +1,11 @@
-package com.example.tumbler
+package com.example.tumbler.settings
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tumbler.model.entity.Meta
+import com.example.tumbler.BaseApplication
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.network.RemoteRepository
 import com.google.gson.Gson

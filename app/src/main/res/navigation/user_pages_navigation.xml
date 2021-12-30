@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/createNewTumblrFragment"
-        android:name="com.example.tumbler.CreateNewTumblrFragment"
+        android:name="com.example.tumbler.settings.CreateNewTumblrFragment"
         android:label="fragment_create_new_tumblr"
         tools:layout="@layout/fragment_create_new_tumblr" />
     <fragment
@@ -97,7 +97,7 @@
         tools:layout="@layout/fragment_notes_reblogs" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.example.tumbler.ChangePasswordFragment"
+        android:name="com.example.tumbler.settings.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <fragment

@@ -2,7 +2,7 @@ package com.example.tumbler.di
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.example.tumbler.CreateNewTumblrViewModel
+import com.example.tumbler.settings.CreateNewTumblrViewModel
 import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository

@@ -1,4 +1,4 @@
-package com.example.tumbler
+package com.example.tumbler.settings
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.example.tumbler.databinding.FragmentCreateNewTumblrBinding
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import java.util.Observer
 
 class CreateNewTumblrFragment : Fragment() {
     private val viewModel: CreateNewTumblrViewModel by sharedViewModel()
@@ -54,6 +53,7 @@ class CreateNewTumblrFragment : Fragment() {
 
                 val A = CreateBlogRequest(binding.blogUsernameTxt.text.toString(), binding.blogTitleTxt.text.toString())
                 viewModel.CreateNewTumblr(A)
+                getActivity()?.finish()
             }
         }
     }

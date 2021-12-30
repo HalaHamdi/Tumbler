@@ -1,6 +1,5 @@
-package com.example.tumbler
+package com.example.tumbler.settings
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +11,6 @@ import com.example.tumbler.databinding.FragmentChangePasswordBinding
 import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.userprofile.SettingsViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import java.util.Observer
 
 
 class ChangePasswordFragment : Fragment() {
@@ -49,6 +47,7 @@ class ChangePasswordFragment : Fragment() {
         var confirmPassword = binding.confirmPassword.text
         binding.doneBtn.setOnClickListener {
             viewModel.ChangePassword(change_password(currentPassword.toString(),newPassword.toString(),confirmPassword.toString()))
+
         }
     }
 }

@@ -50,7 +50,11 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.tumbler.userprofile.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createNewTumblrFragment"
         android:name="com.example.tumbler.CreateNewTumblrFragment"
@@ -88,5 +92,10 @@
         android:name="com.example.tumbler.home.NotesReblogsFragment"
         android:label="fragment_notes_reblogs"
         tools:layout="@layout/fragment_notes_reblogs" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.tumbler.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 
 </navigation>

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.tumbler.MainActivity
 import com.example.tumbler.databinding.FragmentSettingsBinding
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -26,6 +27,9 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         MyObserver()
         CheckAndNavigate()
+        binding.changePasswordButton.setOnClickListener { view:View ->
+            view.findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToChangePasswordFragment())
+        }
         return binding.root
     }
 

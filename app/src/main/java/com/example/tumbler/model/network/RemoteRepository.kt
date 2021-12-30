@@ -2,16 +2,20 @@ package com.example.tumbler.model.network
 
 import android.util.Log
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
+import com.example.tumbler.model.entity.ObjectOfMeta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.entity.dashboard.*
 import com.example.tumbler.model.entity.randomposts.Posts
 import com.example.tumbler.model.entity.search.*
+import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.model.entity.userprofile.Following
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import retrofit2.Response
+import retrofit2.http.Body
 import java.lang.Exception
 import kotlin.properties.Delegates
 
@@ -92,6 +96,10 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
 
     override suspend fun SignUp(user: RequestBody) = withContext(Dispatchers.IO) {
         api.SignUp(user)
+    }
+
+    override suspend fun ChangePassword(token: String,passwordInfo: change_password)= withContext(Dispatchers.IO) {
+        api.ChangePassword("Bearer $token",passwordInfo)
     }
 
     override suspend fun Login(user: LoginRequest) = withContext(Dispatchers.IO) {

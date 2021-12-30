@@ -17,6 +17,7 @@ import com.example.tumbler.model.entity.search.IsFollowingTag
 import com.example.tumbler.model.entity.search.SuggestedBlogs
 import com.example.tumbler.model.entity.search.SuggestedTags
 import com.example.tumbler.model.entity.search.TagsFollowed
+import com.example.tumbler.model.entity.settings.change_password
 import com.example.tumbler.model.entity.userprofile.Followings
 import retrofit2.Response
 import retrofit2.http.*
@@ -151,6 +152,10 @@ interface ServiceAPI {
     )
     @DELETE("follow_tag/{tag_description}")
     suspend fun unfollowTag(@Header("Authorization")token: String, @Path("tag_description")tag_description: String): Response<Meta>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @PUT("change_password")
+    suspend fun ChangePassword(@Header("Authorization")token: String,@Body passwordInfo:change_password) : Response<ObjectOfMeta>
 
     @Headers(
         "Accept: application/json",

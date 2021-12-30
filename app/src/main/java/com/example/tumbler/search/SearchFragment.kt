@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.example.tumbler.CreatePostActivity
 import com.example.tumbler.databinding.FragmentSearchBinding
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -24,9 +23,15 @@ class SearchFragment : Fragment() {
 
         binding = FragmentSearchBinding.inflate(inflater)
 
-        //listining on the search button
+        // listining on the search button
         binding.seacrhButton.setOnClickListener {
-            val intent = Intent(activity,SearchingActivity::class.java)
+            val intent = Intent(activity, SearchingActivity::class.java)
+            startActivity(intent)
+        }
+
+        // listining on the manage button
+        binding.manageButton.setOnClickListener {
+            val intent = Intent(activity, FollowedTagsEditActivity::class.java)
             startActivity(intent)
         }
 
@@ -41,8 +46,12 @@ class SearchFragment : Fragment() {
         val tagsadapt = RecommendedTagsAdapter(viewModel)
         binding.rvRecommendedTags.adapter = tagsadapt
 
+        val userTagsadapt = FollowedTagsAdapter(viewModel)
+        binding.rvYourTags.adapter = userTagsadapt
+
         viewModel.getRecommendedBlogs()
         viewModel.getRecommendedTags()
+        viewModel.getUserTags()
 
         // for UI modification
         viewModel.blogsLiveData.observe(
@@ -59,6 +68,15 @@ class SearchFragment : Fragment() {
             Observer {
                 it?.let {
                     tagsadapt.setList(it)
+                }
+            }
+        )
+
+        viewModel.userTagsLiveData.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    userTagsadapt.setList(it)
                 }
             }
         )

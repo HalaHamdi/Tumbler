@@ -3,15 +3,13 @@ package com.example.tumbler.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tumbler.databinding.NotesItemBinding
 import com.example.tumbler.databinding.ReblogsLikesItemBinding
-import com.example.tumbler.model.entity.dashboard.RepliesPage
 import com.example.tumbler.userprofile.FollowingAdapter
 
 class LikesReblogAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<LikesReblogAdapter.LikesReblogsViewHolder>() {
-    var likesReblogList = ArrayList<Pair<String,String>>()
+    var likesReblogList = ArrayList<Pair<String, String>>()
 
-    fun setlist(ntsList: ArrayList<Pair<String,String>>) {
+    fun setlist(ntsList: ArrayList<Pair<String, String>>) {
         this.likesReblogList.addAll(ntsList)
         notifyDataSetChanged()
     }
@@ -20,7 +18,7 @@ class LikesReblogAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<Li
 
     class LikesReblogsViewHolder(val binding: ReblogsLikesItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(likeReblog: Pair<String,String>) {
+        fun bind(likeReblog: Pair<String, String>) {
             binding.username.text = likeReblog.first
             FollowingAdapter.DownloadImageFromInternet(binding.userImage).execute(likeReblog.second)
         }
@@ -33,9 +31,7 @@ class LikesReblogAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<Li
     }
 
     override fun onBindViewHolder(holder: LikesReblogsViewHolder, position: Int) {
-        var note: Pair<String,String> = likesReblogList.get(position)
+        var note: Pair<String, String> = likesReblogList.get(position)
         holder.bind(note)
     }
-
-
 }

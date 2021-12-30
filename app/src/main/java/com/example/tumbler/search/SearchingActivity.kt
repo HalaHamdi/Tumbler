@@ -1,8 +1,7 @@
 package com.example.tumbler.search
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tumbler.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tumbler.databinding.ActivitySearchingBinding
 
 class SearchingActivity : AppCompatActivity() {

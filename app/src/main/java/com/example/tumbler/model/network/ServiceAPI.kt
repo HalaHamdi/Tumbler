@@ -13,8 +13,10 @@ import com.example.tumbler.model.entity.dashboard.Notes
 import com.example.tumbler.model.entity.dashboard.ReplyBody
 import com.example.tumbler.model.entity.like.IsLiked
 import com.example.tumbler.model.entity.randomposts.RandomPosts
+import com.example.tumbler.model.entity.search.IsFollowingTag
 import com.example.tumbler.model.entity.search.SuggestedBlogs
 import com.example.tumbler.model.entity.search.SuggestedTags
+import com.example.tumbler.model.entity.search.TagsFollowed
 import com.example.tumbler.model.entity.userprofile.Followings
 import retrofit2.Response
 import retrofit2.http.*
@@ -109,6 +111,20 @@ interface ServiceAPI {
         "Accept: application/json",
         "Content-Type: application/json"
     )
+    @GET("follow_tag")
+    suspend fun getTagsFollowed(@Header("Authorization")token: String): Response<TagsFollowed>
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    @GET("tag/is_following/{tag_description}")
+    suspend fun isFollowingTag(@Header("Authorization")token: String, @Path("tag_description")tag_description: String): Response<IsFollowingTag>
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
     @GET("post_notes/{post_id}")
     suspend fun getNotes(@Header("Authorization")token: String, @Path("post_id")post_id: Int, @Query("page")page: Int): Response<Notes>
 
@@ -136,14 +152,10 @@ interface ServiceAPI {
     @DELETE("follow_tag/{tag_description}")
     suspend fun unfollowTag(@Header("Authorization")token: String, @Path("tag_description")tag_description: String): Response<Meta>
 
-
     @Headers(
         "Accept: application/json",
         "Content-Type: application/json"
     )
     @POST("post/reply/{post_id}")
     suspend fun reply(@Body replyBody: ReplyBody, @Header("Authorization")token: String, @Path("post_id")post_id: Int): Response<Meta>
-
-
 }
-

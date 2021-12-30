@@ -2,20 +2,18 @@ package com.example.tumbler.model.network
 
 import android.util.Log
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
-import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.entity.dashboard.*
 import com.example.tumbler.model.entity.randomposts.Posts
-import com.example.tumbler.model.entity.search.Blogs
-import com.example.tumbler.model.entity.search.Tags
+import com.example.tumbler.model.entity.search.*
 import com.example.tumbler.model.entity.userprofile.Following
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 import java.lang.Exception
+import kotlin.properties.Delegates
 
 class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface {
 
@@ -253,6 +251,42 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         }
     }
 
+    override suspend fun isFollowingTag(token: String, tag_description: String): Boolean {
+        var isFollowing by Delegates.notNull<Boolean>()
+        val withContext = withContext(Dispatchers.IO) {
+            val result = api.isFollowingTag("Bearer $token", tag_description)
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    isFollowing = result.body()!!.response.isFollowing
+                } else {
+                    Log.i("Hala", "empty tags")
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+        return isFollowing
+    }
+
+    override suspend fun getTagsFollowed(token: String): List<UserTags> {
+        lateinit var followedTags: List<UserTags>
+        Log.i("Hala", "Get tags followed remote repo")
+        withContext(Dispatchers.IO) {
+            val result = api.getTagsFollowed("Bearer $token")
+
+            if (result.isSuccessful) {
+                if (result.body() != null) {
+                    followedTags = result.body()!!.response.userTags
+                } else {
+                    Log.i("Hala", "empty tags")
+                }
+            } else {
+                Log.i("Hala", result.message())
+            }
+        }
+        return followedTags
+    }
+
     override suspend fun getNumNotes(postID: Int, token: String): Int? {
         val notes = getNotes(postID, token, 1)
         return notes.likes.pagination.total!! + notes.reblogs.pagination.total!! + notes.replies.pagination.total!!
@@ -294,24 +328,22 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
         return notes.reblogs.reblogs
     }
 
-    override suspend fun reply(replyBody: ReplyBody, token: String, post_id: Int){
-        try{
-            withContext(Dispatchers.IO){
-                val result = api.reply(replyBody,token,post_id)
-                Log.i("Reply",result.toString())
-                Log.i("Reply",token)
+    override suspend fun reply(replyBody: ReplyBody, token: String, post_id: Int) {
+        try {
+            withContext(Dispatchers.IO) {
+                val result = api.reply(replyBody, token, post_id)
+                Log.i("Reply", result.toString())
+                Log.i("Reply", token)
                 if (result.isSuccessful) {
                     if (result.body() != null) {
-
                     } else {}
                 } else {
                     Log.i("err", result.message())
                 }
             }
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             delay(1000)
             reply(replyBody, token, post_id)
         }
-
     }
 }

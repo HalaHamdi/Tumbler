@@ -2,7 +2,6 @@ package com.example.tumbler.model.network
 
 import com.example.tumbler.model.entity.LoginResponse.LoginRequest
 import com.example.tumbler.model.entity.LoginResponse.LoginResponse
-import com.example.tumbler.model.entity.LoginResponse.Meta
 import com.example.tumbler.model.entity.ObjectOfMeta
 import com.example.tumbler.model.entity.SignUpResponse.RequestBody
 import com.example.tumbler.model.entity.SignUpResponse.SignupResponse
@@ -11,13 +10,9 @@ import com.example.tumbler.model.entity.addpost.CreatePostBody
 import com.example.tumbler.model.entity.createNewTumblr.CreateBlogRequest
 import com.example.tumbler.model.entity.dashboard.*
 import com.example.tumbler.model.entity.randomposts.Posts
-import com.example.tumbler.model.entity.search.Blogs
-import com.example.tumbler.model.entity.search.Tags
+import com.example.tumbler.model.entity.search.*
 import com.example.tumbler.model.entity.userprofile.Following
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.Path
 
 interface RemoteRepositoryInterface {
     suspend fun createPost(token: String, createPostBody: CreatePostBody, blogId: Int): Response<CreatePost>
@@ -41,6 +36,9 @@ interface RemoteRepositoryInterface {
     suspend fun recommendedTags(token: String): List<Tags>
     suspend fun followTag(token: String, tag_description: String)
     suspend fun unfollowTag(token: String, tag_description: String)
+    suspend fun isFollowingTag(token: String, tag_description: String): Boolean
+
+    suspend fun getTagsFollowed(token: String): List<UserTags>
 
     suspend fun getNumNotes(postID: Int, token: String): Int?
     suspend fun getNotes(postID: Int, token: String, page: Int): NotesResponse
@@ -50,5 +48,4 @@ interface RemoteRepositoryInterface {
     suspend fun getDashboardMaxPage(blog_id: Int, token: String): Int
 
     suspend fun reply(replyBody: ReplyBody, token: String, post_id: Int)
-
 }

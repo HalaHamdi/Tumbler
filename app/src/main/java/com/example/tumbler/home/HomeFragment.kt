@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        Log.i("DashboardBug","Abbas")
+        Log.i("DashboardBug", "Abbas")
 
         (binding.postList.adapter as PostAdapter).clear()
     }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.tumbler.BaseApplication
 import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.model.entity.search.Tags
+import com.example.tumbler.model.entity.search.UserTags
 import com.example.tumbler.model.network.RemoteRepository
 import kotlinx.coroutines.launch
 
@@ -17,6 +18,9 @@ class SearchViewModel(private val remoteRepository: RemoteRepository) : ViewMode
 
     private var _tagsMutableLiveData = MutableLiveData<List<Tags>>()
     val tagsLiveData: LiveData<List<Tags>> get() = _tagsMutableLiveData
+
+    private var _userTagsMutableLiveData = MutableLiveData<List<UserTags>>()
+    val userTagsLiveData: LiveData<List<UserTags>> get() = _userTagsMutableLiveData
 
     fun getRecommendedBlogs() = viewModelScope.launch {
         val blogs: List<Blogs> = remoteRepository.recommendedBlogs(BaseApplication.user.access_token)
@@ -41,5 +45,10 @@ class SearchViewModel(private val remoteRepository: RemoteRepository) : ViewMode
 
     fun unfollowTag(tag_description: String, position: Int) = viewModelScope.launch {
         remoteRepository.unfollowTag(BaseApplication.user.access_token, tag_description)
+    }
+
+    fun getUserTags() = viewModelScope.launch {
+        val userTags: List<UserTags> = remoteRepository.getTagsFollowed(BaseApplication.user.access_token)
+        _userTagsMutableLiveData.postValue(userTags)
     }
 }

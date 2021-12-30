@@ -1,16 +1,9 @@
 package com.example.tumbler.home
 
-import android.text.Html
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tumbler.BaseApplication
-import com.example.tumbler.R
 import com.example.tumbler.databinding.NotesItemBinding
-import com.example.tumbler.databinding.PostItemBinding
-import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.example.tumbler.model.entity.dashboard.RepliesPage
 import com.example.tumbler.userprofile.FollowingAdapter
 
@@ -46,6 +39,4 @@ class NotesRepliesAdapter(val viewModel: HomeViewModel) : RecyclerView.Adapter<N
 
         holder.bind(note)
     }
-
-
 }

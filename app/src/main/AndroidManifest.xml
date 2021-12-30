@@ -12,11 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tumbler">
-        <activity android:name=".search.SearchingActivity"></activity>
-        <activity android:name=".UserPagesActivity"></activity>
+        <activity android:name=".search.FollowedTagsEditActivity"></activity>
+        <activity android:name=".search.SearchingActivity" />
+        <activity android:name=".UserPagesActivity" />
         <activity
             android:name=".CreatePostActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".signupandin.IntroSliderActivity"
             android:exported="false" />

@@ -7,6 +7,7 @@ import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
 import com.example.tumbler.model.network.ServiceAPI
+import com.example.tumbler.search.FollowedTagsEditViewModel
 import com.example.tumbler.search.SearchViewModel
 import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
@@ -48,6 +49,9 @@ val viewModelModule = module {
     }
     viewModel {
         FollowingViewModel(get())
+    }
+    viewModel {
+        FollowedTagsEditViewModel(get())
     }
 }
 

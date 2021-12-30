@@ -73,15 +73,15 @@ class CreatePostActivity : AppCompatActivity() {
             imageUri = data?.data
             Log.i("Hala", imageUri.toString())
 
-            var encodedImg=encoder(imageUri!!)
+            var encodedImg = encoder(imageUri!!)
 
-            Log.i("Hala",encodedImg.toString())
+            Log.i("Hala", encodedImg.toString())
 
             if (imageUri.toString().startsWith("content://media/external/images")) {
                 styleEditor!!.insertImage(imageUri.toString(), "Image Not Found", 200, 200)
             } else {
                 // TODO: Make the with of the imgae match parent
-                styleEditor!!.insertVideo("data:image/jpeg;base64, ${encodedImg}", 200, 200)
+                styleEditor!!.insertVideo("data:image/jpeg;base64, $encodedImg", 200, 200)
             }
         } else if (resultCode == RESULT_OK && requestCode == pickMusic) {
             musicUri = data?.data

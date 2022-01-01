@@ -7,6 +7,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
+/**
+ * Base of the Application: first class that application starts with
+ * it sets up user module and dependency injection
+ */
 class BaseApplication : Application() {
 
     companion object {

@@ -11,11 +11,19 @@ import com.example.tumbler.databinding.FragmentNotesLikesBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
+/**
+ * Notes likes page fragment class
+ */
 class NotesLikesFragment : Fragment() {
 
     lateinit var binding: FragmentNotesLikesBinding
     private val viewModel: HomeViewModel by sharedViewModel()
 
+    /**
+     * function to be called when notes likes fragment is being created:
+     * setting up binding object, adapter of notes likes, and setting live data listeners
+     * it also removes navigation bar and floating button
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,7 +53,10 @@ class NotesLikesFragment : Fragment() {
         navBar.visibility = View.GONE
         return binding.root
     }
-
+    /**
+     * function to be called when notes likes is already created:
+     * call ViewModel to get likes list
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLikesList()

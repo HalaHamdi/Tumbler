@@ -11,10 +11,18 @@ import com.example.tumbler.databinding.FragmentNotesReblogsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
+/**
+ * Notes reblogs page fragment class
+ */
 class NotesReblogsFragment : Fragment() {
     lateinit var binding: FragmentNotesReblogsBinding
     private val viewModel: HomeViewModel by sharedViewModel()
 
+    /**
+     * function to be called when notes reblogs fragment is being created:
+     * setting up binding object, adapter of notes likes, and setting live data listeners
+     * it also removes navigation bar and floating button
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,7 +52,10 @@ class NotesReblogsFragment : Fragment() {
 
         return binding.root
     }
-
+    /**
+     * function to be called when notes reblogs page  is already created:
+     * call ViewModel to get reblogs list
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getReblogsList()

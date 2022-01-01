@@ -14,6 +14,9 @@ import com.example.tumbler.model.entity.dashboard.RepliesPage
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
+/**
+ * Notes page fragment class
+ */
 class PostNotesFragment : Fragment() {
     lateinit var binding: FragmentPostNotesBinding
     private val viewModel: HomeViewModel by sharedViewModel()
@@ -22,6 +25,11 @@ class PostNotesFragment : Fragment() {
         viewModel.getPostNotes()
     }
 
+    /**
+     * function to be called when notes fragment is being created:
+     * setting up binding object, adapter of notes likes, and setting live data listeners
+     * it also removes navigation bar and floating button
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -80,6 +88,10 @@ class PostNotesFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * function to be called when notes page is being destroyed:
+     * re show navigation bar and floating button
+     */
     override fun onDestroy() {
         super.onDestroy()
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation

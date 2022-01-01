@@ -11,6 +11,9 @@ import com.example.tumbler.model.entity.dashboard.DashboardPost
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
+/**
+ * home page fragment class
+ */
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by sharedViewModel()
@@ -21,6 +24,10 @@ class HomeFragment : Fragment() {
     // lateinit var token:String
     // ((MyApplication) this.getApplication()).getSomeVariable();
 
+    /**
+     * function to be called when home fragment is being created:
+     * setting up binding object, adapter of home posts, and setting live data listeners
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +69,9 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * function to be called when user switch from home page -> clear home posts
+     */
     override fun onStop() {
         super.onStop()
         Log.i("DashboardBug", "Abbas")
@@ -69,6 +79,10 @@ class HomeFragment : Fragment() {
         (binding.postList.adapter as PostAdapter).clear()
     }
 
+    /**
+     * function to be called when home page is already created:
+     * call ViewModel to fetch Dashboard posts
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("Dashboard Bug", "onviewcreated")
@@ -84,6 +98,10 @@ class HomeFragment : Fragment() {
 //        )
     }
 
+    /**
+     * function to be called when user switch to home page:
+     * setting up navigation bar and create post floating button
+     */
     override fun onResume() {
         super.onResume()
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation

@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.databinding.RecommendedTagsListItemBinding
 import com.example.tumbler.model.entity.search.Tags
-
+/**
+ * The adapter that manages the recycler view of the tags that Re suggested to the user
+ * */
 class RecommendedTagsAdapter(val viewModel: SearchViewModel) : RecyclerView.Adapter<RecommendedTagsAdapter.RecommendedTagsViewHolder>() {
 
     var tagsList = listOf<Tags>()

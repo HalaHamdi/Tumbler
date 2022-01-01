@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tumbler.databinding.ActivityCreatePostBinding
 import com.example.tumbler.model.entity.addpost.CreatePostBody
 import jp.wasabeef.richeditor.RichEditor
-import kotlinx.coroutines.delay
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -68,6 +67,9 @@ class CreatePostActivity : AppCompatActivity() {
         styleEditor!!.setPadding(10, 10, 10, 10)
     }
 
+    /**
+     * we override this function  to add any sort of media such as video , audio and image
+     * */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == pickImage) {
@@ -100,6 +102,9 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * it take a uri of an image and converts it to base64
+     * */
     fun encoder(imageUri: Uri): String {
         val input = this.contentResolver.openInputStream(imageUri)
         // val bm = BitmapFactory.decodeResource(resources, R.drawable.test)
@@ -154,12 +159,20 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
+
+    /**
+     * adds an anchor tag to the text editor
+     * */
     fun addUrl() {
         binding.addUrl.setOnClickListener {
             showURLDialog()
         }
     }
 
+
+    /**
+     * adds an audio to the text editor
+     * */
     fun addMusic() {
         binding.addMusic.setOnClickListener {
             val music = Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
@@ -167,6 +180,10 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
+
+    /**
+     * creates a new post if there exists anything in the text editor
+     * */
     @SuppressLint("WrongConstant")
     fun submitPost(token: String, blog_id: Int) {
         binding.toolbarCreatePost.submitPost.setOnClickListener {
@@ -194,6 +211,10 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
+
+    /**
+     * closes the create post activity
+     * */
     fun exitCreatePost() {
         binding.toolbarCreatePost.exitCreatePost.setOnClickListener {
             if (styleEditor!!.html == null || styleEditor!!.html.toString().isEmpty() || styleEditor!!.html.toString() == "<br>") {
@@ -204,6 +225,9 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     *Just to create the spinner or drop down list of the tumlr accounts
+     * */
     fun spinnerTumblrAccount() {
         val spinner: Spinner = binding.spinnerCreatePost
         var tumblrAccounts = arrayOf<String>("Hala", "Nada", "Mariam", "Dina")

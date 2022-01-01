@@ -26,10 +26,10 @@ class CreatePostViewModel(private val remoteRepository: RemoteRepository) : View
         }
     }
 
-    fun uploadImage(token:String,img:String)=viewModelScope.launch{
-        var imgresult=remoteRepository.uploadPhoto(token,img)
+    fun uploadImage(token: String, img: String) = viewModelScope.launch {
+        var imgresult = remoteRepository.uploadPhoto(token, img)
         imageMutableLiveData.postValue(imgresult)
-        Log.i("Hala","mUTALBLE = ${imageMutableLiveData.value}")
-        Log.i("Hala","live data  = ${imageLiveData.value}")
+        Log.i("Hala", "mUTALBLE = ${imageMutableLiveData.value}")
+        Log.i("Hala", "live data  = ${imageLiveData.value}")
     }
 }

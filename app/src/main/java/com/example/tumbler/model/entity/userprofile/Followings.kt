@@ -34,5 +34,3 @@ data class FollowingResponse(
     @SerializedName("pagination") var pagination: FollowingsPagination,
     @SerializedName("followings") var followings: ArrayList<Following>
 )
-
-

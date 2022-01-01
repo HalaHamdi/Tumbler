@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tumbler.databinding.TagsFollowedRvListItemsBinding
 import com.example.tumbler.model.entity.search.UserTags
-
+/**
+ * The adapter that manages the recycler view of the tags that the user followed
+ * */
 class FollowedTagsAdapter(val viewModel: SearchViewModel) : RecyclerView.Adapter<FollowedTagsAdapter.FollowedTagsViewHolder>() {
 
     var userTagList = listOf<UserTags>()

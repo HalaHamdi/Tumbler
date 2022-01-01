@@ -13,6 +13,9 @@ import com.example.tumbler.databinding.RecommendedBlogsListItemBinding
 import com.example.tumbler.model.entity.search.Blogs
 import com.example.tumbler.userprofile.FollowingAdapter
 
+/**
+ * The adapter that manages the blogs recommended to the user
+ * */
 class RecommendedBlogsAdapter(val viewModel: SearchViewModel) : RecyclerView.Adapter<RecommendedBlogsAdapter.RecommendedBlogsViewHolder>() {
 
     var blogsList = listOf<Blogs>()

@@ -50,5 +50,4 @@ class NotesLikesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLikesList()
     }
-
 }

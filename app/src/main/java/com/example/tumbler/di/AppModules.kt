@@ -2,13 +2,13 @@ package com.example.tumbler.di
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.example.tumbler.settings.CreateNewTumblrViewModel
 import com.example.tumbler.CreatePostViewModel
 import com.example.tumbler.home.HomeViewModel
 import com.example.tumbler.model.network.RemoteRepository
 import com.example.tumbler.model.network.ServiceAPI
 import com.example.tumbler.search.FollowedTagsEditViewModel
 import com.example.tumbler.search.SearchViewModel
+import com.example.tumbler.settings.CreateNewTumblrViewModel
 import com.example.tumbler.signupandin.Login.LoginViewModel
 import com.example.tumbler.signupandin.SignUp.SignupViewModel
 import com.example.tumbler.userprofile.FollowingViewModel
@@ -22,7 +22,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 private const val Base_URL: String = "https://api.dev.tumbler.social/api/"
-// private const val Base_URL: String = "https://mocki.io/v1/"
+//private const val Base_URL: String = "https://my-json-server.typicode.com/Hmmammmm/dp"
+
+// private const val Base_URL: String = "https://mocki.io/v1/
+
 
 val viewModelModule = module {
 

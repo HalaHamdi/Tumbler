@@ -87,5 +87,4 @@ class PostNotesFragment : Fragment() {
         fab.visibility = View.VISIBLE
         navBar.visibility = View.VISIBLE
     }
-
 }

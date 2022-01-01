@@ -11,6 +11,10 @@ import com.example.tumbler.model.entity.search.UserTags
 import com.example.tumbler.model.network.RemoteRepository
 import kotlinx.coroutines.launch
 
+
+/**
+ * The view model that holds the live data of the blogs and tags that the user sees as recommendation
+ * */
 class SearchViewModel(private val remoteRepository: RemoteRepository) : ViewModel() {
 
     private var _blogsMutableLiveData = MutableLiveData<List<Blogs>>()

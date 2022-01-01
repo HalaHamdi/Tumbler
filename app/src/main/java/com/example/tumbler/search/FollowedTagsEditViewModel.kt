@@ -11,6 +11,10 @@ import com.example.tumbler.model.network.RemoteRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
+
+/**
+ * The view model that holds the live data of the tags that the user followed
+ * */
 class FollowedTagsEditViewModel(private val remoteRepository: RemoteRepository) : ViewModel() {
     private var _userTagsEditMutableLiveData = MutableLiveData<List<UserTags>>()
     val userTagsEditLiveData: LiveData<List<UserTags>> get() = _userTagsEditMutableLiveData

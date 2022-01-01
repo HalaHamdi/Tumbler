@@ -32,7 +32,9 @@ class SettingsFragment : Fragment() {
         }
         return binding.root
     }
-
+    /**
+     * observe when the response comes, user is logged out
+     */
     fun MyObserver() {
         viewModel.logoutLiveData
             .observe(
@@ -48,7 +50,9 @@ class SettingsFragment : Fragment() {
                 }
             )
     }
-
+    /**
+     * when the user clicks on log out if call the function UserLogout
+     */
     fun CheckAndNavigate() {
         binding.logoutButton.setOnClickListener {
 

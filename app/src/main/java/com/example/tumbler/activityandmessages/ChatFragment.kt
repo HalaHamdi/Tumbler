@@ -29,7 +29,9 @@ class ChatFragment : Fragment() {
         }
         return binding.root
     }
-
+    /**
+     * Function to make the Bottom Navigation visible
+     */
     override fun onDestroy() {
         super.onDestroy()
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation

@@ -315,6 +315,7 @@ class RemoteRepository(private val api: ServiceAPI) : RemoteRepositoryInterface 
             if (result.isSuccessful) {
                 if (result.body() != null) {
                     followedTags = result.body()!!.response.userTags
+                    Log.i("elonsolinTag", result.body()!!.response.userTags.size.toString())
                 } else {
                     Log.i("Hala", "empty tags")
                 }

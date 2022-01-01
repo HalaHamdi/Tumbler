@@ -26,7 +26,9 @@ class Chat2Fragment : Fragment() {
     val userRecyclerView: UserRecyclerView by lazy {
         UserRecyclerView()
     }
-
+    /**
+     * On sendbtn click listener the text in Edit text appears in chat view with the name of the user
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,6 +62,9 @@ class Chat2Fragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Function to make the Bottom Navigation visible
+     */
     override fun onDestroy() {
         super.onDestroy()
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation

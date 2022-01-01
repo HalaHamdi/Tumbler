@@ -45,7 +45,9 @@ class CreateNewTumblrFragment : Fragment() {
             }
         )
     }
-
+    /**
+     * Function to make the Bottom Navigation visible
+     */
     fun CheckAndNavigate() {
         binding.Save.setOnClickListener {
             Log.i("Mgz1", "CheckAndNavigate: ")

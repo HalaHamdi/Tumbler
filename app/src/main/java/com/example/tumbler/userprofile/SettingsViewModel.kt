@@ -19,7 +19,9 @@ class SettingsViewModel(private val remoteRepository: RemoteRepository) : ViewMo
     val changePasswordLiveData: LiveData<Meta> get() = changePasswordMutableLiveData
 
 
-
+    /**
+     * Function to change password of the user
+     */
     fun ChangePassword(change_password_body:change_password)=viewModelScope.launch {
         var result = remoteRepository.ChangePassword(BaseApplication.user.access_token,change_password_body)
         Log.i("Before", "ChangePassword: ")
@@ -32,6 +34,9 @@ class SettingsViewModel(private val remoteRepository: RemoteRepository) : ViewMo
         }
     }
 
+    /**
+     * function to log out
+     */
     fun UserLogout() = viewModelScope.launch {
         var result = remoteRepository.Logout(BaseApplication.user.access_token)
         Log.i("Sobhy", result.toString())

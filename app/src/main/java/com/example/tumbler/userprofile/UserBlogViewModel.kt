@@ -14,7 +14,9 @@ class UserBlogViewModel (private val remoteRepository: RemoteRepository) : ViewM
     private var userBlogMutableLiveData = MutableLiveData<List<Post>>()
     val userBlogLiveData: LiveData<List<Post>> get() = userBlogMutableLiveData
 
-
+    /**
+     * Function to get all submitted posts by the user to be shown in profile
+     */
     fun getsubmittedPosts(blogID:Int) = viewModelScope.launch {
         val posts: List<Post> = remoteRepository.getPostSubmitted(
             blogID,

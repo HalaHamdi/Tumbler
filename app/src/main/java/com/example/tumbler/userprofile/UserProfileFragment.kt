@@ -67,6 +67,9 @@ class UserProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         configureTopNavigation()
     }
+    /**
+     * Function to make the Bottom Navigation visible OnResume
+     */
     override fun onResume() {
         super.onResume()
         val navBar: BottomNavigationView = (requireActivity() as UserPagesActivity).binding.footerNavigation

@@ -23,7 +23,9 @@ class FollowingViewModel(private val remoteRepository: RemoteRepository) : ViewM
     }
 
 
-
+    /**
+     * Function to get all submitted posts of the user to be shown in profile
+     */
     fun getsubmittedPosts() = viewModelScope.launch {
         val posts: List<Post> = remoteRepository.getPostSubmitted(BaseApplication.user.blog_id,BaseApplication.user.access_token)
         submittedPostsMutalbleLiveData.postValue(posts)

@@ -13,7 +13,6 @@ class App : AppCompatActivity() {
         super.onStart()
         myshered = getSharedPreferences("myshared", 0)
         var token = myshered?.getString("access_token", "")
-
         if (token != "") {
             (application as BaseApplication).setUser(
                 myshered?.getString("access_token", "").toString(),

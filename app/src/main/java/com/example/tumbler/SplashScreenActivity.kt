@@ -8,6 +8,9 @@ import com.example.tumbler.signupandin.IntroSliderActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     lateinit var handler: Handler
+    /**
+     * Splash screen of the application
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

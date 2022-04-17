@@ -29,13 +29,13 @@ Tumblr </a> application where Kotlin is the programming language used.
 
 ## Project Contributors
 <a href="https://github.com/Elonsolmostafa1">
-  <img src="https://avatars.githubusercontent.com/u/62807830?v=4" style="border-radius:50%">
+  <img src="https://avatars.githubusercontent.com/u/62807830?v=4" style="border-radius:50%;">
 </a>
 
 <a href="https://github.com/El-Nebo">
-  <img src="https://avatars.githubusercontent.com/u/62252633?v=4" style="border-radius:50%">
+  <img src="https://avatars.githubusercontent.com/u/62252633?v=4" style="border-radius:50%;">
 </a>
 
 <a href="https://github.com/Halahamdy22">
-  <img src="https://avatars.githubusercontent.com/u/56937106?v=4" style="border-radius:50%">
+  <img src="https://avatars.githubusercontent.com/u/56937106?v=4" style="border-radius:50%;">
 </a>

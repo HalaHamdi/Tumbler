@@ -17,10 +17,10 @@
 
 ## Project Description
 
-It is an Android Native version of <a href="https://www.tumblr.com/explore/trending?source=homepage_explore" 
-Tumblr</a> application where Kotlin is the programming language used.
-This project aims to mimic most of Tumblr's features.
-The architecture used is MMVM.
+- It is an Android Native version of <a href="https://www.tumblr.com/explore/trending?source=homepage_explore">
+Tumblr </a> application where Kotlin is the programming language used.
+- This project aims to mimic most of Tumblr's features.
+- The architecture used is MMVM.
 
 ## Project Demo 
 
@@ -29,13 +29,13 @@ The architecture used is MMVM.
 
 ## Project Contributors
 <a href="https://github.com/Elonsolmostafa1">
-  <img src="https://avatars.githubusercontent.com/u/62807830?v=4">
+  <img src="https://avatars.githubusercontent.com/u/62807830?v=4" border-radius: 50%;>
 </a>
 
 <a href="https://github.com/El-Nebo">
-  <img src="https://avatars.githubusercontent.com/u/62252633?v=4">
+  <img src="https://avatars.githubusercontent.com/u/62252633?v=4" border-radius: 50%;>
 </a>
 
 <a href="https://github.com/Halahamdy22">
-  <img src="https://avatars.githubusercontent.com/u/56937106?v=4">
+  <img src="https://avatars.githubusercontent.com/u/56937106?v=4" border-radius: 50%;>
 </a>

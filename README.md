@@ -12,22 +12,19 @@
   </a>
 </p>
 
-<center>
-<img src="Assets/LogoTumblr.png" alt="Tumblr Logo" width="500" height="600" >
-</center>
+<img src="Assets/LogoTumblr.png" alt="Tumblr Logo" >
 
 
 ## Project Description
 
-It is an Android Native version of <a href="https://www.tumblr.com/explore/trending?source=homepage_explore"Tumblr 
-</a> application where Kotlin is the programming language used.
+It is an Android Native version of <a href="https://www.tumblr.com/explore/trending?source=homepage_explore" 
+Tumblr</a> application where Kotlin is the programming language used.
 This project aims to mimic most of Tumblr's features.
 The architecture used is MMVM.
 
 ## Project Demo 
-<center>
+
 <img src="Assets/AndroidVideo.gif" alt="Tumblr Logo" width="500" height="600" >
-</center>
 
 
 ## Project Contributors
